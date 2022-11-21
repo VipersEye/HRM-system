@@ -1,0 +1,42 @@
+{
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "requireConfigFile": false
+    },
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": true
+    },
+    "rules": {
+        "object-shorthand": "warn",
+        "quote-props": ["warn", "as-needed"],
+        "array-callback-return": ["warn", {"checkForEach": true}],
+        "prefer-destructuring": "warn",
+        "quotes": ["warn", "single"],
+        "prefer-template": "warn",
+        "template-curly-spacing": ["warn", "never"],
+        "no-useless-escape": "warn",
+        "func-style": ["warn", "expression", {"allowArrowFunctions": true}],
+        "no-loop-func": "warn",
+        "default-param-last": "warn",
+        "space-before-blocks": "warn",
+        "space-before-function-paren": ["warn", {"anonymous": "always", "named": "never"}],
+        "no-param-reassign": "warn",
+        "function-paren-newline": ["warn", {"minItems": 3}],
+        "prefer-arrow-callback": "warn",
+        "arrow-spacing": "warn",
+        "arrow-parens": "warn",
+        "no-confusing-arrow": "error",
+        "implicit-arrow-linebreak": "warn",
+        "no-unused-vars": "warn",
+        "eqeqeq": ["warn", "smart"],
+        "no-case-declarations": "warn",
+        "brace-style": ["warn", "1tbs"],
+        "no-else-return": "warn",
+        "spaced-comment": "warn",
+        "keyword-spacing": "warn",
+        "space-infix-ops": "warn",
+        "semi": "error"
+    }
+}
