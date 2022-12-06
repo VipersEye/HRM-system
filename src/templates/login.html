@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HRMS, менеджмент, человеческие ресурсы, автоматизация, предприятие">
+    <meta name="description" content="Добро пожаловать! HRMS - это совершенно новая HRM-система, которая позволит вам эффективно распоряжаться человеческими ресурсами на предприятии. Предприятие любого вида и направленности обязательно найдет для себя все необходимые функции для успешного развития кадров.">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/icons/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicons/favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <title>HRMS: Добро пожаловать</title>
+</head>
+<body>
+    <div class="container">
+        <main class="main">
+
+            <div class="slider">
+                <div class="slider__inner">
+                    <div class="slider__item">
+                        <p class="slider__text">Эффективность</p>
+                        <img class="slider__image" src="./images/login/slider2.jpg" alt="slider image">
+                    </div>
+                    <div class="slider__item">
+                        <p class="slider__text">Инновации</p>
+                        <img class="slider__image" src="./images/login/slider1.jpg" alt="slider image">
+                    </div>
+                    <div class="slider__item">
+                        <p class="slider__text">Удобство</p>
+                        <img class="slider__image" src="./images/login/slider3.jpg" alt="slider image">
+                    </div>
+                    <div class="slider__item">
+                        <p class="slider__text">Надежность</p>
+                        <img class="slider__image" src="./images/login/slider4.jpg" alt="slider image">
+                    </div>
+                    <div class="slider__item">
+                        <p class="slider__text">Скорость</p>
+                        <img class="slider__image" src="./images/login/slider5.jpg" alt="slider image">
+                    </div>
+                </div>
+                <div class="slider__btns">
+                    <button class="slider__btn slider__btn_active" type="button"></button>
+                    <button class="slider__btn" type="button"></button>
+                    <button class="slider__btn" type="button"></button>
+                    <button class="slider__btn" type="button"></button>
+                    <button class="slider__btn" type="button"></button>
+                </div>
+            </div>
+
+            <form class="form form_hidden" action="#" method="post">
+                <h1 class="form__header">Вход</h1>
+                <ul class="form__inputs" role="list">
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-email">Почта</label>
+                        <input
+                            class="form__input"
+                            type="email"
+                            name="email"
+                            id="input-email"
+                            placeholder="Введите почту"
+                            required>
+                        <span class="form__required"></span>
+                    </li>
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-password">Пароль</label>
+                        <input
+                            class="form__input"
+                            type="password"
+                            name="password"
+                            id="input-password"
+                            placeholder="Введите пароль"
+                            pattern="[A-Za-zА-Яа-я0-9_\-!?]+"
+                            title="Пароль может содержать только кириллицу, латинские буквы и символы: !?-_"
+                            required>
+                        <span class="form__required"></span>
+                    </li>
+                    <li class="form__input-container form__input-container_checkbox">
+                        <input
+                            class="form__input form__input_checkbox"
+                            type="checkbox"
+                            name="remember-password"
+                            id="input-remember"
+                            value="true">
+                        <label class="form__label form__label_checkbox" for="input-remember">Запомнить пароль</label>
+                    </li>
+                </ul>
+                <button class="form__btn form__btn_main" type="submit" id="btn-login">Войти</button>
+                <button class="form__btn form__btn_change-form" type="button">Хотите зарегестрироваться?</button>
+            </form>
+
+            <form class="form" action="#" method="post">
+                <h1 class="form__header">Регистрация</h1>
+                <ul class="form__inputs form__inputs_reg" role="list">
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-reg-name">Имя</label>
+                        <input
+                            class="form__input"
+                            type="text"
+                            name="name"
+                            id="input-reg-name"
+                            placeholder="Иван"
+                            pattern="[\- A-Za-zА-Яа-я]+"
+                            title="Имя может содержать только кириллицу, латинские буквы и дефис"
+                            required>
+                        <span class="form__required"></span>
+                    </li>
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-reg-surname">Фамилия</label>
+                        <input
+                            class="form__input"
+                            type="text"
+                            name="surname"
+                            id="input-reg-surname"
+                            placeholder="Иванов"
+                            pattern="[\- A-Za-zА-Яа-я]+"
+                            title="Фамилия может содержать только кириллицу, латинские буквы и дефис"
+                            required>
+                        <span class="form__required"></span>
+                    </li>
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-reg-middlename">Отчество</label>
+                        <input
+                            class="form__input"
+                            type="text"
+                            name="middlename"
+                            id="input-reg-middlename"
+                            placeholder="Иванович"
+                            pattern="[\- A-Za-zА-Яа-я]+"
+                            title="Отчество может содержать только кириллицу, латинские буквы и дефис"
+                            required>
+                        <span class="form__required"></span>
+                    </li>
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-reg-birthday">Дата рождения</label>
+                        <input
+                            class="form__input"
+                            type="date"
+                            name="birthday"
+                            id="input-reg-birthday"
+                            required>
+                        <span class="form__required"></span>
+                    </li>
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-reg-tel">Телефон</label>
+                        <input
+                            class="form__input"
+                            type="text"
+                            name="tel"
+                            id="input-reg-tel"
+                            placeholder="+7(777) 777-77-77"
+                            pattern="^\+\d\(\d{3}\) \d{3}-\d{2}-\d{2}$"
+                            title="Введите номер телефона согласно следующему формату: +X(XXX) XXX-XX-XX"
+                            required>
+                        <span class="form__required"></span>
+                    </li>
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-reg-email">Почта</label>
+                        <input
+                            class="form__input"
+                            type="email"
+                            name="email"
+                            id="input-reg-email"
+                            placeholder="Ваша почта"
+                            required>
+                        <span class="form__required"></span>
+                    </li>
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-reg-password">Пароль</label>
+                        <input
+                            class="form__input"
+                            type="password"
+                            name="password"
+                            id="input-reg-password"
+                            placeholder="Введите пароль"
+                            pattern="[A-Za-zА-Яа-я0-9_\-!?]+"
+                            title="Пароль может содержать только кириллицу, латинские буквы и символы: !?-_"
+                            required>
+                        <span class="form__required"></span>
+                    </li>
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-reg-rep-password">Повторите пароль</label>
+                        <input
+                            class="form__input"
+                            type="password"
+                            name="repeating-password"
+                            id="input-reg-rep-password"
+                            placeholder="Пароль"
+                            pattern="[A-Za-zА-Яа-я0-9_\-!?]+"
+                            title="Пароль может содержать только кириллицу, латинские буквы и символы: !?-_"
+                            required>
+                        <span class="form__required"></span>
+                    </li>
+                </ul>
+                <button class="form__btn form__btn_main" type="submit" id="btn-register">Зарегестрироваться</button>
+                <button class="form__btn form__btn_change-form" type="button">Уже имеете учетную запись?</button>
+            </form>
+
+        </main>
+
+    </div>
+</body>
+</html>

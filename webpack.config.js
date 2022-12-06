@@ -17,8 +17,7 @@ module.exports = {
     mode: 'development',
     context: path.resolve(__dirname, 'src'),
     entry: {
-        main: './index.js',
-        home: './home.js'
+        login: './modules/login.js',
     },
     output: {
         filename: '[name].[contenthash].js',
@@ -29,7 +28,7 @@ module.exports = {
     devServer: {
         static: path.resolve(__dirname, 'dist'),
         hot: true,
-        watchFiles: ['src/*.html']
+        watchFiles: ['src/templates/*.html']
     },
     module: {
         rules: [
@@ -42,43 +41,28 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.json'],
         alias: {
-            '@modules': path.resolve(__dirname, ''),
-            '@templates': path.resolve(__dirname, ''),
-            '@styles': path.resolve(__dirname, ''),
-            '@images': path.resolve(__dirname, '')
+            '@modules': path.resolve(__dirname, 'src/modules'),
+            '@styles': path.resolve(__dirname, 'src/assets/styles'),
         }
     },
     plugins: [
         new HTMLWebpackPlugin({
-            filename: 'index.html',
-            template: './index.html',
-            // favicon: '',
-            chunks: ['main']
+            filename: 'login.html',
+            template: './templates/login.html',
+            chunks: ['login']
         }),
-        new HTMLWebpackPlugin({
-            filename: 'home.html',
-            template: './home.html',
-            // favicon: '',
-            chunks: ['home']
+        new CopyWebpackPlugin({
+            patterns: [
+                {from: path.resolve(__dirname, 'src/assets/images'), to: path.resolve(__dirname, 'dist/images')},
+                {from: path.resolve(__dirname, 'src/site.webmanifest'), to: path.resolve(__dirname, 'dist')}
+            ]
         }),
-        // new CopyWebpackPlugin({
-        //     patterns: [
-        //         {from: 'path.resolve()', to: 'path.resolve()'}
-        //     ]
-        // }),
-        new MiniCssExtractPlugin(
-            // {
-                // filename: '[name].[contenthash].css'
-            // }
-        ),
+        new MiniCssExtractPlugin({
+            filename: '[name][contenthash].css'
+        }),
         new EslintWebpackPlugin()
     ],
     optimization: {
-        // splitChunks: {
-        //     chunks: 'all',
-        // },
-        // runtimeChunk: 'single',
-        // minimize: true,
         minimizer: [
             new CssMinimizerWebpackPlugin(),
             new TerserWebpackPlugin()

@@ -1,0 +1,427 @@
+/* main ======================================== */
+
+/* fonts */
+
+@font-face {
+    font-family: "Roboto";
+    src:local("Roboto Regular") format("truetype"),
+        local("Roboto-Regular") format("truetype"),
+        url("../fonts/Roboto-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src:local("Roboto Medium") format("truetype"),
+        local("Roboto-Medium") format("truetype"),
+        url("../fonts/Roboto-Medium.ttf");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src:local("Roboto Bold") format("truetype"),
+        local("Roboto-Bold") format("truetype"),
+        url("../fonts/Roboto-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+:root {
+
+    /* css variables */
+
+    /* colors */
+
+    --clr-positive: hsl(112 100% 35%);
+    --clr-negative: hsl(0 100% 50%);
+
+    --clr-neutral-100: hsl(0 0% 100%);
+    --clr-neutral-200: hsl(0 0% 80%);
+    --clr-neutral-300: hsl(0 0% 70%);
+    --clr-neutral-400: hsl(0 0% 50%);
+    --clr-neutral-900: hsl(0 0% 0%);
+
+
+    --clr-primary-400: hsl(212, 100%, 40%);
+    --clr-primary-600: hsl(212, 100%, 24%);
+    --clr-primary-700: hsl(212, 100%, 18%);
+
+    /* fonts */
+
+    --ff-primary: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    /* font weights */
+
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+}
+
+/* andy bell's css reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+/* Set core body defaults */
+body {
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+    max-width: 100%;
+    display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* login ======================================== */
+
+.container {
+    display: grid;
+    place-items: center;
+    grid-template: 100vh / 100vw;
+
+    background: url('../images/login/background.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: 1fr  max-content;
+    grid-template-rows: max-content;
+
+    padding: 1rem;
+    max-width: 62vw;
+
+    font-family: var(--ff-primary);
+
+    border-radius: 1.2rem;
+    background-color: var(--clr-neutral-100);
+    box-shadow: 3px 3px 12px 3px var(--clr-neutral-300);
+    overflow: hidden;
+}
+
+/* slider ===================================== */
+
+.slider {
+    position: relative;
+
+    overflow: hidden;
+}
+
+.slider__inner {
+    display: flex;
+
+    height: 100%;
+
+    border-radius: 1rem;
+    overflow-x: hidden;
+}
+
+.slider__item {
+    position: relative;
+
+    min-width: 100%;
+}
+
+.slider__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider__text {
+    position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    padding: 0.5rem 2rem;
+
+    font-size: 1.3rem;
+    line-height: 1;
+    color: var(--clr-neutral-900);
+
+    border-radius: 2rem;
+    background-color: var(--clr-neutral-100);
+}
+
+.slider__btns {
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    column-gap: 1rem;
+
+    padding: 0.4rem 0.8rem;
+
+    border-radius: 1rem;
+    background-color: hsl(0, 0%, 100%, 0.9);
+}
+
+.slider__btn {
+    padding: 0.35rem;
+
+    border: 0;
+    border-radius: 50%;
+    background-color: var(--clr-neutral-200);
+    cursor: pointer;
+
+    transition: background-color 0.3s linear;
+}
+
+.slider__btn:hover:not(.slider__btn_active) {
+    background-color: var(--clr-neutral-300);
+}
+
+.slider__btn_active {
+    background-color: var(--clr-primary-400);
+}
+
+/* login form =============================== */
+
+.form {
+    padding: 2rem;
+    padding-right: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form_hidden {
+    display: none;
+    visibility: hidden;
+}
+
+.form__header {
+    margin-bottom: 1.5rem;
+
+    text-align: center;
+    font-size: 2rem;
+    font-weight: var(--fw-medium);
+    line-height: 1;
+    color: var(--clr-neutral-900);
+}
+
+.form__inputs {
+    margin-bottom: 1.2rem;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 1.2rem;
+}
+
+.form__inputs_reg {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.form__input-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "label req"
+        "input input";
+}
+
+.form__input-container_checkbox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.form__label {
+    margin-bottom: 0.6rem;
+
+    font-size: 1.1rem;
+    line-height: 1;
+    color: var(--clr-neutral-400);
+
+    transition: color 0.2s linear;
+
+    grid-area: label;
+}
+
+.form__label_checkbox {
+    margin-bottom: 0;
+}
+
+.form__input {
+    padding: 0.5rem;
+
+    font-size: 1.2rem;
+    color: var(--clr-neutral-900);
+    line-height: 1;
+
+    border-radius: 0.5rem;
+    border: 3px solid hsl(0 0% 88%);
+    background-color: transparent;
+    outline: none;
+
+    transition: border 0.2s linear, background-color 0.2s linear;
+
+    grid-area: input;
+}
+
+.form__input:focus {
+    border-color: var(--clr-primary-400);
+    background-color: hsl(212, 100%, 40%, 0.1);
+}
+
+.form__input:valid {
+    border-color: var(--clr-primary-400);
+}
+
+.form__input:focus:invalid {
+    border-color: var(--clr-negative);
+}
+
+.form__input::placeholder {
+    font-size: 1.2rem;
+    color: var(--clr-neutral-400);
+}
+
+.form__input_checkbox {
+    margin-right: 0.6rem;
+    width: 1.1rem;
+    height: 1.1rem;
+
+    accent-color: var(--clr-primary-400);
+
+    cursor: pointer;
+}
+
+.form__input_checkbox:checked + .form__label {
+    color: var(--clr-primary-400);
+}
+
+.form__required {
+    position: relative;
+    grid-area: req;
+}
+
+.form__input:required + .form__required::before {
+    content: '*';
+
+    display: block;
+    position: absolute;
+    top: -0.1rem;
+    left: 0.1rem;
+
+    font-size: 0.9rem;
+    font-weight: var(--fw-bold);
+    line-height: 1;
+
+    transition: color 0.2s linear;
+}
+
+.form__input:required:placeholder-shown + .form__required::before {
+    color: var(--clr-negative);
+}
+
+.form__input:required:not(:placeholder-shown) + .form__required::before {
+    color: var(--clr-positive);
+}
+
+.form__btn_main {
+    margin-bottom: 1.2rem;
+    padding: 0.7rem 1rem;
+
+    font-size: 1.2rem;
+    font-weight: var(--fw-regular);
+    line-height: 1;
+    color: var(--clr-neutral-100);
+
+    border: 0;
+    border-radius: 0.5rem;
+    background-color: var(--clr-primary-400);
+    cursor: pointer;
+
+    transition: background-color 0.3s linear;
+}
+
+.form__btn_main:hover {
+    background-color: var(--clr-primary-600);
+}
+
+.form__btn_main:active {
+    background-color: var(--clr-primary-700);
+}
+
+.form__btn_change-form {
+    font-size: 1rem;
+    font-weight: var(--fw-regular);
+    line-height: 1.5;
+    color: var(--clr-primary-400);
+    text-decoration: underline;
+
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: color 0.3s linear;
+}
+
+.form__btn_change-form:hover {
+    color: var(--clr-primary-600);
+}
