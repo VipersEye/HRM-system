@@ -48,16 +48,16 @@
                 </div>
             </div>
 
-            <form class="form form_hidden" action="#" method="post">
+            <form class="form" action="#" method="post" id="form-login">
                 <h1 class="form__header">Вход</h1>
                 <ul class="form__inputs" role="list">
                     <li class="form__input-container">
-                        <label class="form__label" for="input-email">Почта</label>
+                        <label class="form__label" for="input-login">Почта</label>
                         <input
                             class="form__input"
                             type="email"
-                            name="email"
-                            id="input-email"
+                            name="login"
+                            id="input-login"
                             placeholder="Введите почту"
                             required>
                         <span class="form__required"></span>
@@ -89,7 +89,7 @@
                 <button class="form__btn form__btn_change-form" type="button">Хотите зарегестрироваться?</button>
             </form>
 
-            <form class="form" action="#" method="post">
+            <form class="form form_hidden" action="#" method="post" id="form-register">
                 <h1 class="form__header">Регистрация</h1>
                 <ul class="form__inputs form__inputs_reg" role="list">
                     <li class="form__input-container">
