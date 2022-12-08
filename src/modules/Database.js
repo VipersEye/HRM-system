@@ -16,4 +16,22 @@ export default class Database {
         return JSON.parse(response);
     }
 
+    async insert(table, values) {
+        let data = {
+            table,
+            values
+        };
+        let jsonData = JSON.stringify(data, (key, val) => {
+            if (val === '') return;
+            return val;
+        });
+
+        let responseHeaders = await fetch('./requests/requestInsert.php', {
+            method: 'POST',
+            body: jsonData
+        });
+        let response = await responseHeaders.text();
+        return JSON.parse(response);
+    }
+
 }
