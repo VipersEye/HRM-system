@@ -28,6 +28,21 @@ class Login {
         firstRegisterFormInput.addEventListener('blur', () => {
             firstRegisterFormInput.setCustomValidity('');
         });
+
+        if (localStorage.length) {
+            let loginDatalist = document.querySelector('#datalist-login');
+            let loginOption = document.createElement('option');
+            loginOption.value = localStorage.getItem('login');
+            loginDatalist.appendChild(loginOption);
+        }
+
+        let inputLogin = document.querySelector('#input-login');
+        inputLogin.addEventListener('input', (e) => {
+            if (!e.inputType) {
+                let inputPassword = document.querySelector('#input-password');
+                inputPassword.value = localStorage.getItem('password');
+            };
+        });
     }
 
     async login(e) {
@@ -52,6 +67,16 @@ class Login {
 
         sessionStorage.setItem('id', `${worker ? worker[0]['worker_id'] : candidate[0]['candidate_id']}`);
         sessionStorage.setItem('role', `${worker ? 'worker' : 'candidate'}`);
+
+        let saveLogPasInput = loginForm.querySelector('#input-remember');
+        if (saveLogPasInput.checked) {
+            let inputLogin = loginForm.querySelector('#input-login');
+            let inputPassword = loginForm.querySelector('#input-password');
+            localStorage.setItem('login', `${inputLogin.value}`);
+            localStorage.setItem('password', `${inputPassword.value}`);
+        } else {
+            localStorage.clear();
+        }
 
         loginForm.reset();
         console.log('placeholder: here redirect to another page');

@@ -59,8 +59,10 @@
                             name="login"
                             id="input-login"
                             placeholder="Введите почту"
+                            list="datalist-login"
                             required>
                         <span class="form__required"></span>
+                        <datalist id="datalist-login"></datalist>
                     </li>
                     <li class="form__input-container">
                         <label class="form__label" for="input-password">Пароль</label>
@@ -79,10 +81,9 @@
                         <input
                             class="form__input form__input_checkbox"
                             type="checkbox"
-                            name="remember-password"
                             id="input-remember"
                             value="true">
-                        <label class="form__label form__label_checkbox" for="input-remember">Запомнить пароль</label>
+                        <label class="form__label form__label_checkbox" for="input-remember">Сохранить вход</label>
                     </li>
                 </ul>
                 <button class="form__btn form__btn_main" type="submit" id="btn-login">Войти</button>
