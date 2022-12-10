@@ -177,10 +177,20 @@ datalist {
     transition: max-width 0.7s ease-out;
 }
 
+.nav-container_closed {
+    max-width: 4.5rem;
+}
+
 /* header ======================================== */
 
 .header {
     padding: 0 2rem;
+
+    transition: padding 0.5s ease-out;
+}
+
+.nav-container_closed .header {
+    padding: 0 0.7rem;
 }
 
 .header__content {
@@ -191,16 +201,35 @@ datalist {
     text-decoration: none;
 }
 
+.nav-container_closed .header__content {
+    gap: 0;
+}
+
 .header__logo {
     width: 3rem;
 }
 
 .header__text {
+    max-width: 100%;
+    width: auto;
+
     font-family: 'Rounded', sans-serif;
     font-size: 1.5rem;
     line-height: 1;
     font-weight: var(--fw-bold);
     color: var(--clr-primary-400);
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+
+    transition: opacity 0.5s ease-in-out, max-width 0.5s ease-in;
+}
+
+.nav-container_closed .header__text {
+    opacity: 0;
+
+    max-width: 0;
 }
 
 /* nav ======================================== */
@@ -220,10 +249,20 @@ datalist {
     content: attr(aria-label);
 
     padding: 0 1rem;
+    height: auto;
+    max-height: 3rem;
 
     font-size: 1rem;
     font-weight: var(--fw-semibold);
     color: var(--clr-primary-200);
+
+    transition: max-height 0.5s ease-in-out, opacity 0.3s linear;
+}
+
+.nav-container_closed .nav__list:before {
+    max-height: 0;
+
+    opacity: 0;
 }
 
 .nav__item {
@@ -257,7 +296,13 @@ datalist {
     text-decoration: none;
     border-radius: 0.8rem;
 
-    transition: background-color 0.3s linear;
+    transition: background-color 0.3s linear, padding 0.5s ease-in-out, border-radius 0.7s linear;
+}
+
+.nav-container_closed .nav__btn {
+    padding: 0.5rem;
+
+    border-radius: 50%;
 }
 
 .nav__item_current > .nav__btn,
@@ -266,6 +311,8 @@ datalist {
 }
 
 .nav__icon {
+    flex-shrink: 0;
+
     width: 1.5rem;
     height: 1.5rem;
 
@@ -284,7 +331,15 @@ datalist {
     font-weight: var(--fw-regular);
     color: var(--clr-primary-200);
 
-    transition: color 0.3s linear, font-weight 0.3s linear;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+
+    transition: color 0.3s linear, font-weight 0.3s linear, opacity 0.2s linear;
+}
+
+.nav-container_closed .nav__text {
+    opacity: 0;
 }
 
 .nav__item_current .nav__text,
@@ -309,11 +364,9 @@ datalist {
     background-color: var(--clr-neutral-100);
     cursor: pointer;
 
-    transition: border-color 0.3s linear, transform 0.4s linear;
-}
-
-.nav__toggler-btn_close {
     transform: rotate(90deg);
+
+    transition: border-color 0.3s linear, transform 0.5s ease-in-out;
 }
 
 .nav__toggler-btn_open {
