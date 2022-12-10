@@ -1,4 +1,5 @@
 import '@styles/main.css';
+import '@styles/login.css';
 import Database from '@modules/Database';
 
 class Login {
@@ -84,7 +85,7 @@ class Login {
         }
 
         loginForm.reset();
-        console.log('placeholder: here redirect to another page');
+        window.location.href = './home.html';
     }
 
     async register(e) {
@@ -159,7 +160,7 @@ class Login {
         sessionStorage.setItem('role', 'candidate');
 
         registerForm.reset();
-        console.log('placeholder: here redirect to another page');
+        window.location.href = './home.html';
     }
 }
 

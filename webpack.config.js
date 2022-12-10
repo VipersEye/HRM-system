@@ -18,6 +18,7 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     entry: {
         login: './modules/login.js',
+        home: './modules/home.js'
     },
     output: {
         filename: '[name].[contenthash].js',
@@ -48,8 +49,13 @@ module.exports = {
     plugins: [
         new HTMLWebpackPlugin({
             filename: 'login.html',
-            template: './templates/login.html',
+            template: path.resolve(__dirname, 'src/templates/login.html'),
             chunks: ['login']
+        }),
+        new HTMLWebpackPlugin({
+            filename: 'home.html',
+            template: path.resolve(__dirname, 'src/templates/home.html'),
+            chunks: ['home']
         }),
         new CopyWebpackPlugin({
             patterns: [
