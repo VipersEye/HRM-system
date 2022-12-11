@@ -1,7 +1,8 @@
 import '@styles/main.css';
+import CircleProgress from '@modules/CircleProgress';
 import Database from '@modules/Database';
 
-class App {
+class Home {
     constructor(Database) {
         this.database = new Database();
 
@@ -12,7 +13,16 @@ class App {
 
             e.currentTarget.classList.toggle('nav__toggler-btn_open');
         });
+
+        const diagrams = document.querySelectorAll('.main__task-diagram');
+        diagrams.forEach((diagram) => {
+            const circleDiagram = new CircleProgress(diagram, {
+                value: Math.floor(Math.random() * 100),
+                max: 100,
+                textFormat: 'percent'
+            });
+        });
     }
 }
 
-const app = new App(Database);
+const home = new Home(Database);
