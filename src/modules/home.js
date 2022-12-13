@@ -14,13 +14,17 @@ class Home {
             e.currentTarget.classList.toggle('nav__toggler-btn_open');
         });
 
-        const diagrams = document.querySelectorAll('.main__task-diagram');
+        const diagrams = document.querySelectorAll('.tasks__diagram');
         diagrams.forEach((diagram) => {
             const circleDiagram = new CircleProgress(diagram, {
-                value: Math.floor(Math.random() * 100),
-                max: 100,
-                textFormat: 'percent'
+                animationDuration: 900,
             });
+            circleDiagram.min = 0;
+            circleDiagram.max = 100;
+            circleDiagram.value = Math.floor(Math.random() * 100);
+            circleDiagram.textFormat = 'percent';
+            circleDiagram.indeterminateText = '0';
+            circleDiagram.animation = 'easeInCubic';
         });
     }
 }

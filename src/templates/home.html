@@ -131,53 +131,235 @@
 
         <main class="main">
 
-            <section class="main__section">
+            <section class="section section_tasks">
 
                 <div class="section__header">
                     <h3 class="section__title section__title_tasks">Нужно нанять</h2>
-                    <a class="section__btn-tasks">Все задачи
-                        <svg class="section__icon-all">
+                    <a class="section__btn section__btn_tasks">Все задачи
+                        <svg class="section__btn__icon">
                             <use xlink:href="./images/icons/svg/icons.svg#arrow-right-icon"></use>
                         </svg>
                     </a>
                 </div>
 
-                <ul class="main__list main__list_tasks" role="list">
+                <ul class="tasks" role="list">
 
-                    <li class="main__task">
-                        <p class="main__task-require">2</p>
-                        <div class="main__task-content">
-                            <p class="main__task-position">Старший разработчик</p>
-                            <p class="main__task-candidates">10 кандидатов</p>
+                    <li class="tasks__item">
+                        <p class="tasks__require">2</p>
+                        <div class="tasks__content">
+                            <p class="tasks__position">Старший разработчик</p>
+                            <p class="tasks__candidates">10 кандидата</p>
                         </div>
-                        <div class="main__task-diagram"></div>
+                        <div class="tasks__diagram"></div>
                     </li>
 
-                    <li class="main__task">
-                        <p class="main__task-require">3</p>
-                        <div class="main__task-content">
-                            <p class="main__task-position">Контент менеджер</p>
-                            <p class="main__task-candidates">7 кандидатов</p>
+                    <li class="tasks__item">
+                        <p class="tasks__require">3</p>
+                        <div class="tasks__content">
+                            <p class="tasks__position">Контент менеджер</p>
+                            <p class="tasks__candidates">7 кандидатов</p>
                         </div>
-                        <div class="main__task-diagram"></div>
+                        <div class="tasks__diagram"></div>
                     </li>
 
-                    <li class="main__task">
-                        <p class="main__task-require">1</p>
-                        <div class="main__task-content">
-                            <p class="main__task-position">Главный инженер</p>
-                            <p class="main__task-candidates">3 кандидата</p>
+                    <li class="tasks__item">
+                        <p class="tasks__require">1</p>
+                        <div class="tasks__content">
+                            <p class="tasks__position">Главный инженер</p>
+                            <p class="tasks__candidates">3 кандидатов</p>
                         </div>
-                        <div class="main__task-diagram"></div>
+                        <div class="tasks__diagram"></div>
                     </li>
 
-                    <li class="main__task">
-                        <p class="main__task-require">8</p>
-                        <div class="main__task-content">
-                            <p class="main__task-position">Бухгалтер</p>
-                            <p class="main__task-candidates">21 кандидат</p>
+                    <li class="tasks__item">
+                        <p class="tasks__require">8</p>
+                        <div class="tasks__content">
+                            <p class="tasks__position">Бухгалтер</p>
+                            <p class="tasks__candidates">21 кандидатов</p>
                         </div>
-                        <div class="main__task-diagram"></div>
+                        <div class="tasks__diagram"></div>
+                    </li>
+
+                </ul>
+
+            </section>
+
+            <section class="section">
+                <div class="section__header">
+                    <h2 class="section__title section__title_candidates">83 Кандидата</h2>
+                    <button class="section__btn section__btn_clear">Очистить</button>
+                </div>
+
+                <div class="section__inputs">
+
+                    <div class="section__container section__container_search">
+                        <input
+                            class="section__input section__input_search"
+                            type="search"
+                            name="search"
+                            id="input-search"
+                            placeholder="Поиск"
+                            aria-label="Поиск">
+                        <svg class="section__input__icon">
+                            <use xlink:href="./images/icons/svg/icons.svg#search-icon"></use>
+                        </svg>
+                    </div>
+
+                    <div class="section__container section__container_position">
+                        <input
+                            class="section__input"
+                            type="text"
+                            name="position"
+                            id="input-position"
+                            list="datalist-positions"
+                            placeholder="Должность"
+                            aria-label="Должность">
+                        <svg class="section__input__icon section__input__icon_persons">
+                            <use xlink:href="./images/icons/svg/icons.svg#persons-icon"></use>
+                        </svg>
+                        <datalist class="section__datalist" id="datalist-positions">
+                            <option value="Бухгалтер"></option>
+                        </datalist>
+                    </div>
+
+                </div>
+
+                <ul class="candidates" role="list" aria-label="Список кандидатов">
+
+                    <li class="candidates__item" id="candidate-1">
+                        <button class="candidates__btn candidates__btn_more" type="button">
+                            <svg class="candidates__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                            </svg>
+                        </button>
+                        <img class="candidates__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                        <div class="candidates__content">
+                            <p class="candidates__name">Иван Петров</p>
+                            <p class="candidates__position">Разработчик</p>
+                        </div>
+                        <div class="candidates__control">
+
+                            <button class="candidates__btn candidates__btn_like" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                </svg>
+                            </button>
+
+                            <button class="candidates__btn candidates__btn_calendar" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                </svg>
+                            </button>
+
+                            <button class="candidates__btn candidates__btn_message" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                </svg>
+                            </button>
+
+                        </div>
+                    </li>
+
+                    <li class="candidates__item" id="candidate-2">
+                        <button class="candidates__btn candidates__btn_more" type="button">
+                            <svg class="candidates__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                            </svg>
+                        </button>
+                        <img class="candidates__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                        <div class="candidates__content">
+                            <p class="candidates__name">Николай Стрельцов</p>
+                            <p class="candidates__position">Инженер</p>
+                        </div>
+                        <div class="candidates__control">
+
+                            <button class="candidates__btn candidates__btn_like" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                </svg>
+                            </button>
+
+                            <button class="candidates__btn candidates__btn_calendar" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                </svg>
+                            </button>
+
+                            <button class="candidates__btn candidates__btn_message" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                </svg>
+                            </button>
+
+                        </div>
+                    </li>
+
+                    <li class="candidates__item" id="candidate-3">
+                        <button class="candidates__btn candidates__btn_more" type="button">
+                            <svg class="candidates__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                            </svg>
+                        </button>
+                        <img class="candidates__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                        <div class="candidates__content">
+                            <p class="candidates__name">Никита Иванов</p>
+                            <p class="candidates__position">Старший бухгалтер</p>
+                        </div>
+                        <div class="candidates__control">
+
+                            <button class="candidates__btn candidates__btn_like" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                </svg>
+                            </button>
+
+                            <button class="candidates__btn candidates__btn_calendar" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                </svg>
+                            </button>
+
+                            <button class="candidates__btn candidates__btn_message" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                </svg>
+                            </button>
+
+                        </div>
+                    </li>
+
+                    <li class="candidates__item" id="candidate-4">
+                        <button class="candidates__btn candidates__btn_more" type="button">
+                            <svg class="candidates__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                            </svg>
+                        </button>
+                        <img class="candidates__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                        <div class="candidates__content">
+                            <p class="candidates__name">Петр Васильев</p>
+                            <p class="candidates__position">Архитектор</p>
+                        </div>
+                        <div class="candidates__control">
+
+                            <button class="candidates__btn candidates__btn_like" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                </svg>
+                            </button>
+
+                            <button class="candidates__btn candidates__btn_calendar" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                </svg>
+                            </button>
+
+                            <button class="candidates__btn candidates__btn_message" type="button">
+                                <svg class="candidates__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                </svg>
+                            </button>
+
+                        </div>
                     </li>
 
                 </ul>
