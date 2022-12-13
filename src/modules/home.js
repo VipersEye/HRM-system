@@ -14,14 +14,16 @@ class Home {
             e.currentTarget.classList.toggle('nav__toggler-btn_open');
         });
 
+        const diagramValues = [50, 66, 0, 75];
+
         const diagrams = document.querySelectorAll('.tasks__diagram');
-        diagrams.forEach((diagram) => {
+        diagrams.forEach((diagram, i) => {
             const circleDiagram = new CircleProgress(diagram, {
                 animationDuration: 900,
             });
             circleDiagram.min = 0;
             circleDiagram.max = 100;
-            circleDiagram.value = Math.floor(Math.random() * 100);
+            circleDiagram.value = diagramValues[i];
             circleDiagram.textFormat = 'percent';
             circleDiagram.indeterminateText = '0';
             circleDiagram.animation = 'easeInCubic';

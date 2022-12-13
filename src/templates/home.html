@@ -20,7 +20,7 @@
             <header class="header">
                 <a class="header__content" href="./home.html">
                     <img class="header__logo" src="./images/logo.png" alt="Логотип HRM системы">
-                    <h1 class="header__text">HRM</h1>
+                    <h1 class="header__text">HRMS</h1>
                 </a>
             </header>
 
@@ -49,7 +49,7 @@
                             <svg class="nav__icon">
                                 <use xlink:href="./images/icons/svg/icons.svg#group-icon"></use>
                             </svg>
-                            <p class="nav__text">Отделы</p>
+                            <p class="nav__text">Сотрудники</p>
                         </a>
                     </li>
 
@@ -148,7 +148,7 @@
                         <p class="tasks__require">2</p>
                         <div class="tasks__content">
                             <p class="tasks__position">Старший разработчик</p>
-                            <p class="tasks__candidates">10 кандидата</p>
+                            <p class="tasks__candidates">4 кандидата</p>
                         </div>
                         <div class="tasks__diagram"></div>
                     </li>
@@ -166,7 +166,7 @@
                         <p class="tasks__require">1</p>
                         <div class="tasks__content">
                             <p class="tasks__position">Главный инженер</p>
-                            <p class="tasks__candidates">3 кандидатов</p>
+                            <p class="tasks__candidates">3 кандидата</p>
                         </div>
                         <div class="tasks__diagram"></div>
                     </li>
@@ -175,7 +175,7 @@
                         <p class="tasks__require">8</p>
                         <div class="tasks__content">
                             <p class="tasks__position">Бухгалтер</p>
-                            <p class="tasks__candidates">21 кандидатов</p>
+                            <p class="tasks__candidates">10 кандидатов</p>
                         </div>
                         <div class="tasks__diagram"></div>
                     </li>
@@ -184,9 +184,9 @@
 
             </section>
 
-            <section class="section">
+           <section class="section">
                 <div class="section__header">
-                    <h2 class="section__title section__title_candidates">83 Кандидата</h2>
+                    <h2 class="section__title section__title_candidates">24 Кандидата</h2>
                     <button class="section__btn section__btn_clear">Очистить</button>
                 </div>
 
@@ -218,7 +218,10 @@
                             <use xlink:href="./images/icons/svg/icons.svg#persons-icon"></use>
                         </svg>
                         <datalist class="section__datalist" id="datalist-positions">
-                            <option value="Бухгалтер"></option>
+                            <option value="Разработчик"></option>
+                            <option value="Инженер"></option>
+                            <option value="Старший бухгалтер"></option>
+                            <option value="Архитектор"></option>
                         </datalist>
                     </div>
 
@@ -368,7 +371,104 @@
 
         </main>
 
-        <aside class="aside"></aside>
+        <aside class="aside">
+
+            <div class="calendar">
+
+                <h3 class="calendar__title">Календарь</h3>
+
+                <ul class="calendar__list" role="list">
+
+                    <li class="day">
+
+                        <div class="day__header">
+                            <p class="day__title">23 Декабря</p>
+                            <button class="day__btn" type="button">
+                                <svg class="day__btn__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <ul class="events" role="list">
+
+                            <li class="events__item">
+                                <p class="events__time">09:00</p>
+                                <div class="day__color"></div>
+                                <div class="events__content">
+                                    <p class="events__author">Старший программист</p>
+                                    <p class="events__name">Собеседование</p>
+                                </div>
+                            </li>
+
+                            <li class="events__item">
+                                <p class="events__time">10:00</p>
+                                <div class="day__color"></div>
+                                <div class="events__content">
+                                    <p class="events__author">Начальник отдела</p>
+                                    <p class="events__name">Собрание</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="day">
+
+                        <div class="day__header">
+                            <p class="day__title">26 Декабря</p>
+                            <button class="day__btn" type="button">
+                                <svg class="day__btn__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <ul class="events" role="list">
+
+                            <li class="events__item">
+                                <p class="events__time">08:00</p>
+                                <div class="day__color"></div>
+                                <div class="events__content">
+                                    <p class="events__author">Руководитель отдела</p>
+                                    <p class="events__name">Консультация</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="day">
+
+                        <div class="day__header">
+                            <p class="day__title">27 Декабря</p>
+                            <button class="day__btn" type="button">
+                                <svg class="day__btn__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <ul class="events" role="list">
+
+                            <li class="events__item">
+                                <p class="events__time">09:00</p>
+                                <div class="day__color"></div>
+                                <div class="events__content">
+                                    <p class="events__author">HR-директор</p>
+                                    <p class="events__name">Собеседование</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </aside>
+
     </div>
 </body>
 </html>
