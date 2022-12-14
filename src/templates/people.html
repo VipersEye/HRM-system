@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HRMS, менеджмент, человеческие ресурсы, автоматизация, предприятие">
+    <meta name="description" content="Добро пожаловать! HRMS - это совершенно новая HRM-система, которая позволит вам эффективно распоряжаться человеческими ресурсами на предприятии. Предприятие любого вида и направленности обязательно найдет для себя все необходимые функции для успешного развития кадров.">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/icons/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicons/favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <title>HRMS: Сотрудники</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="nav-container">
+
+            <header class="header">
+                <a class="header__content" href="./home.html">
+                    <img class="header__logo" src="./images/logo.png" alt="Логотип HRM системы">
+                    <h1 class="header__text">HRMS</h1>
+                </a>
+            </header>
+
+            <nav class="nav">
+                <ul class="nav__list" aria-label="Инструменты" role="list">
+                    <li class="nav__item">
+                        <a class="nav__btn" href="./home.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#compass-icon"></use>
+                            </svg>
+                            <p class="nav__text">Обзор</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#recruiting-icon"></use>
+                            </svg>
+                            <p class="nav__text">Рекрутинг</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item  nav__item_current">
+                        <a class="nav__btn" href="./people.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#group-icon"></use>
+                            </svg>
+                            <p class="nav__text">Сотрудники</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#payroll-icon"></use>
+                            </svg>
+                            <p class="nav__text">Зарплата</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#statistics-icon"></use>
+                            </svg>
+                            <p class="nav__text">Статистика</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#data-icon"></use>
+                            </svg>
+                            <p class="nav__text">Данные</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                            </svg>
+                            <p class="nav__text">Календарь</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#chat-icon"></use>
+                            </svg>
+                            <p class="nav__text">Чаты</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav class="nav">
+                <ul class="nav__list" aria-label="Другое" role="list">
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#support-icon"></use>
+                            </svg>
+                            <p class="nav__text">Поддержка</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#settings-icon"></use>
+                            </svg>
+                            <p class="nav__text">Настройки</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav__toggler-btn nav__toggler-btn_close" type="button">
+                <svg class="nav__toggler-icon">
+                    <use xlink:href="./images/icons/svg/icons.svg#arrow-icon"></use>
+                </svg>
+            </button>
+        </div>
+
+        <main class="main">
+
+            <section class="section section_grow">
+                <div class="section__header">
+                    <h2 class="section__title section__title_large">15 Сотрудников</h2>
+                    <button class="section__btn section__btn_clear">Очистить</button>
+                </div>
+
+                <div class="section__inputs">
+
+                    <div class="section__container section__container_x2">
+                        <input
+                            class="section__input section__input_search"
+                            type="search"
+                            name="search"
+                            id="input-search"
+                            placeholder="Поиск"
+                            aria-label="Поиск">
+                        <svg class="section__input__icon">
+                            <use xlink:href="./images/icons/svg/icons.svg#search-icon"></use>
+                        </svg>
+                    </div>
+
+                    <div class="section__container section__container_x1">
+                        <input
+                            class="section__input"
+                            type="text"
+                            name="position"
+                            id="input-position"
+                            list="datalist-positions"
+                            placeholder="Должность"
+                            aria-label="Должность">
+                        <svg class="section__input__icon section__input__icon_persons">
+                            <use xlink:href="./images/icons/svg/icons.svg#persons-icon"></use>
+                        </svg>
+                        <datalist class="section__datalist" id="datalist-positions">
+                            <option value="Разработчик"></option>
+                            <option value="Инженер"></option>
+                            <option value="Старший бухгалтер"></option>
+                            <option value="Архитектор"></option>
+                        </datalist>
+                    </div>
+
+                </div>
+
+                <div class="content-wrapper content-wrapper_table">
+
+                    <ul class="content content_table" role="list" aria-label="Список кандидатов">
+
+                        <li class="content__item content__item_header">
+                            <div class="row row_header">
+                                <p class="content__name">Имя</p>
+                                <p class="content__surname">Фамилия</p>
+                                <p class="content__middlename">Отчество</p>
+                                <p class="content__division">Подразделение</p>
+                                <p class="content__position">Должность</p>
+                                <p class="content__salary">Заработная плата</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-1">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-2">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-3">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-4">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-5">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-6">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-7">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-8">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-9">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-10">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-11">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-12">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-13">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-14">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-15">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-16">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                        <li class="content__item" id="candidate-17">
+                            <div class="card">
+                                <button class="card__btn card__btn_more" type="button">
+                                    <svg class="card__icon">
+                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                    </svg>
+                                </button>
+                                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+                                <div class="card__data">
+                                    <p class="card__name">Иванов Иван</p>
+                                    <p class="card__position">Инженер</p>
+                                </div>
+                                <div class="card__control">
+
+                                    <button class="card__btn card__btn_like" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_calendar" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                    <button class="card__btn card__btn_message" type="button">
+                                        <svg class="card__icon">
+                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                                        </svg>
+                                    </button>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <p class="row__name">Иван</p>
+                                <p class="row__surname">Иванов</p>
+                                <p class="row__middlename">Иванович</p>
+                                <!-- <p class="row__birthdate">09.09.1995</p> -->
+                                <!-- <p class="row__phone">+7(777) 777-77-77</p> -->
+                                <p class="row__division">Основное</p>
+                                <p class="row__position">Инженер</p>
+                                <p class="row__salary">32000</p>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <aside class="aside">
+
+            <div class="calendar">
+
+                <h3 class="calendar__title">Календарь</h3>
+
+                <ul class="calendar__list" role="list">
+
+                    <li class="day">
+
+                        <div class="day__header">
+                            <p class="day__title">23 Декабря</p>
+                            <button class="day__btn" type="button">
+                                <svg class="day__btn__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <ul class="events" role="list">
+
+                            <li class="events__item">
+                                <p class="events__time">09:00</p>
+                                <div class="day__color"></div>
+                                <div class="events__content">
+                                    <p class="events__author">Старший программист</p>
+                                    <p class="events__name">Собеседование</p>
+                                </div>
+                            </li>
+
+                            <li class="events__item">
+                                <p class="events__time">10:00</p>
+                                <div class="day__color"></div>
+                                <div class="events__content">
+                                    <p class="events__author">Начальник отдела</p>
+                                    <p class="events__name">Собрание</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="day">
+
+                        <div class="day__header">
+                            <p class="day__title">26 Декабря</p>
+                            <button class="day__btn" type="button">
+                                <svg class="day__btn__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <ul class="events" role="list">
+
+                            <li class="events__item">
+                                <p class="events__time">08:00</p>
+                                <div class="day__color"></div>
+                                <div class="events__content">
+                                    <p class="events__author">Руководитель отдела</p>
+                                    <p class="events__name">Консультация</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="day">
+
+                        <div class="day__header">
+                            <p class="day__title">27 Декабря</p>
+                            <button class="day__btn" type="button">
+                                <svg class="day__btn__icon">
+                                    <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                                </svg>
+                            </button>
+                        </div>
+
+                        <ul class="events" role="list">
+
+                            <li class="events__item">
+                                <p class="events__time">09:00</p>
+                                <div class="day__color"></div>
+                                <div class="events__content">
+                                    <p class="events__author">HR-директор</p>
+                                    <p class="events__name">Собеседование</p>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </aside>
+
+    </div>
+</body>
+</html>
