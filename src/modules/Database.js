@@ -1,6 +1,6 @@
 export default class Database {
 
-    async select(table, conditions) {
+    async select(table, conditions = {}) {
 
         let data = {
             table,

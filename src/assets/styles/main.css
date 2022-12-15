@@ -141,6 +141,13 @@ datalist {
     visibility: hidden;
 }
 
+/* hidden content */
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
 /* scrollbar styles */
 
 ::-webkit-scrollbar {
@@ -620,6 +627,34 @@ datalist {
     font-weight: var(--fw-bold);
 }
 
+/* tabs ======================================== */
+
+.section__tabs {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.section__tabname {
+    padding-bottom: 0.3rem;
+
+    font-family: var(--ff-headers);
+    font-size: 1.2rem;
+    font-weight: var(--fw-medium);
+    line-height: 1;
+    color: var(--clr-primary-200);
+
+    border-bottom: 3px solid transparent;
+
+    transition: color 0.3s linear, border-color 0.3s linear;
+}
+
+.section__radio:checked +
+.section__tabname {
+    color: var(--clr-primary-400);
+    border-color: var(--clr-primary-400);
+}
+
 /* inputs ======================================== */
 
 .section__inputs {
@@ -646,9 +681,19 @@ datalist {
     transition: border-color 0.4s linear, box-shadow 0.4s linear;
 }
 
-.section__container:focus-within {
+.section__container:not(.section__container_radio):focus-within {
     border-color: var(--clr-primary-400);
     box-shadow: none;
+}
+
+.section__container_radio {
+    padding: 0;
+    align-self: stretch;
+
+    display: flex;
+
+    border: 0;
+    overflow: hidden;
 }
 
 .section__container_x2 {
@@ -705,9 +750,52 @@ datalist {
     background-color: inherit;
 }
 
+.section__radio {
+    appearance: none;
+    display: none;
+}
+
+.section__label {
+    padding: 0 1rem;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+}
+
+.section__radio:checked + .section__label {
+    background-color: var(--clr-primary-400);
+}
+
+.section__radio:checked +
+.section__label
+.section__input__icon {
+    fill: var(--clr-neutral-100);
+}
+
+/* graph  ======================================== */
+
+.section__graph {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate3d(-50%, -50%, 0);
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
 /* content  ======================================== */
 
 .content-wrapper {
+    position: relative;
+
     flex: 1;
 
     overflow-y: hidden;
