@@ -66,6 +66,7 @@
 
     --clr-primary-100: hsl(228 56% 96%);
     --clr-primary-200: hsl(215 30% 73%);
+    --clr-primary-300: hsl(258 88% 65%);
     --clr-primary-400: hsl(258 88% 55%);
     --clr-primary-600: hsl(258 88% 40%);
     --clr-primary-700: hsl(258 88% 30%);
@@ -883,13 +884,31 @@ datalist {
     justify-self: center;
 
     aspect-ratio: 1 / 1;
-    width: 5rem;
+    width: 5.5rem;
 
     border-radius: 50%;
 }
 
-.card__name {
+.card__data {
+    padding: 0 0.5rem;
+    width: 100%;
+    max-width: 100%;
+
+    overflow: hidden;
+}
+
+.card__fullname,
+.card__position {
     text-align: center;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card__fullname {
+    margin-bottom: 0.5rem;
+
     font-family: var(--ff-headers);
     font-size: 1.1rem;
     font-weight: var(--fw-medium);
@@ -897,10 +916,14 @@ datalist {
 }
 
 .card__position {
-    text-align: center;
+    padding: 0.1rem 1rem;
+
     font-size: 1rem;
     font-weight: var(--fw-medium);
-    color: var(--clr-primary-200);
+    color: var(--clr-primary-300);
+
+    border-radius: 1rem;
+    background-color: var(--clr-primary-100);
 }
 
 .card__control {

@@ -55,6 +55,8 @@ class People {
         changeTabRadios.forEach((radio) => {
             radio.addEventListener('change', toggleTab);
         });
+
+        this.createCards();
     }
 
     async createGraph() {
@@ -124,6 +126,36 @@ class People {
                 directed: true,
                 padding: 10,
             },
+        });
+    }
+
+    async createCards() {
+        let workers = await this.database.select('worker');
+        let divisions = await this.database.select('division');
+
+        let divisionsNameMap = new Map([...divisions].map((division) => [division.division_id, division.name]));
+        workers.sort((workerFirst, workerSecond) => workerFirst.worker_id - workerSecond.worker_id);
+        workers.forEach((worker) => {
+            worker.fullname = `${worker.surname} ${worker.name}`;
+            worker.division = divisionsNameMap.get(worker.division_id);
+            worker.salary = `${worker.salary}₽`;
+        });
+
+        let template = document.querySelector('#worker-template');
+        workers.forEach((worker) => {
+            let workersContainer = document.querySelector('.content');
+            let workerCard = template.content.cloneNode(true).querySelector('.content__item');
+
+            workerCard.setAttribute('worker_id', `${worker.worker_id}`);
+            workerCard.querySelector('.card__avatar').src = worker.avatar || './images/avatars/default-avatar.png';
+            for (let prop in worker) {
+                let cardData = workerCard.querySelector(`.row__${prop}`);
+                let rowData = workerCard.querySelector(`.card__${prop}`);
+                if (cardData) cardData.textContent = worker[prop];
+                if (rowData) rowData.textContent = worker[prop];
+            }
+
+            workersContainer.append(workerCard);
         });
     }
 }
