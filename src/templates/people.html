@@ -319,6 +319,83 @@
 
         </aside>
 
+        <div class="persona">
+
+            <button class="persona__btn" type="button">
+                <svg class="persona__btn__icon">
+                    <use xlink:href="./images/icons/svg/icons.svg#close-icon"></use>
+                </svg>
+            </button>
+
+            <div class="persona__img">
+                <img class="persona__avatar" src="./images/avatars/workers/woman-avatar-2.jpg" alt="Фото сотрудника">
+            </div>
+
+            <section class="persona__info">
+                <h3 class="persona__prop persona__prop_bold" fullname>Стрельцова Лиза</h3>
+                <p class="persona__prop" age><span class="persona__key">Возраст:</span> 29 лет</p>
+                <p class="persona__prop" login><span class="persona__key">Почта:</span> qwerty@mail.ru</p>
+                <p class="persona__prop" phone><span class="persona__key">Телефон:</span> +7 (777) 777-77-77</p>
+                <p class="persona__prop" division><span class="persona__key" division>Отдел:</span> HR отдел</p>
+                <p class="persona__prop" position><span class="persona__key" position>Должность:</span> HR-директор</p>
+                <p class="persona__prop" salary><span class="persona__key">Оклад:</span> 120000Р</p>
+            </section>
+
+            <section class="persona__chart">
+                <div class="persona__compatibility persona__compatibility_success">
+                    <svg class="persona__compatibility__icon">
+                        <use xlink:href="./images/icons/svg/icons.svg#success-icon"></use>
+                    </svg>
+                    <p class="persona__status">Полная совместимость с коллективом</p>
+                </div>
+                <canvas class="persona__radar" id="radar" aria-label="Диаграмма распределения баллов по шкалам FIRO-B" role="img"></canvas>
+            </section>
+
+            <section class="persona__stats">
+
+                <h3 class="persona__stats__title">Характеристики</h3>
+
+                <div class="persona__stat">
+                    <div class="persona__stat__header">
+                        <span class="persona__label">Интроверт</span>
+                        <span class="persona__label">Экстроверт</span>
+                    </div>
+                    <div class="persona__meter" scale="I"></div>
+                </div>
+
+                <div class="persona__stat">
+                    <div class="persona__stat__header">
+                        <span class="persona__label">Подчиненный</span>
+                        <span class="persona__label">Руководитель</span>
+                    </div>
+                    <div class="persona__meter" scale="C"></div>
+                </div>
+
+                <div class="persona__stat">
+                    <div class="persona__stat__header">
+                        <span class="persona__label">Отстраненность</span>
+                        <span class="persona__label">Близость</span>
+                    </div>
+                    <div class="persona__meter" scale="A"></div>
+                </div>
+            </section>
+
+            <section class="persona__description">
+                <h3 class="persona__description__title">Описание</h3>
+                <div class="persona__container">
+                    <ul class="persona__list" role="list">
+                        <li class="persona__list__item" scale="Ie">Высокие значения по этой шкале означают активное стремление человека принадлежать к различным группам, быть включенным, как можно чаще находиться среди людей.
+                        <li class="persona__list__item" scale="Iw">Высокие значения по этой шкале свидетельствуют о стремлении индивида к тому, чтобы окружающие прилагали усилия, чтобы быть в его обществе, даже в тех случаях, когда он сам ничего не делает для этого.</li>
+                        <li class="persona__list__item" scale="Ce">Низкие значения показатель того, что индивид активно избегает принятия решений и взятия на себя ответственности.</li>
+                        <li class="persona__list__item" scale="Cw">Высокие значения отражают потребность индивида в зависимости, в ожидании контроля и руководства со стороны окружающих.</li>
+                        <li class="persona__list__item" scale="Ae">Низкие значения - показатель большой осторожности и избирательности в установлении близких отношений.</li>
+                        <li class="persona__list__item" scale="Aw">Высокие показатели говорят о потребности индивида в том, чтобы окружающие стремились быть к нему эмоционально более близкими, делились своими личными чувствами, вовлекали в глубокие эмоциональные отношения.</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
     </div>
 
     <template id="worker-template">
