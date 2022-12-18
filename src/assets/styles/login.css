@@ -202,7 +202,7 @@
 }
 
 .form__input:focus:invalid {
-    border-color: var(--clr-negative);
+    border-color: var(--clr-error);
 }
 
 .form__input::placeholder {
@@ -245,15 +245,15 @@
 }
 
 .form__input:required:placeholder-shown + .form__required::before {
-    color: var(--clr-negative);
+    color: var(--clr-error);
 }
 
 .form__input:required:not(:placeholder-shown) + .form__required::before {
-    color: var(--clr-positive);
+    color: var(--clr-success);
 }
 
 .form__input[type="date"]:required:invalid + .form__required::before {
-    color: var(--clr-negative);
+    color: var(--clr-error);
 }
 
 .form__btn_main {
