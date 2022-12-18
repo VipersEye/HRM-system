@@ -43,6 +43,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "chart.js": "^4.1.0",
     "cytoscape": "^3.23.0"
   }
 }
