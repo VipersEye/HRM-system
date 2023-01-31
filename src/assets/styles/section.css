@@ -1,0 +1,122 @@
+.section {
+    padding: 1.5rem 3rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    overflow-y: hidden;
+}
+
+.section_no-shrink {
+    flex-shrink: 0;
+
+    overflow: unset;
+}
+
+.section_grow {
+    flex-grow: 1;
+}
+
+.section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    font-family: var(--ff-headers);
+    font-weight: var(--fw-bold);
+    line-height: 1;
+}
+
+.section__title {
+    color: var(--clr-neutral-900);
+}
+
+.section__title_regular {
+    font-size: 1.6rem;
+}
+
+.section__title_large {
+    font-size: 1.9rem;
+}
+
+.section__btn {
+    font-size: 1.2rem;
+    color: var(--clr-primary-200);
+
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+
+    transition: color 0.3s linear;
+}
+
+.section__btn_flex {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section__btn:disabled {
+    cursor: auto;
+}
+
+.section__btn:not(:disabled):hover {
+    color: var(--clr-primary-400);
+}
+
+.section__btn:not(:disabled):active {
+    color: var(--clr-primary-200);
+}
+
+.section__btn__icon {
+    width: 1.2rem;
+    height: 1.2rem;
+
+    fill: var(--clr-primary-200);
+
+    transition: fill 0.3s linear;
+}
+
+.section__btn:hover
+.section__btn__icon {
+    fill: var(--clr-primary-400);
+}
+
+.section__btn:active
+.section__btn__icon {
+    fill: var(--clr-primary-200);
+}
+
+/* tabs ======================================== */
+
+.section__tabs {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.section__tabname {
+    padding-bottom: 0.3rem;
+
+    font-family: var(--ff-headers);
+    font-size: 1.2rem;
+    font-weight: var(--fw-medium);
+    line-height: 1;
+    color: var(--clr-primary-200);
+
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+
+    transition: color 0.3s linear, border-color 0.3s linear;
+}
+
+.section__tabname:hover {
+    color: var(--clr-primary-400);
+}
+
+.section__radio:checked +
+.section__tabname {
+    color: var(--clr-primary-400);
+    border-color: var(--clr-primary-400);
+}

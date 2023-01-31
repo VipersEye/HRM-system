@@ -1,5 +1,6 @@
-import '@styles/main.css';
+import '@styles/default.css';
 import '@styles/login.css';
+
 import Database from '@modules/Database';
 
 class Login {
