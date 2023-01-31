@@ -14,38 +14,11 @@
 </head>
 <body>
     <div class="container">
-        <main class="main">
+        <main class="login">
 
             <div class="slider">
-                <div class="slider__inner">
-                    <div class="slider__item">
-                        <p class="slider__text">Эффективность</p>
-                        <img class="slider__image" src="./images/login/slider2.jpg" alt="slider image">
-                    </div>
-                    <div class="slider__item">
-                        <p class="slider__text">Инновации</p>
-                        <img class="slider__image" src="./images/login/slider1.jpg" alt="slider image">
-                    </div>
-                    <div class="slider__item">
-                        <p class="slider__text">Удобство</p>
-                        <img class="slider__image" src="./images/login/slider3.jpg" alt="slider image">
-                    </div>
-                    <div class="slider__item">
-                        <p class="slider__text">Надежность</p>
-                        <img class="slider__image" src="./images/login/slider4.jpg" alt="slider image">
-                    </div>
-                    <div class="slider__item">
-                        <p class="slider__text">Скорость</p>
-                        <img class="slider__image" src="./images/login/slider5.jpg" alt="slider image">
-                    </div>
-                </div>
-                <div class="slider__btns">
-                    <button class="slider__btn slider__btn_active" type="button"></button>
-                    <button class="slider__btn" type="button"></button>
-                    <button class="slider__btn" type="button"></button>
-                    <button class="slider__btn" type="button"></button>
-                    <button class="slider__btn" type="button"></button>
-                </div>
+                <div class="slider__inner"></div>
+                <div class="slider__btns"></div>
             </div>
 
             <form class="form" action="#" method="post" id="form-login">
@@ -62,6 +35,9 @@
                             list="datalist-login"
                             required>
                         <span class="form__required"></span>
+                        <svg class="form__icon">
+                            <use xlink:href="./images/icons/svg/icons.svg#email-icon"></use>
+                        </svg>
                         <datalist id="datalist-login"></datalist>
                     </li>
                     <li class="form__input-container">
@@ -76,6 +52,9 @@
                             title="Пароль может содержать только кириллицу, латинские буквы и символы: !?-_"
                             required>
                         <span class="form__required"></span>
+                        <svg class="form__icon">
+                            <use xlink:href="./images/icons/svg/icons.svg#lock-icon"></use>
+                        </svg>
                     </li>
                     <li class="form__input-container form__input-container_checkbox">
                         <input
@@ -198,5 +177,18 @@
         </main>
 
     </div>
+
+    <template id="template-slide">
+        <div class="slider__item">
+            <div class="slider__text">
+                <svg class="slider__icon">
+                    <use xlink:href="./images/icons/svg/icons.svg#success-icon"></use>
+                </svg>
+                <span class="slider__desc"></span>
+            </div>
+            <img class="slider__image" src="" alt="">
+        </div>
+    </template>
+
 </body>
 </html>

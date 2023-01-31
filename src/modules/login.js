@@ -50,6 +50,71 @@ class Login {
 
         let registerBtn = document.querySelector('#btn-register');
         registerBtn.addEventListener('click', this.register.bind(this));
+
+        class Slider {
+            constructor(slider, imgPaths) {
+                this.imgPaths = imgPaths;
+                this.slider = slider;
+            }
+
+            start() {
+                let sliderContainer = this.slider.querySelector('.slider__inner');
+                let btnsContainer = this.slider.querySelector('.slider__btns');
+                let slideTemplate = document.querySelector('#template-slide');
+
+                for (let i = 0; i < this.imgPaths.length; i++) {
+                    let path = this.imgPaths[i];
+                    let slide = slideTemplate.content.cloneNode(true);
+                    let slideText = slide.querySelector('.slider__desc');
+                    slideText.textContent = path.split('/').find((part) => /.+\..+/.test(part)).replace(/\..+/g, '');
+
+                    let slideImage = slide.querySelector('.slider__image');
+                    slideImage.src = path;
+                    slideImage.alt = slideText.textContent;
+
+                    let slideBtn = document.createElement('button');
+                    slideBtn.classList.add('slider__btn');
+                    if (i === 0) slideBtn.classList.add('slider__btn_active');
+                    slideBtn.type = 'button';
+                    slideBtn.addEventListener('click', this.set.bind(this, i));
+
+                    sliderContainer.appendChild(slide);
+                    btnsContainer.appendChild(slideBtn);
+                }
+
+                this.currentSlide = 0;
+                this.timerId = setInterval(this.next.bind(this), 1e4);
+            }
+
+            stop() {
+                clearInterval(this.timerId);
+            }
+
+            set(num) {
+                this.currentSlide = num;
+                let sliderContainer = this.slider.querySelector('.slider__inner');
+                sliderContainer.scrollLeft = sliderContainer.offsetWidth * num;
+
+                let currentActiveBtn = this.slider.querySelector('.slider__btn_active');
+                currentActiveBtn.classList.remove('slider__btn_active');
+                let btnsContainer = this.slider.querySelector('.slider__btns');
+                let nextActiveBtn = btnsContainer.children[num];
+                nextActiveBtn.classList.add('slider__btn_active');
+            }
+
+            next() {
+                this.set((this.currentSlide + 1) % this.imgPaths.length);
+            }
+        }
+
+        let slider = new Slider(document.querySelector('.slider'),
+            ['./images/login/Эффективность.jpg',
+            './images/login/Инновации.jpg',
+            './images/login/Удобство.jpg',
+            './images/login/Надежность.jpg',
+            './images/login/Скорость.jpg'
+        ]);
+        slider.start();
     }
 
     async login(e) {
