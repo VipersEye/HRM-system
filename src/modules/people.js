@@ -1,4 +1,14 @@
+import '@styles/default.css';
 import '@styles/main.css';
+import '@styles/section.css';
+import '@styles/sorting-fields.css';
+import '@styles/data.css';
+import '@styles/calendar.css';
+import '@styles/graph.css';
+import '@styles/persona.css';
+
+
+
 import Database from '@modules/Database';
 import cytoscape from 'cytoscape';
 import Chart from 'chart.js/auto';
