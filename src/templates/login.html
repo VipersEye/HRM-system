@@ -16,9 +16,64 @@
     <div class="container">
         <main class="login">
 
-            <div class="slider">
+            <div class="slider hidden">
                 <div class="slider__inner"></div>
                 <div class="slider__btns"></div>
+            </div>
+
+            <div class="cards">
+
+                <h3 class="cards__title">Недавно входили на сайт с этого компьютера</h3>
+                <p class="cards__subtitle">Чтобы войти снова, нажмите на фотографию или имя</p>
+
+                <div class="cards__container">
+
+                    <div class="card">
+
+                        <button class="card__info" type="button">
+                            <img class="card__avatar" src="./images/avatars/workers/man-avatar-2.jpg" alt="user avatar">
+                            <p class="card__text card__text_surname">Иванов</p>
+                            <p class="card__text card__text_name">Иван</p>
+                        </button>
+
+                        <button class="card__btn-close" type="button">
+                            <svg class="card__icon-close">
+                                <use xlink:href="./images/icons/svg/icons.svg#close-icon"></use>
+                            </svg>
+                        </button>
+
+                    </div>
+
+                    <div class="card">
+
+                        <button class="card__info" type="button">
+                            <img class="card__avatar" src="./images/avatars/workers/man-avatar-3.jpg" alt="user avatar">
+                            <p class="card__text card__text_surname">Петров</p>
+                            <p class="card__text card__text_name">Петр</p>
+                        </button>
+
+                        <button class="card__btn-close" type="button">
+                            <svg class="card__icon-close">
+                                <use xlink:href="./images/icons/svg/icons.svg#close-icon"></use>
+                            </svg>
+                        </button>
+
+                    </div>
+
+
+                    <div class="card card_new">
+
+                        <button class="card__info" type="button">
+                            <svg class="card__avatar card__avatar_add">
+                                <use xlink:href="./images/icons/svg/icons.svg#plus-icon"></use>
+                            </svg>
+                            <p class="card__text card__text_surname">Добавить новый аккаунт</p>
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
 
             <form class="form" action="#" method="post" id="form-login">
