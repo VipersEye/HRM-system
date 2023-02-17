@@ -13,11 +13,11 @@
 
 .login {
     display: flex;
-    column-gap: 3rem;
+    column-gap: 2.5rem;
 
-    padding: 3rem 3rem;
+    padding: 2.5rem;
     max-width: 65vw;
-    max-height: 70vh;
+    max-height: 80vh;
 
     font-family: var(--ff-primary);
 
@@ -117,7 +117,7 @@
     background-color: var(--clr-neutral-100);
 }
 
-.card__btn-close {
+.card__btn-delete {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -134,20 +134,20 @@
     transition: opacity 0.2s linear, background-color 0.3s linear;
 }
 
-.card__btn-close:hover {
+.card__btn-delete:hover {
     background-color: var(--clr-primary-300);
 }
 
-.card__btn-close:active {
+.card__btn-delete:active {
     background-color: var(--clr-primary-400);
 }
 
 .card:hover
-.card__btn-close {
+.card__btn-delete {
     opacity: 1;
 }
 
-.card__icon-close {
+.card__icon-delete {
     width: 0.8rem;
     height: 0.8rem;
 
