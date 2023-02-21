@@ -21,6 +21,28 @@
                 <div class="slider__btns"></div>
             </div>
 
+            <div class="cards">
+
+                <h3 class="cards__title">Недавно входили на сайт с этого компьютера</h3>
+                <p class="cards__subtitle">Чтобы войти снова, нажмите на фотографию или имя</p>
+
+                <div class="cards__container">
+
+                    <div class="card card_new">
+
+                        <button class="card__info" type="button">
+                            <svg class="card__avatar card__avatar_add">
+                                <use xlink:href="./images/icons/svg/icons.svg#plus-icon"></use>
+                            </svg>
+                            <p class="card__text card__text_surname">Добавить новый аккаунт</p>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
             <form class="form" action="#" method="post" id="form-login">
                 <h1 class="form__header">Вход</h1>
                 <ul class="form__inputs" role="list">
@@ -32,13 +54,11 @@
                             name="login"
                             id="input-login"
                             placeholder="Введите почту"
-                            list="datalist-login"
                             required>
                         <span class="form__required"></span>
                         <svg class="form__icon">
                             <use xlink:href="./images/icons/svg/icons.svg#email-icon"></use>
                         </svg>
-                        <datalist id="datalist-login"></datalist>
                     </li>
                     <li class="form__input-container">
                         <label class="form__label" for="input-password">Пароль</label>
@@ -69,7 +89,7 @@
                 <button class="form__btn form__btn_change-form" type="button">Хотите зарегистрироваться?</button>
             </form>
 
-            <form class="form form_hidden" action="#" method="post" id="form-register">
+            <form class="form hidden" action="#" method="post" id="form-register">
                 <h1 class="form__header">Регистрация</h1>
                 <ul class="form__inputs form__inputs_reg" role="list">
                     <li class="form__input-container">
@@ -187,6 +207,24 @@
                 <span class="slider__desc"></span>
             </div>
             <img class="slider__image" src="" alt="">
+        </div>
+    </template>
+
+    <template id="template-card">
+        <div class="card">
+
+            <button class="card__info" type="button">
+                <img class="card__avatar" src="" alt="изображение пользователя">
+                <p class="card__text card__text_surname"></p>
+                <p class="card__text card__text_name"></p>
+            </button>
+
+            <button class="card__btn-delete" type="button">
+                <svg class="card__icon-delete">
+                    <use xlink:href="./images/icons/svg/icons.svg#close-icon"></use>
+                </svg>
+            </button>
+
         </div>
     </template>
 

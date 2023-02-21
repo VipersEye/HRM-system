@@ -10,19 +10,17 @@ class Login {
         const changeForm = () => {
             let documentForms = document.querySelectorAll('.form');
             documentForms.forEach((form) => {
-                form.classList.toggle('form_hidden');
+                form.classList.toggle('hidden');
             });
+            let slider = document.querySelector('.slider');
+            if (slider.classList.contains('hidden')) {
+                let entranceCards = document.querySelector('.cards');
+                entranceCards.classList.toggle('hidden');
+            }
         };
 
         const removeCustomValidity = (e) => {
             e.target.setCustomValidity('');
-        };
-
-        const insertUserPassword = (e) => {
-            if (!e.inputType) {
-                let inputPassword = document.querySelector('#input-password');
-                inputPassword.value = localStorage.getItem('password');
-            };
         };
 
         let changeFormBtns = document.querySelectorAll('.form__btn_change-form');
@@ -39,23 +37,22 @@ class Login {
             input.addEventListener('input', removeCustomValidity);
         });
 
-        if (localStorage.length) {
-            let loginDatalist = document.querySelector('#datalist-login');
-            let loginOption = document.createElement('option');
-            loginOption.value = localStorage.getItem('login');
-            loginDatalist.appendChild(loginOption);
-        }
-
-        let inputLogin = document.querySelector('#input-login');
-        inputLogin.addEventListener('input', insertUserPassword);
-
         let registerBtn = document.querySelector('#btn-register');
         registerBtn.addEventListener('click', this.register.bind(this));
 
         class Slider {
             constructor(slider, imgPaths) {
-                this.imgPaths = imgPaths;
+                this.imgPaths = imgPaths ?? ['./images/login/Эффективность.jpg',
+                './images/login/Инновации.jpg',
+                './images/login/Удобство.jpg',
+                './images/login/Надежность.jpg',
+                './images/login/Скорость.jpg'
+            ];
                 this.slider = slider;
+
+
+                const resizeObserver = new ResizeObserver(() => this.set(this.currentSlide));
+                resizeObserver.observe(slider);
             }
 
             start() {
@@ -108,14 +105,73 @@ class Login {
             }
         }
 
-        let slider = new Slider(document.querySelector('.slider'),
-            ['./images/login/Эффективность.jpg',
-            './images/login/Инновации.jpg',
-            './images/login/Удобство.jpg',
-            './images/login/Надежность.jpg',
-            './images/login/Скорость.jpg'
-        ]);
-        slider.start();
+        if (localStorage.length) {
+            let slider = document.querySelector('.slider');
+            slider.classList.add('hidden');
+
+            let defaultCard = document.querySelector('.card_new');
+            const focusLoginField = () => {
+                let inputLogin = document.querySelector('#input-login');
+                inputLogin.focus();
+            };
+            defaultCard.addEventListener('click', focusLoginField);
+
+            (async () => {
+                let cardTemplate = document.querySelector('#template-card');
+                for (let i = 0; i < localStorage.length; i++) {
+                    let userLocal = JSON.parse(localStorage.getItem(i));
+                    let usersSelected = await this.database.select(userLocal.role, {[`${userLocal.role}_id`]: userLocal.id});
+                    let {name: userName, surname: userSurname, avatar} = usersSelected[0];
+
+                    let card = cardTemplate.content.cloneNode(true).querySelector('.card');
+                    let cardName = card.querySelector('.card__text_name');
+                    cardName.textContent = userName;
+                    let cardSurname = card.querySelector('.card__text_surname');
+                    cardSurname.textContent = userSurname;
+                    let cardAvatar = card.querySelector('.card__avatar');
+                    cardAvatar.src = avatar;
+
+                    let cardsContainer = document.querySelector('.cards__container');
+
+                    const removeLocalData = () => {
+                        localStorage.removeItem(i);
+                        cardsContainer.removeChild(card);
+                        if (localStorage.length) return;
+                        let slider = document.querySelector('.slider');
+                        let cards = document.querySelector('.cards');
+                        slider.classList.toggle('hidden');
+                        cards.classList.toggle('hidden');
+
+                        slider = new Slider(document.querySelector('.slider'));
+                        slider.start();
+                    };
+
+                    const enterWithCard = () => {
+                        sessionStorage.setItem('id', userLocal.id);
+                        sessionStorage.setItem('role', userLocal.role);
+                        document.location.href = './home.html';
+                    };
+
+                    const cardEventsHandler = (e) => {
+                        if (e.target.closest('.card__btn-delete')) removeLocalData();
+                        else enterWithCard();
+                    };
+
+                    card.addEventListener('click', cardEventsHandler);
+
+                    cardsContainer.insertBefore(card, defaultCard);
+                }
+            })();
+
+        } else {
+
+            let entranceCards = document.querySelector('.cards');
+            entranceCards.classList.add('hidden');
+            let slider = new Slider(document.querySelector('.slider'));
+            slider.start();
+
+        }
+
     }
 
     async login(e) {
@@ -137,17 +193,17 @@ class Login {
             return;
         }
 
-        sessionStorage.setItem('id', `${worker ? worker[0]['worker_id'] : candidate[0]['candidate_id']}`);
-        sessionStorage.setItem('role', `${worker ? 'worker' : 'candidate'}`);
+        let user = {
+            id: worker ? worker[0]['worker_id'] : candidate[0]['candidate_id'],
+            role: worker ? 'worker' : 'candidate'
+        };
+
+        sessionStorage.setItem('id', user.id);
+        sessionStorage.setItem('role', user.role);
 
         let saveLogPasInput = loginForm.querySelector('#input-remember');
-        if (saveLogPasInput.checked) {
-            let inputLogin = loginForm.querySelector('#input-login');
-            let inputPassword = loginForm.querySelector('#input-password');
-            localStorage.setItem('login', `${inputLogin.value}`);
-            localStorage.setItem('password', `${inputPassword.value}`);
-        } else {
-            localStorage.clear();
+        if (saveLogPasInput.checked && !Object.values(localStorage).includes(JSON.stringify(user))) {
+            localStorage.setItem(`${localStorage.length}`, JSON.stringify(user));
         }
 
         loginForm.reset();
