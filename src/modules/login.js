@@ -49,6 +49,10 @@ class Login {
                 './images/login/Скорость.jpg'
             ];
                 this.slider = slider;
+
+
+                const resizeObserver = new ResizeObserver(() => this.set(this.currentSlide));
+                resizeObserver.observe(slider);
             }
 
             start() {
