@@ -35,6 +35,25 @@ class Home {
             circleDiagram.indeterminateText = '0';
             circleDiagram.animation = 'easeInCubic';
         });
+
+        this.createCards();
+    }
+
+    async createCards() {
+        let candidatesData = (await this.database.select('candidate')).sort((a, b) => a.candidate_id - b.candidate_id);
+        let cardsContainer = document.querySelector('.content');
+        let candidateCardTemplate = document.querySelector('#candidate-template');
+
+        for (let candidateData of candidatesData) {
+            let candidateCard = candidateCardTemplate.content.cloneNode(true).querySelector('.content__item');
+            let candidateAvatar = candidateCard.querySelector('.card__avatar');
+            candidateAvatar.src = candidateData.avatar;
+            let candidateFullName = candidateCard.querySelector('.card__fullname');
+            candidateFullName.textContent = `${candidateData.name} ${candidateData.surname}`;
+            let candidatePosition = candidateCard.querySelector('.card__position');
+            candidatePosition.textContent = candidateData.position;
+            cardsContainer.appendChild(candidateCard);
+        }
     }
 }
 

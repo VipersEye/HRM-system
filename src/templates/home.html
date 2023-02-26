@@ -228,83 +228,7 @@
                 </div>
 
                 <div class="content-wrapper">
-
-                    <ul class="content content_cards" role="list" aria-label="Список кандидатов">
-
-                        <li class="content__item" id="candidate-1">
-                            <div class="card">
-                                <button class="card__btn card__btn_more" type="button">
-                                    <svg class="card__icon">
-                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
-                                    </svg>
-                                </button>
-                                <img class="card__avatar" src="./images/avatars/default-avatar.png" alt="Аватар соискателя">
-                                <div class="card__data">
-                                    <p class="card__fullname">Иванов Иван</p>
-                                    <p class="card__position">Инженер</p>
-                                </div>
-                                <div class="card__control">
-
-                                    <button class="card__btn card__btn_like" type="button">
-                                        <svg class="card__icon">
-                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
-                                        </svg>
-                                    </button>
-
-                                    <button class="card__btn card__btn_calendar" type="button">
-                                        <svg class="card__icon">
-                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
-                                        </svg>
-                                    </button>
-
-                                    <button class="card__btn card__btn_message" type="button">
-                                        <svg class="card__icon">
-                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
-                                        </svg>
-                                    </button>
-
-                                </div>
-                            </div>
-                        </li>
-
-                        <li class="content__item" id="candidate-2">
-                            <div class="card">
-                                <button class="card__btn card__btn_more" type="button">
-                                    <svg class="card__icon">
-                                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
-                                    </svg>
-                                </button>
-                                <img class="card__avatar" src="./images/avatars/default-avatar.png" alt="Аватар соискателя">
-                                <div class="card__data">
-                                    <p class="card__fullname">Иванов Иван</p>
-                                    <p class="card__position">Инженер</p>
-                                </div>
-                                <div class="card__control">
-
-                                    <button class="card__btn card__btn_like" type="button">
-                                        <svg class="card__icon">
-                                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
-                                        </svg>
-                                    </button>
-
-                                    <button class="card__btn card__btn_calendar" type="button">
-                                        <svg class="card__icon">
-                                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
-                                        </svg>
-                                    </button>
-
-                                    <button class="card__btn card__btn_message" type="button">
-                                        <svg class="card__icon">
-                                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
-                                        </svg>
-                                    </button>
-
-                                </div>
-                            </div>
-                        </li>
-
-                    </ul>
-
+                    <ul class="content content_cards" role="list" aria-label="Список кандидатов"></ul>
                 </div>
 
             </section>
@@ -410,5 +334,44 @@
         </aside>
 
     </div>
+
+    <template id="candidate-template">
+        <li class="content__item">
+            <div class="card">
+                <button class="card__btn card__btn_more" type="button">
+                    <svg class="card__icon">
+                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                    </svg>
+                </button>
+                <img class="card__avatar" src="" alt="Аватар соискателя">
+                <div class="card__data">
+                    <p class="card__fullname"></p>
+                    <p class="card__position"></p>
+                </div>
+                <div class="card__control">
+
+                    <button class="card__btn card__btn_like" type="button">
+                        <svg class="card__icon">
+                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
+                        </svg>
+                    </button>
+
+                    <button class="card__btn card__btn_calendar" type="button">
+                        <svg class="card__icon">
+                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                        </svg>
+                    </button>
+
+                    <button class="card__btn card__btn_message" type="button">
+                        <svg class="card__icon">
+                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                        </svg>
+                    </button>
+
+                </div>
+            </div>
+        </li>
+    </template>
+
 </body>
 </html>
