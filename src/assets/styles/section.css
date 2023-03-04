@@ -1,4 +1,5 @@
 .section {
+    max-height: 100%;
     padding: 1.5rem 3rem;
 
     display: flex;
@@ -6,12 +7,16 @@
     gap: 2rem;
 
     overflow-y: hidden;
+
+    transition: max-height 1.4s linear;
+}
+
+.section:has( .section__btn[aria-expanded="false"] ) {
+    max-height: 3.5rem;
 }
 
 .section_no-shrink {
     flex-shrink: 0;
-
-    overflow: unset;
 }
 
 .section_grow {
@@ -22,6 +27,7 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    gap: 1rem;
 
     font-family: var(--ff-headers);
     font-weight: var(--fw-bold);
@@ -51,7 +57,17 @@
     transition: color 0.3s linear;
 }
 
+.section__btn[aria-expanded] {
+    transition: transform 0.3s linear;
+}
+
+.section__btn[aria-expanded="true"] {
+    transform: rotate(180deg);
+}
+
 .section__btn_flex {
+    margin-left: auto;
+
     display: flex;
     align-items: center;
     gap: 0.5rem;
