@@ -74,18 +74,21 @@
     line-height: 1;
     font-weight: var(--fw-bold);
     color: var(--clr-primary-400);
-
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: clip;
-
-    transition: opacity 0.5s ease-in-out, max-width 0.5s ease-in;
 }
 
-.nav-container_closed .header__text {
+.header__letter {
+    position: relative;
     opacity: 0;
+    top: -2rem;
+    animation-name: show-logo;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
 
-    max-width: 0;
+.nav-container_closed .header__letter {
+    animation-name: hide-logo;
+    animation-timing-function: ease-in;
 }
 
 /* nav ======================================== */
@@ -267,4 +270,58 @@
     background-color: var(--clr-neutral-100);
     box-shadow: 4px 4px 8px 3px hsla(0, 0%, 60%, 0.3);
     overflow: hidden;
+}
+
+/* animations ======================================== */
+
+/* logo ======================================== */
+
+.nav-container *:nth-child(1) {
+    animation-delay: 0s;
+}
+.nav-container *:nth-child(2) {
+    animation-delay: 0.1s;
+}
+.nav-container *:nth-child(3) {
+    animation-delay: 0.2s;
+}
+.nav-container *:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.nav-container_closed *:nth-child(1) {
+    animation-delay: 0.3s;
+}
+.nav-container_closed *:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.nav-container_closed *:nth-child(3) {
+    animation-delay: 0.1s;
+}
+.nav-container_closed *:nth-child(4) {
+    animation-delay: 0s;
+}
+
+@keyframes hide-logo {
+    from {
+        top: 0;
+        opacity: 1;
+    }
+
+    to {
+        top: 2rem;
+        opacity: 0;
+    }
+}
+
+@keyframes show-logo {
+    from {
+        top: -2rem;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
 }
