@@ -1,13 +1,16 @@
 {
-    "parser": "@babel/eslint-parser",
-    "parserOptions": {
-        "requireConfigFile": false
-    },
     "env": {
+        "browser": true,
         "es6": true,
-        "node": true,
-        "browser": true
+        "node": true
     },
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "extends": [
+        "prettier"
+    ],
     "rules": {
         "object-shorthand": "warn",
         "quote-props": ["warn", "as-needed"],
