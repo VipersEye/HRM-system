@@ -6,10 +6,10 @@
   "scripts": {
     "test": "jest",
     "test-watch": "jest --watch",
-    "dev": "cross-env NODE_ENV=development webpack --mode development",
-    "build": "cross-env NODE_ENV=production webpack --mode production",
-    "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
-    "start": "cross-env NODE_ENV=development webpack serve --open --mode development"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
+    "start": "webpack serve --open --mode development"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,6 @@
     "@babel/preset-env": "^7.20.2",
     "babel-jest": "^29.3.1",
     "copy-webpack-plugin": "^11.0.0",
-    "cross-env": "^7.0.3",
     "css-loader": "^6.7.2",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "eslint": "^8.28.0",

@@ -6,14 +6,8 @@ const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const EslintWebpackPlugin = require('eslint-webpack-plugin');
 
-
-const isDev = process.env.NODE_ENV === 'development';
-const isProd = !isDev;
-console.log('IS DEV:', isDev);
-console.log('IS PROD:', isProd);
-
 /** @type {import('webpack').Configuration} */
-module.exports = {
+const config = {
     mode: 'development',
     context: path.resolve(__dirname, 'src'),
     entry: {
@@ -26,7 +20,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         clean: true
     },
-    devtool: isDev ? 'source-map' : undefined,
     devServer: {
         static: path.resolve(__dirname, 'dist'),
         hot: true,
@@ -81,4 +74,10 @@ module.exports = {
             new TerserWebpackPlugin()
         ]
     },
+};
+
+module.exports = (env, argv) => {
+    console.log(argv.mode);
+    config.devtool = argv.mode === 'development' ? 'source-map' : undefined;
+    return config;
 };
