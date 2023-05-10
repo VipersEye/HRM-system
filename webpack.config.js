@@ -12,8 +12,8 @@ const config = {
     context: path.resolve(__dirname, 'src'),
     entry: {
         login: './modules/login.js',
-        home: './modules/home.js',
-        people: './modules/people.js'
+        recruiting: './modules/recruiting.js',
+        workers: './modules/workers.js'
     },
     output: {
         filename: '[name].[contenthash].js',
@@ -47,14 +47,14 @@ const config = {
             chunks: ['login']
         }),
         new HTMLWebpackPlugin({
-            filename: 'home.html',
-            template: path.resolve(__dirname, 'src/templates/home.html'),
-            chunks: ['home']
+            filename: 'recruiting.html',
+            template: path.resolve(__dirname, 'src/templates/recruiting.html'),
+            chunks: ['recruiting']
         }),
         new HTMLWebpackPlugin({
-            filename: 'people.html',
-            template: path.resolve(__dirname, 'src/templates/people.html'),
-            chunks: ['people']
+            filename: 'workers.html',
+            template: path.resolve(__dirname, 'src/templates/workers.html'),
+            chunks: ['workers']
         }),
         new CopyWebpackPlugin({
             patterns: [

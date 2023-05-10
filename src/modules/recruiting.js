@@ -9,7 +9,7 @@ import '@styles/calendar.css';
 import CircleProgress from '@modules/CircleProgress';
 import Database from '@modules/Database';
 
-class Home {
+class Recruiting {
     constructor(Database) {
         this.database = new Database();
 
@@ -164,4 +164,4 @@ class Home {
     }
 }
 
-const home = new Home(Database);
+const recruiting = new Recruiting(Database);

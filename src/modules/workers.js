@@ -14,7 +14,7 @@ import cytoscape from 'cytoscape';
 import Chart from 'chart.js/auto';
 import FIRO from '@modules/FIRO-B';
 
-class People {
+class Workers {
     constructor(database) {
 
         this.database = database;
@@ -332,4 +332,4 @@ class People {
     }
 }
 
-const people = new People(new Database());
+const workers = new Workers(new Database());
