@@ -1,295 +1,292 @@
 .persona {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 10;
-    transform: translate3d(-50%, -50%, 0);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 10;
+	transform: translate3d(-50%, -50%, 0);
 
-    padding: 2rem 4rem 2rem 2rem;
-    max-width: 95vw;
-    max-height: 95vh;
+	padding: 2rem 4rem 2rem 2rem;
+	max-width: 95vw;
+	max-height: 95vh;
 
-    display: grid;
-    grid-template-columns: 20rem 30rem 22rem;
-    grid-template-rows: repeat(2, auto);
-    gap: 2rem;
+	display: grid;
+	grid-template-columns: 20rem 30rem 22rem;
+	grid-template-rows: repeat(2, auto);
+	gap: 2rem;
 
-    border-radius: 2rem;
-    border: 3px solid var(--clr-primary-400);
-    background-color: var(--clr-neutral-100);
-    box-shadow: 4px 4px 8px 10px hsla(0, 0%, 60%, 0.4);
-    overflow: hidden;
+	border-radius: 2rem;
+	border: 3px solid var(--clr-primary-400);
+	background-color: var(--clr-neutral-100);
+	box-shadow: 4px 4px 8px 10px hsla(0, 0%, 60%, 0.4);
+	overflow: hidden;
 }
 
 .persona_no-charts {
-    grid-template-columns: 20rem;
+	grid-template-columns: 20rem;
 }
 
-.persona_no-charts
-.persona__chart,
-.persona_no-charts
-.persona__stats,
-.persona_no-charts
-.persona__description {
-    display: none;
-    visibility: hidden;
+.persona_no-charts .persona__chart,
+.persona_no-charts .persona__stats,
+.persona_no-charts .persona__description {
+	display: none;
+	visibility: hidden;
 }
 
 /* =================================================== */
 
 .persona__btn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 20;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	z-index: 20;
 
-    padding: 0.5rem;
+	padding: 0.5rem;
 
-    border: 0;
-    border-radius: 0.5rem;
-    background-color: var(--clr-primary-300);
-    cursor: pointer;
+	border: 0;
+	border-radius: 0.5rem;
+	background-color: var(--clr-primary-300);
+	cursor: pointer;
 
-    transition: background-color 0.3s linear;
+	transition: background-color 0.3s linear;
 }
 
 .persona__btn:hover {
-    background-color: var(--clr-primary-400);
+	background-color: var(--clr-primary-400);
 }
 
 .persona__btn:active {
-    background-color: var(--clr-primary-600);
+	background-color: var(--clr-primary-600);
 }
 
 .persona__btn__icon {
-    width: 1.3rem;
-    height: 1.3rem;
+	width: 1.3rem;
+	height: 1.3rem;
 
-    fill: var(--clr-neutral-100);
+	fill: var(--clr-neutral-100);
 }
 
 /* =================================================== */
 
 .persona__img {
-    position: relative;
+	position: relative;
 
-    aspect-ratio: 1 / 1;
+	aspect-ratio: 1 / 1;
 
-    border-radius: 1.5rem;
-    overflow: hidden;
+	border-radius: 1.5rem;
+	overflow: hidden;
 }
 
 .persona__avatar {
-    position: absolute;
+	position: absolute;
 
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 
-    object-fit: cover;
+	object-fit: cover;
 }
 
 /* =================================================== */
 
 .persona__info {
-    grid-row: 2 / -1;
+	grid-row: 2 / -1;
 
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
 
-    padding: 1.5rem;
+	padding: 1.5rem;
 
-    border-radius: 1.5rem;
-    background-color: var(--clr-primary-100);
+	border-radius: 1.5rem;
+	background-color: var(--clr-primary-100);
 }
 
 .persona__prop {
-    font-size: 1.1rem;
-    line-height: 1;
-    color: var(--clr-neutral-900);
-    white-space: nowrap;
+	font-size: 1.1rem;
+	line-height: 1;
+	color: var(--clr-neutral-900);
+	white-space: nowrap;
 }
 
 .persona__prop_bold {
-    font-family: var(--ff-headers);
-    font-size: 1.8rem;
-    line-height: 1.2;
-    font-weight: var(--fw-bold);
-    white-space: unset;
+	font-family: var(--ff-headers);
+	font-size: 1.8rem;
+	line-height: 1.2;
+	font-weight: var(--fw-bold);
+	white-space: unset;
 }
 
 .persona__prop__key {
-    font-weight: var(--fw-bold);
+	font-weight: var(--fw-bold);
 }
 
 /* =================================================== */
 
 .persona__chart {
-    grid-row: 1 / -1;
+	grid-row: 1 / -1;
 
-    padding: 1.5rem;
+	padding: 1.5rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 
-    border-radius: 1.5rem;
-    background-color: var(--clr-primary-100);
+	border-radius: 1.5rem;
+	background-color: var(--clr-primary-100);
 }
 
 .persona__compatibility {
-    padding: 0.6rem 1rem;
+	padding: 0.6rem 1rem;
 
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
 
-    border-radius: 2rem;
+	border-radius: 2rem;
 }
 
 .persona__compatibility_success {
-    background-color: var(--clr-primary-400);
+	background-color: var(--clr-primary-400);
 }
 
 .persona__compatibility_alert {
-    background-color: var(--clr-alert);
+	background-color: var(--clr-alert);
 }
 
 .persona__compatibility_error {
-    background-color: var(--clr-error);
+	background-color: var(--clr-error);
 }
 
 .persona__compatibility__icon {
-    width: 1.7rem;
-    height: 1.7rem;
+	width: 1.7rem;
+	height: 1.7rem;
 
-    fill: var(--clr-neutral-100);
+	fill: var(--clr-neutral-100);
 }
 
 .persona__status {
-    font-family: var(--ff-headers);
-    font-size: 1rem;
-    font-weight: var(--fw-bold);
-    line-height: 1;
-    color: var(--clr-neutral-100);
+	font-family: var(--ff-headers);
+	font-size: 1rem;
+	font-weight: var(--fw-bold);
+	line-height: 1;
+	color: var(--clr-neutral-100);
 }
 
 /* =================================================== */
 
 .persona__stats {
-    padding: 1.5rem;
+	padding: 1.5rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
 
-    border-radius: 1.5rem;
-    background-color: var(--clr-primary-100);
+	border-radius: 1.5rem;
+	background-color: var(--clr-primary-100);
 }
 
 .persona__stats__title {
-    text-align: center;
-    font-family: var(--ff-headers);
-    font-size: 1.5rem;
-    font-weight: var(--fw-bold);
+	text-align: center;
+	font-family: var(--ff-headers);
+	font-size: 1.5rem;
+	font-weight: var(--fw-bold);
 }
 
 .persona__stat__header {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 
-    margin-bottom: 0.3rem;
+	margin-bottom: 0.3rem;
 }
 
 .persona__label {
-    font-size: 1rem;
-    font-weight: var(--fw-medium);
-    color: var(--clr-neutral-900);
+	font-size: 1rem;
+	font-weight: var(--fw-medium);
+	color: var(--clr-neutral-900);
 }
 
 .persona__meter {
-    display: grid;
-    grid-template-rows: 1rem;
-    grid-template-columns: repeat(9, 1fr);
+	display: grid;
+	grid-template-rows: 1rem;
+	grid-template-columns: repeat(9, 1fr);
 
-    border-radius: 1rem;
-    background-color: var(--clr-neutral-200);
+	border-radius: 1rem;
+	background-color: var(--clr-neutral-200);
 }
 
 .persona__meter::after {
-    content: '';
-    display: block;
+	content: '';
+	display: block;
 
-    border-radius: 0.8rem;
-    background-color: var(--clr-primary-400);
+	border-radius: 0.8rem;
+	background-color: var(--clr-primary-400);
 }
 
-.persona__meter[scale="I"]::after {
-    grid-column: var(--I);
+.persona__meter[scale='I']::after {
+	grid-column: var(--I);
 }
 
-.persona__meter[scale="C"]::after {
-    grid-column: var(--C);
+.persona__meter[scale='C']::after {
+	grid-column: var(--C);
 }
 
-.persona__meter[scale="A"]::after {
-    grid-column: var(--A);
+.persona__meter[scale='A']::after {
+	grid-column: var(--A);
 }
 
 /* =================================================== */
 
 .persona__description {
-    padding: 1.5rem 0.75rem 1.5rem 1.5rem;
+	padding: 1.5rem 0.75rem 1.5rem 1.5rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1rem;
 
-    border-radius: 1.5rem;
-    background-color: var(--clr-primary-100);
+	border-radius: 1.5rem;
+	background-color: var(--clr-primary-100);
 }
 
 .persona__description__title {
-    text-align: center;
-    font-family: var(--ff-headers);
-    font-size: 1.5rem;
-    font-weight: var(--fw-bold);
+	text-align: center;
+	font-family: var(--ff-headers);
+	font-size: 1.5rem;
+	font-weight: var(--fw-bold);
 }
 
 .persona__container {
-    position: relative;
+	position: relative;
 
-    height: 100%;
+	height: 100%;
 
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .persona__list {
-    position: absolute;
+	position: absolute;
 
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 
-    overflow-y: auto;
+	overflow-y: auto;
 }
 
 .persona__list__item {
-    padding-right: 0.75rem;
+	padding-right: 0.75rem;
 
-    font-size: 1rem;
-    color: var(--clr-neutral-900);
-    text-align: justify;
+	font-size: 1rem;
+	color: var(--clr-neutral-900);
+	text-align: justify;
 }
 
 .persona__list__item::before {
-    content: '•';
+	content: '•';
 
-    margin-right: 0.3rem;
+	margin-right: 0.3rem;
 }

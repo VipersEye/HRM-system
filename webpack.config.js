@@ -6,27 +6,20 @@ const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const EslintWebpackPlugin = require('eslint-webpack-plugin');
 
-
-const isDev = process.env.NODE_ENV === 'development';
-const isProd = !isDev;
-console.log('IS DEV:', isDev);
-console.log('IS PROD:', isProd);
-
 /** @type {import('webpack').Configuration} */
-module.exports = {
+const config = {
     mode: 'development',
     context: path.resolve(__dirname, 'src'),
     entry: {
         login: './modules/login.js',
-        home: './modules/home.js',
-        people: './modules/people.js'
+        recruiting: './modules/recruiting.js',
+        workers: './modules/workers.js'
     },
     output: {
         filename: '[name].[contenthash].js',
         path: path.resolve(__dirname, 'dist'),
         clean: true
     },
-    devtool: isDev ? 'source-map' : undefined,
     devServer: {
         static: path.resolve(__dirname, 'dist'),
         hot: true,
@@ -54,14 +47,14 @@ module.exports = {
             chunks: ['login']
         }),
         new HTMLWebpackPlugin({
-            filename: 'home.html',
-            template: path.resolve(__dirname, 'src/templates/home.html'),
-            chunks: ['home']
+            filename: 'recruiting.html',
+            template: path.resolve(__dirname, 'src/templates/recruiting.html'),
+            chunks: ['recruiting']
         }),
         new HTMLWebpackPlugin({
-            filename: 'people.html',
-            template: path.resolve(__dirname, 'src/templates/people.html'),
-            chunks: ['people']
+            filename: 'workers.html',
+            template: path.resolve(__dirname, 'src/templates/workers.html'),
+            chunks: ['workers']
         }),
         new CopyWebpackPlugin({
             patterns: [
@@ -81,4 +74,10 @@ module.exports = {
             new TerserWebpackPlugin()
         ]
     },
+};
+
+module.exports = (env, argv) => {
+    console.log(argv.mode);
+    config.devtool = argv.mode === 'development' ? 'source-map' : undefined;
+    return config;
 };
