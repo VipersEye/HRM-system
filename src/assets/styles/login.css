@@ -260,6 +260,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .form_hidden {
@@ -391,12 +392,36 @@
 	opacity: 0;
 }
 
+.form__input[type='file'] {
+	visibility: hidden;
+	display: none;
+}
+
+.form__input[type='file']:valid + .form__input_file {
+	border-color: var(--clr-primary-400);
+	background-color: var(--clr-primary-400);
+}
+
+.form__input_file {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: var(--clr-neutral-400);
+
+	cursor: pointer;
+}
+
+.form__input[type='file']:valid ~ .form__input_file {
+	color: #fff;
+}
+
 .form__required {
 	position: relative;
 	grid-area: req;
 }
 
-.form__input:required + .form__required::before {
+.form__input:required ~ .form__required::before {
 	content: '*';
 
 	display: block;
@@ -405,27 +430,23 @@
 	left: 0.1rem;
 
 	font-size: 0.9rem;
+	color: var(--clr-success);
 	font-weight: var(--fw-bold);
 	line-height: 1;
 
 	transition: color 0.2s linear;
 }
 
-.form__input:required:placeholder-shown + .form__required::before {
-	color: var(--clr-error);
-}
-
-.form__input:required:not(:placeholder-shown) + .form__required::before {
-	color: var(--clr-success);
-}
-
-.form__input[type='date']:required:invalid + .form__required::before {
+.form__input:required:placeholder-shown + .form__required::before,
+.form__input[type='date']:required:invalid + .form__required::before,
+input[type='file']:required:invalid ~ .form__required::before {
 	color: var(--clr-error);
 }
 
 .form__btn_main {
 	margin-bottom: 1.2rem;
 	padding: 0.7rem 1rem;
+	width: 100%;
 
 	font-size: 1.2rem;
 	font-weight: var(--fw-regular);
