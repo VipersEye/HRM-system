@@ -23,6 +23,14 @@ class Login {
 			e.target.setCustomValidity('');
 		};
 
+		const setFileName = (e) => {
+			let inputFile = e.target;
+			let inputLabel = inputFile
+				.closest('.form__input-container')
+				.querySelector('.form__input_file');
+			inputLabel.textContent = inputFile.files[0]?.name || 'Выберите файл';
+		};
+
 		let changeFormBtns = document.querySelectorAll('.form__btn_change-form');
 		changeFormBtns.forEach((btn) => {
 			btn.addEventListener('click', changeForm);
@@ -39,6 +47,23 @@ class Login {
 
 		let registerBtn = document.querySelector('#btn-register');
 		registerBtn.addEventListener('click', this.register.bind(this));
+
+		let inputsFile = document.querySelectorAll('.form__input[type="file"]');
+		inputsFile.forEach((input) => {
+			input.addEventListener('change', setFileName);
+		});
+
+		(async () => {
+			let inputVacancyList = document.querySelector('#input-reg-vacancy');
+			let availableVacancies = await this.database.select('vacancy');
+			for (let vacancy of availableVacancies.reverse()) {
+				let selectOption = document.createElement('option');
+				selectOption.value = vacancy.vacancy_id;
+				selectOption.textContent = vacancy.position;
+				inputVacancyList.appendChild(selectOption);
+			}
+		})();
+
 
 		class Slider {
 			constructor(slider, imgPaths) {
@@ -211,21 +236,17 @@ class Login {
 		}
 
 		loginForm.reset();
-		window.location.href = './home.html';
+		window.location.href = './recruiting.html';
 	}
 
 	async register(e) {
-		let registerForm = document.querySelector('#form-register');
-		if (!registerForm.checkValidity()) return;
-		e.preventDefault();
-
 		const checkLoginValidity = async () => {
-			let inputLogin = registerForm.querySelector('#input-reg-login');
-			let candidates = await this.database.select('candidate', {login: inputLogin.value});
-			let workers = await this.database.select('worker', {login: inputLogin.value});
+			let inputEmail = registerForm.querySelector('#input-reg-email');
+			let candidates = await this.database.select('candidate', {email: inputEmail.value});
+			let workers = await this.database.select('worker', {email: inputEmail.value});
 			if (candidates.length || workers.length) {
-				inputLogin.setCustomValidity('Пользователь с таким логином уже существует');
-				inputLogin.reportValidity();
+				inputEmail.setCustomValidity('Пользователь с такой почтой уже существует');
+				inputEmail.reportValidity();
 				return false;
 			}
 			return true;
@@ -250,43 +271,72 @@ class Login {
 			return true;
 		};
 
-		const checkRePasswordValidity = () => {
-			let inputPassword = registerForm.querySelector('#input-reg-password');
-			let inputRepPassword = registerForm.querySelector('#input-reg-repassword');
-			if (inputPassword.value !== inputRepPassword.value) {
-				inputRepPassword.setCustomValidity('Неправильно повторен пароль');
-				inputRepPassword.reportValidity('');
-				return false;
-			}
-			return true;
-		};
-
 		const checkRegisterFormValidity = async () => {
 			if (!(await checkFullNameValidity())) return false;
 			else if (!(await checkLoginValidity())) return false;
-			else if (!checkRePasswordValidity()) return false;
 			return true;
 		};
 
+		const moveFiles = async () => {
+			try {
+				const inputAvatar = document.querySelector('#input-reg-avatar');
+				if (inputAvatar.files[0]) {
+					let [file] = inputAvatar.files;
+					await this.database.move(
+						`K:/Downloads/${file.name}`,
+						`../../src/assets/images/avatars/candidates/${file.name}`
+					);
+					await this.database.move(
+						`K:/Downloads/${file.name}`,
+						`../images/avatars/candidates/${file.name}`
+					);
+				}
+
+				const inputResume = document.querySelector('#input-reg-resume');
+				let [file] = inputResume.files;
+				await this.database.move(
+					`K:/Downloads/${file.name}`,
+					`../../src/assets/resumes/${file.name}`
+				);
+
+				await this.database.move(`K:/Downloads/${file.name}`, `../resumes/${file.name}`);
+			} catch (error) {
+				alert(error);
+			}
+		};
+
+		const addCandidate = async () => {
+			const formData = new FormData(registerForm);
+			const values = {};
+			for (let [key, value] of formData) values[key] = value;
+
+			if (values.avatar.name)
+				values.avatar = `./images/avatars/candidates/${values.avatar.name}`;
+			else delete values.avatar;
+			values.resume = `./resumes/${values.resume.name}`;
+
+			let result = await this.database.insert('candidate', values);
+			if (result === false) {
+				alert('Ошибка при добавлении данных, попробуйте снова');
+				return;
+			}
+
+			const inputsFile = document.querySelectorAll('input[type="file"]');
+			inputsFile.forEach((input) => {
+				input.value = null;
+				input.dispatchEvent(new Event('change'));
+			});
+
+			registerForm.reset();
+		};
+
+		let registerForm = document.querySelector('#form-register');
+		if (!registerForm.checkValidity()) return;
+		e.preventDefault();
 		if (!(await checkRegisterFormValidity())) return;
 
-		const formData = new FormData(registerForm);
-		const values = {};
-		for (let [key, value] of formData) values[key] = value;
-
-		let result = await this.database.insert('candidate', values);
-		if (result === false) {
-			alert('Ошибка при добавлении данных, попробуйте снова');
-			return;
-		}
-
-		let newUser = await this.database.select('candidate', {login: values.login});
-		console.log(newUser);
-		sessionStorage.setItem('id', newUser[0]['candidate_id']);
-		sessionStorage.setItem('role', 'candidate');
-
-		registerForm.reset();
-		window.location.href = './home.html';
+		moveFiles();
+		addCandidate();
 	}
 }
 

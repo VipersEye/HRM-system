@@ -4,12 +4,14 @@ export default class Database {
 			table,
 			conditions,
 		};
+
 		let jsonData = JSON.stringify(data);
 
 		let responseHeaders = await fetch('./requests/requestSelect.php', {
 			method: 'POST',
 			body: jsonData,
 		});
+
 		let response = await responseHeaders.text();
 		return JSON.parse(response);
 	}
@@ -19,6 +21,7 @@ export default class Database {
 			table,
 			values,
 		};
+
 		let jsonData = JSON.stringify(data, (key, val) => {
 			if (val === '') return;
 			return val;
@@ -28,7 +31,25 @@ export default class Database {
 			method: 'POST',
 			body: jsonData,
 		});
+
 		let response = await responseHeaders.text();
 		return JSON.parse(response);
+	}
+
+	async move(from, to) {
+		let data = {
+			from,
+			to,
+		};
+
+		let jsonData = JSON.stringify(data);
+
+		let responseHeaders = await fetch('./requests/requestMove.php', {
+			method: 'POST',
+			body: jsonData,
+		});
+
+		let response = await responseHeaders.text();
+		if (response !== '1') throw new Error('При отправке файла произошла ошибка. Попробуйте снова.');
 	}
 }

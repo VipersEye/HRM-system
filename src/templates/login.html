@@ -86,11 +86,11 @@
                     </li>
                 </ul>
                 <button class="form__btn form__btn_main" type="submit" id="btn-login">Войти</button>
-                <button class="form__btn form__btn_change-form" type="button">Хотите зарегистрироваться?</button>
+                <button class="form__btn form__btn_change-form" type="button">Хотите устроиться на работу?</button>
             </form>
 
             <form class="form hidden" action="#" method="post" id="form-register">
-                <h1 class="form__header">Регистрация</h1>
+                <h1 class="form__header">Трудоустройство</h1>
                 <ul class="form__inputs form__inputs_reg" role="list">
                     <li class="form__input-container">
                         <label class="form__label" for="input-reg-name">Имя</label>
@@ -142,56 +142,47 @@
                         <span class="form__required"></span>
                     </li>
                     <li class="form__input-container">
-                        <label class="form__label" for="input-reg-phone">Телефон</label>
-                        <input
-                            class="form__input"
-                            type="text"
-                            name="phone"
-                            id="input-reg-phone"
-                            placeholder="+7(777) 777-77-77"
-                            pattern="^\+\d\(\d{3}\) \d{3}-\d{2}-\d{2}$"
-                            title="Введите номер телефона согласно следующему формату: +X(XXX) XXX-XX-XX">
-                        <span class="form__required"></span>
-                    </li>
-                    <li class="form__input-container">
-                        <label class="form__label" for="input-reg-login">Почта</label>
+                        <label class="form__label" for="input-reg-email">Почта</label>
                         <input
                             class="form__input"
                             type="email"
-                            name="login"
-                            id="input-reg-login"
+                            name="email"
+                            id="input-reg-email"
                             placeholder="Ваша почта"
                             required>
                         <span class="form__required"></span>
                     </li>
                     <li class="form__input-container">
-                        <label class="form__label" for="input-reg-password">Пароль</label>
+                        <label class="form__label" for="input-reg-avatar">Фотография</label>
                         <input
-                            class="form__input"
-                            type="password"
-                            name="password"
-                            id="input-reg-password"
-                            placeholder="Введите пароль"
-                            pattern="[A-Za-zА-Яа-я0-9_\-!?]+"
-                            title="Пароль может содержать только кириллицу, латинские буквы и символы: !?-_"
-                            required>
+                            class="form__input hidden"
+                            type="file"
+                            name="avatar"
+                            id="input-reg-avatar"
+                            accept="image/*">
+                        <label class="form__input form__input_file" for="input-reg-avatar">Выберите файл</label>
                         <span class="form__required"></span>
                     </li>
                     <li class="form__input-container">
-                        <label class="form__label" for="input-reg-repassword">Повторите пароль</label>
+                        <label class="form__label" for="input-reg-vacancy">Вакансия</label>
+                        <select class="form__input" name="vacancy_id" id="input-reg-vacancy" required></select>
+                        <span class="form__required"></span>
+                    </li>
+                    <li class="form__input-container">
+                        <label class="form__label" for="input-reg-resume">Резюме</label>
                         <input
-                            class="form__input"
-                            type="password"
-                            id="input-reg-repassword"
-                            placeholder="Пароль"
-                            pattern="[A-Za-zА-Яа-я0-9_\-!?]+"
-                            title="Пароль может содержать только кириллицу, латинские буквы и символы: !?-_"
+                            class="form__input hidden"
+                            type="file"
+                            name="resume"
+                            id="input-reg-resume"
+                            accept=".doc,.docx,.pdf"
                             required>
+                        <label class="form__input form__input_file" for="input-reg-resume">Выберите файл</label>
                         <span class="form__required"></span>
                     </li>
                 </ul>
-                <button class="form__btn form__btn_main" type="submit" id="btn-register">Зарегистрироваться</button>
-                <button class="form__btn form__btn_change-form" type="button">Уже имеете учетную запись?</button>
+                <button class="form__btn form__btn_main" type="submit" id="btn-register">Отправить</button>
+                <button class="form__btn form__btn_change-form" type="button">Уже работаете у нас?</button>
             </form>
 
         </main>
