@@ -53,6 +53,18 @@ class Login {
 			input.addEventListener('change', setFileName);
 		});
 
+		(async () => {
+			let inputVacancyList = document.querySelector('#input-reg-vacancy');
+			let availableVacancies = await this.database.select('vacancy');
+			for (let vacancy of availableVacancies.reverse()) {
+				let selectOption = document.createElement('option');
+				selectOption.value = vacancy.vacancy_id;
+				selectOption.textContent = vacancy.position;
+				inputVacancyList.appendChild(selectOption);
+			}
+		})();
+
+
 		class Slider {
 			constructor(slider, imgPaths) {
 				this.imgPaths = imgPaths ?? [
@@ -224,7 +236,7 @@ class Login {
 		}
 
 		loginForm.reset();
-		window.location.href = './home.html';
+		window.location.href = './recruiting.html';
 	}
 
 	async register(e) {
