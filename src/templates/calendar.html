@@ -141,9 +141,9 @@
         </main>
 
         <aside class="aside">
-            <div class="calendar">
-                <h3 class="calendar__title">События</h3>
-                <ul class="calendar__list" role="list"></ul>
+            <div class="events">
+                <h3 class="events__title">События</h3>
+                <ul class="events__list" role="list"></ul>
             </div>
         </aside>
 
@@ -161,17 +161,17 @@
                 </button>
             </div>
 
-            <ul class="events" role="list"></ul>
+            <ul class="day__events" role="list"></ul>
         </li>
     </template>
 
     <template id="event-template">
-        <li class="events__item">
-            <p class="events__time"></p>
-            <div class="day__color"></div>
-            <div class="events__content">
-                <p class="events__author"></p>
-                <p class="events__name"></p>
+        <li class="event">
+            <p class="event__time"></p>
+            <div class="event__color"></div>
+            <div class="event__content">
+                <p class="event__author"></p>
+                <p class="event__name"></p>
             </div>
         </li>
     </template>

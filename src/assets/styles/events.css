@@ -1,4 +1,4 @@
-.calendar {
+.events {
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
@@ -6,7 +6,7 @@
 	overflow: hidden;
 }
 
-.calendar__title {
+.events__title {
 	font-family: var(--ff-headers);
 	font-size: 1.6rem;
 	font-weight: var(--fw-bold);
@@ -14,7 +14,7 @@
 	color: var(--clr-neutral-900);
 }
 
-.calendar__list {
+.events__list {
 	padding-right: 1rem;
 	padding-bottom: 2rem;
 	width: 19rem;
@@ -65,19 +65,19 @@
 	fill: var(--clr-primary-400);
 }
 
-.events {
+.day__events {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
 }
 
-.events__item {
+.event {
 	display: flex;
 	align-items: center;
 	gap: 1.2rem;
 }
 
-.events__time {
+.event__time {
 	font-family: var(--ff-headers);
 	font-size: 1.4rem;
 	font-weight: var(--fw-medium);
@@ -85,7 +85,7 @@
 	color: var(--clr-neutral-900);
 }
 
-.day__color {
+.event__color {
 	align-self: stretch;
 
 	width: 0.3rem;
@@ -94,23 +94,23 @@
 	background-color: var(--clr-primary-400);
 }
 
-.events__content {
+.event__content {
 	overflow: hidden;
 }
 
-.events__author,
-.events__name {
+.event__author,
+.event__name {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
 
-.events__author {
+.event__author {
 	font-size: 1rem;
 	color: var(--clr-primary-200);
 }
 
-.events__name {
+.event__name {
 	font-family: var(--ff-headers);
 	font-size: 1.1rem;
 	font-weight: var(--fw-medium);

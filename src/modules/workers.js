@@ -3,7 +3,7 @@ import '@styles/main.css';
 import '@styles/section.css';
 import '@styles/sorting-fields.css';
 import '@styles/data.css';
-import '@styles/calendar.css';
+import '@styles/events.css';
 import '@styles/graph.css';
 import '@styles/persona.css';
 
@@ -11,6 +11,7 @@ import Database from '@modules/Database';
 import cytoscape from 'cytoscape';
 import Chart from 'chart.js/auto';
 import FIRO from '@modules/FIRO-B';
+import Events from '@modules/events';
 
 class Workers {
 	constructor(database) {
@@ -351,3 +352,4 @@ class Workers {
 }
 
 const workers = new Workers(new Database());
+const events = new Events();

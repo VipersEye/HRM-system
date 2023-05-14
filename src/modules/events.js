@@ -31,21 +31,21 @@ export default class Events {
 			return res;
 		}, {});
 
-		const daysContainer = document.querySelector('.calendar__list');
+		const daysContainer = document.querySelector('.events__list');
 		const createDay = async ([date, events]) => {
 			const createEvent = async (event) => {
 				const eventTemplate = document.querySelector('#event-template');
 				const eventElem = eventTemplate.content
 					.cloneNode(true)
-					.querySelector('.events__item');
-				const eventTime = eventElem.querySelector('.events__time');
+					.querySelector('.event');
+				const eventTime = eventElem.querySelector('.event__time');
 				eventTime.textContent = event.start.replace(/:00$/g, '');
-				const eventColor = eventElem.querySelector('.day__color');
+				const eventColor = eventElem.querySelector('.event__color');
 				eventColor.style.backgroundColor = event.color;
-				const eventAuthor = eventElem.querySelector('.events__author');
+				const eventAuthor = eventElem.querySelector('.event__author');
 				const [worker] = await this.database.select('worker', {worker_id: event.worker_id});
 				eventAuthor.textContent = worker.position;
-				const eventDesc = eventElem.querySelector('.events__name');
+				const eventDesc = eventElem.querySelector('.event__name');
 				eventDesc.textContent = event.description;
 				eventsContainer.appendChild(eventElem);
 			};
@@ -71,7 +71,7 @@ export default class Events {
 				monthMap[new Date(date).getMonth() + 1]
 			}`;
 
-			const eventsContainer = dayElem.querySelector('.events');
+			const eventsContainer = dayElem.querySelector('.day__events');
 			for (let evt of events) createEvent(evt);
 			daysContainer.appendChild(dayElem);
 		};

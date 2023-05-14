@@ -74,11 +74,11 @@
                     </li>
 
                     <li class="nav__item">
-                        <a class="nav__btn" href="">
+                        <a class="nav__btn" href="./calendar.html">
                             <svg class="nav__icon">
                                 <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
                             </svg>
-                            <p class="nav__text">Календарь</p>
+                            <p class="nav__text">События</p>
                         </a>
                     </li>
 
@@ -224,110 +224,10 @@
         </main>
 
         <aside class="aside">
-
-            <div class="calendar">
-
-                <h3 class="calendar__title">Календарь</h3>
-
-                <ul class="calendar__list" role="list">
-
-                    <li class="day">
-
-                        <div class="day__header">
-                            <p class="day__title">20 Мая</p>
-                            <button class="day__btn" type="button">
-                                <svg class="day__btn__icon">
-                                    <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <ul class="events" role="list">
-
-                            <li class="events__item">
-                                <p class="events__time">09:00</p>
-                                <div class="day__color"></div>
-                                <div class="events__content">
-                                    <p class="events__author">Старший программист</p>
-                                    <p class="events__name">Собеседование</p>
-                                </div>
-                            </li>
-
-                            <li class="events__item">
-                                <p class="events__time">10:00</p>
-                                <div class="day__color" style="background-color: #E45A5A;"></div>
-                                <div class="events__content">
-                                    <p class="events__author">Начальник отдела</p>
-                                    <p class="events__name">Собрание</p>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </li>
-
-                    <li class="day">
-
-                        <div class="day__header">
-                            <p class="day__title">25 Мая</p>
-                            <button class="day__btn" type="button">
-                                <svg class="day__btn__icon">
-                                    <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <ul class="events" role="list">
-
-                            <li class="events__item">
-                                <p class="events__time">08:00</p>
-                                <div class="day__color" style="background-color: #8BC34A;"></div>
-                                <div class="events__content">
-                                    <p class="events__author">Руководитель отдела</p>
-                                    <p class="events__name">Консультация</p>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </li>
-
-                    <li class="day">
-
-                        <div class="day__header">
-                            <p class="day__title">26 Мая</p>
-                            <button class="day__btn" type="button">
-                                <svg class="day__btn__icon">
-                                    <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
-                                </svg>
-                            </button>
-                        </div>
-
-                        <ul class="events" role="list">
-
-                            <li class="events__item">
-                                <p class="events__time">09:00</p>
-                                <div class="day__color" style="background-color: #FBC02D;"></div>
-                                <div class="events__content">
-                                    <p class="events__author">HR-директор</p>
-                                    <p class="events__name">Собеседование</p>
-                                </div>
-                            </li>
-
-                            <li class="events__item">
-                                <p class="events__time">10:00</p>
-                                <div class="day__color" style="background-color: #3780FF;"></div>
-                                <div class="events__content">
-                                    <p class="events__author">HR-менеджер</p>
-                                    <p class="events__name">Конференция</p>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </li>
-
-                </ul>
-
+            <div class="events">
+                <h3 class="events__title">События</h3>
+                <ul class="events__list" role="list"></ul>
             </div>
-
         </aside>
 
     </div>
@@ -473,6 +373,33 @@
             </section>
 
         </div>
+    </template>
+
+    <template id="day-template">
+        <li class="day">
+
+            <div class="day__header">
+                <p class="day__title"></p>
+                <button class="day__btn" type="button">
+                    <svg class="day__btn__icon">
+                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                    </svg>
+                </button>
+            </div>
+
+            <ul class="day__events" role="list"></ul>
+        </li>
+    </template>
+
+    <template id="event-template">
+        <li class="event">
+            <p class="event__time"></p>
+            <div class="event__color"></div>
+            <div class="event__content">
+                <p class="event__author"></p>
+                <p class="event__name"></p>
+            </div>
+        </li>
     </template>
 
 </body>

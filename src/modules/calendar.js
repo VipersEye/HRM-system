@@ -4,7 +4,7 @@ import '@styles/section.css';
 import '@styles/tasks.css';
 import '@styles/sorting-fields.css';
 import '@styles/data.css';
-import '@styles/calendar.css';
+import '@styles/events.css';
 
 import CircleProgress from '@modules/CircleProgress';
 import Database from '@modules/Database';

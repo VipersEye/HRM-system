@@ -4,10 +4,11 @@ import '@styles/section.css';
 import '@styles/tasks.css';
 import '@styles/sorting-fields.css';
 import '@styles/data.css';
-import '@styles/calendar.css';
+import '@styles/events.css';
 
 import CircleProgress from '@modules/CircleProgress';
 import Database from '@modules/Database';
+import Events from '@modules/events';
 
 class Recruiting {
 	constructor(Database) {
@@ -175,3 +176,4 @@ class Recruiting {
 }
 
 const recruiting = new Recruiting(Database);
+const events = new Events();
