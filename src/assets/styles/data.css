@@ -17,6 +17,14 @@
 	box-shadow: 4px 4px 8px 4px hsla(0, 0%, 60%, 0.3);
 }
 
+.content-wrapper_block {
+	padding: 2rem;
+
+	border-radius: 1.5rem;
+	background-color: var(--clr-neutral-100);
+	box-shadow: 4px 4px 8px 4px hsla(0, 0%, 60%, 0.3);
+}
+
 .content {
 	flex: 1;
 
