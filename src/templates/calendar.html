@@ -165,6 +165,42 @@
             </div>
         </aside>
 
+        <dialog class="calendar__modal" open>
+            <form class="modal__form" action="#" method="dialog">
+                <h3 class="modal__header">
+                    Новое событие: <span id="new-event-day">26</span> <span id="new-event-month">Мая</span>
+                </h3>
+                <div class="modal__input-container">
+                    <label class="modal__label" for="input-title">Название события</label>
+                    <input class="modal__input" type="text" name="title" id="input-title" placeholder="Название..." required maxlength="28">
+                </div>
+                <section class="modal__group">
+                    <div class="modal__input-container">
+                        <label class="modal__label" for="input-start-time">Начало</label>
+                        <input class="modal__input" type="time" name="start" id="input-start-time" required>
+                    </div>
+                    <div class="modal__input-container">
+                        <label class="modal__label" for="input-end-time">Окончание</label>
+                        <input class="modal__input" type="time" name="end" id="input-end-time" required>
+                    </div>
+                    <div class="modal__input-container">
+                        <label class="modal__label" for="input-color">Цвет</label>
+                        <div class="modal__color-container">
+                            <input class="modal__input modal__input_color" type="color" name="color" id="input-color" value="#6427F1" required>
+                        </div>
+                    </div>
+                </section>
+                <div class="modal__input-container">
+                    <label class="modal__label" for="input-description">Описание</label>
+                    <textarea class="modal__input modal__input_textarea" name="description" id="input-description" cols="30" rows="5" placeholder="Описание события..." required></textarea>
+                </div>
+                <div class="modal__btns-container">
+                    <button class="modal__btn modal__btn_add" type="submit">Добавить</button>
+                    <button class="modal__btn modal__btn_close" type="button">Закрыть</button>
+                </div>
+            </form>
+        </dialog>
+
     </div>
 
     <template id="day-template">
