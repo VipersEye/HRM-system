@@ -7,12 +7,12 @@ import '@styles/data.css';
 import '@styles/events.css';
 import '@styles/calendar.css';
 
-import CircleProgress from '@modules/CircleProgress';
 import Database from '@modules/Database';
 import Events from '@modules/events';
 
 class Calendar {
 	constructor() {
+		this.database = new Database();
 		this.currentDate = new Date();
 		this.setCalendar();
 
@@ -86,13 +86,17 @@ class Calendar {
 			};
 
 			const setGridCells = () => {
-				const appendGridCell = (content) => {
+				const appendGridCell = (year, month, date) => {
 					const gridCell = document.createElement('div');
+					gridCell.setAttribute(
+						'date',
+						`${year}-${String(month).length < 2 ? `0${month}` : month}-${date}`
+					);
 					gridCell.classList.add('calendar__cell');
 					if (currentCell % 7 === 0) gridCell.classList.add('calendar__cell_right');
 					if ((currentCell - 1) % 7 === 0) gridCell.classList.add('calendar__cell_left');
 					if (currentCell > 35) gridCell.classList.add('calendar__cell_bottom');
-					gridCell.textContent = content;
+					gridCell.textContent = date;
 					calendarGrid.appendChild(gridCell);
 				};
 
@@ -101,21 +105,31 @@ class Calendar {
 
 				for (
 					let firstDay = new Date(year, month - 1, 1).getDay() || 7,
-						date = new Date(year, month - 1, 0).getDate() - firstDay + 2;
+						date = new Date(year, month - 1, 0).getDate() - firstDay + 2,
+						fullDate = new Date(new Date().setMonth(new Date().getMonth() - 1));
 					firstDay > 1;
 					date++, availableCells--, firstDay--, currentCell++
 				) {
-					appendGridCell(date);
+					appendGridCell(fullDate.getFullYear(), fullDate.getMonth() + 1, date);
 				}
 				for (
 					let date = 1;
 					date <= new Date(year, month, 0).getDate();
 					date++, availableCells--, currentCell++
 				) {
-					appendGridCell(date);
+					appendGridCell(
+						this.currentDate.getFullYear(),
+						this.currentDate.getMonth() + 1,
+						date
+					);
 				}
-				for (let date = 1; availableCells > 0; date++, availableCells--, currentCell++) {
-					appendGridCell(date);
+				for (
+					let date = 1,
+						fullDate = new Date(new Date().setMonth(new Date().getMonth() + 1));
+					availableCells > 0;
+					date++, availableCells--, currentCell++
+				) {
+					appendGridCell(fullDate.getFullYear(), fullDate.getMonth() + 1, date);
 				}
 			};
 
@@ -124,7 +138,23 @@ class Calendar {
 			setGridCells();
 		};
 
-		const setEvents = () => {};
+		const setEvents = async () => {
+			const allEvents = await this.database.select('event');
+			const monthEvents = allEvents.filter((event) => {
+				let [, month] = event.date.split('-');
+				return this.currentDate.getMonth() + 1 === +month;
+			});
+
+			for (let evt of monthEvents) {
+				const eventEl = document.createElement('div');
+				eventEl.classList.add('calendar__event');
+				eventEl.style.backgroundColor = evt.color;
+				eventEl.textContent = evt.title;
+
+				const dayCell = calendarGrid.querySelector(`.calendar__cell[date="${evt.date}"]`);
+				dayCell.appendChild(eventEl);
+			}
+		};
 
 		setCalendarYearMonth();
 		setCalendarDays();
@@ -132,5 +162,5 @@ class Calendar {
 	}
 }
 
-const calendar = new Calendar();
 const events = new Events();
+const calendar = new Calendar();

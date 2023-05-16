@@ -1,5 +1,5 @@
 .calendar__header {
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	padding: 0 1rem;
 
 	display: flex;
@@ -77,4 +77,19 @@
 
 .calendar__cell_bottom {
 	border-bottom: 0;
+}
+
+.calendar__event {
+	margin-bottom: 0.3rem;
+
+	font-size: 0.8rem;
+	text-align: center;
+	color: var(--clr-neutral-100);
+
+	border-radius: 0.5rem;
+	background-color: var(--clr-primary-400);
+}
+
+.calendar__event:last-child {
+	margin-bottom: 0;
 }

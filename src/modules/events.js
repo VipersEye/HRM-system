@@ -7,21 +7,7 @@ export default class Events {
 	}
 
 	async createEvents() {
-		const eventsData = await this.database.select('event');
-		const nextEvents = eventsData
-			.map((event) => {
-				let [year, month, date] = event.date.split('-');
-				let [hour, minutes, seconds] = event.start.split(':');
-				event.fullDate = new Date(year, month - 1, date, hour, minutes, seconds);
-				return event;
-			})
-			.filter((event) => {
-				const currentDate = new Date();
-				return currentDate < event.fullDate;
-			})
-			.sort((fEvent, sEvent) => {
-				return fEvent.fullDate < sEvent.fullDate ? -1 : 1;
-			});
+		const nextEvents = await this.getNextEvents();
 		const days = nextEvents.reduce((res, event) => {
 			const dateString = `${event.fullDate.getFullYear()} ${
 				event.fullDate.getMonth() + 1
@@ -45,8 +31,8 @@ export default class Events {
 				const eventAuthor = eventElem.querySelector('.event__author');
 				const [worker] = await this.database.select('worker', {worker_id: event.worker_id});
 				eventAuthor.textContent = worker.position;
-				const eventDesc = eventElem.querySelector('.event__name');
-				eventDesc.textContent = event.description;
+				const eventTitle = eventElem.querySelector('.event__name');
+				eventTitle.textContent = event.title;
 				eventsContainer.appendChild(eventElem);
 			};
 
@@ -77,5 +63,24 @@ export default class Events {
 		};
 
 		for (const day of Object.entries(days)) createDay(day);
+	}
+
+	async getNextEvents() {
+		const eventsData = await this.database.select('event');
+		const nextEvents = eventsData
+			.map((event) => {
+				let [year, month, date] = event.date.split('-');
+				let [hour, minutes, seconds] = event.start.split(':');
+				event.fullDate = new Date(year, month - 1, date, hour, minutes, seconds);
+				return event;
+			})
+			.filter((event) => {
+				const currentDate = new Date();
+				return currentDate < event.fullDate;
+			})
+			.sort((fEvent, sEvent) => {
+				return fEvent.fullDate < sEvent.fullDate ? -1 : 1;
+			});
+		return nextEvents;
 	}
 }
