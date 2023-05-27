@@ -165,10 +165,10 @@
             </div>
         </aside>
 
-        <dialog class="calendar__modal" open>
+        <dialog class="calendar__modal">
             <form class="modal__form" action="#" method="dialog">
                 <h3 class="modal__header">
-                    Новое событие: <span id="new-event-day">26</span> <span id="new-event-month">Мая</span>
+                    Новое событие: <span id="new-event-day"></span> <span id="new-event-month"></span>
                 </h3>
                 <div class="modal__input-container">
                     <label class="modal__label" for="input-title">Название события</label>
@@ -206,6 +206,14 @@
         </dialog>
 
     </div>
+
+    <template id="btn-event-template">
+        <button class="calendar__cell__btn" type="button">
+            <svg class="calendar__cell__icon">
+                <use xlink:href="./images/icons/svg/icons.svg#plus-icon"></use>
+            </svg>
+        </button>
+    </template>
 
     <template id="day-template">
         <li class="day">

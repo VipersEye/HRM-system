@@ -52,11 +52,14 @@
 }
 
 .calendar__cell {
+	position: relative;
 	padding: 0.3rem;
 
 	text-align: end;
 
 	border: 1px solid var(--clr-neutral-200);
+
+	transition: border-color 0.3s linear;
 }
 
 .calendar__cell_top {
@@ -77,6 +80,41 @@
 
 .calendar__cell_bottom {
 	border-bottom: 0;
+}
+
+.calendar__cell:hover {
+	border-color: var(--clr-primary-400);
+}
+
+.calendar__cell:hover .calendar__cell__btn {
+	opacity: 1;
+}
+
+.calendar__cell__btn {
+	position: absolute;
+	top: -1.25rem;
+	right: -1.25rem;
+	z-index: 10;
+
+	padding: 0.5rem;
+
+	display: flex;
+
+	border: 0;
+	border-radius: 50%;
+	background-color: var(--clr-primary-400);
+	outline: 0;
+	opacity: 0;
+	cursor: pointer;
+
+	transition: opacity 0.3s linear 0.3s;
+}
+
+.calendar__cell__icon {
+	width: 1rem;
+	height: 1rem;
+
+	fill: var(--clr-neutral-100);
 }
 
 .calendar__event {
@@ -127,8 +165,8 @@
 	row-gap: 0.4rem;
 	grid-template-columns: max-content 1fr;
 	grid-template-areas:
-	'label required'
-	'input input';
+		'label required'
+		'input input';
 }
 
 .modal__color-container {
