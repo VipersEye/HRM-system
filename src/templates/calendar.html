@@ -49,15 +49,6 @@
                     <li class="nav__item">
                         <a class="nav__btn" href="">
                             <svg class="nav__icon">
-                                <use xlink:href="./images/icons/svg/icons.svg#payroll-icon"></use>
-                            </svg>
-                            <p class="nav__text">Зарплата</p>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a class="nav__btn" href="">
-                            <svg class="nav__icon">
                                 <use xlink:href="./images/icons/svg/icons.svg#statistics-icon"></use>
                             </svg>
                             <p class="nav__text">Статистика</p>
@@ -136,7 +127,25 @@
                 <div class="section__header">
                     <h2 class="section__title section__title_large">События</h2>
                 </div>
-                <div class="content-wrapper content-wrapper_table"></div>
+                <div class="content-wrapper content-wrapper_block">
+                    <div class="calendar__header">
+                        <button class="calendar__header__btn" id="btn-prev-month">
+                            <svg class="calendar__icon calendar__icon_left">
+                                <use xlink:href="./images/icons/svg/icons.svg#arrow-icon"></use>
+                            </svg>
+                        </button>
+
+                        <p class="calendar__header__text" id="calendar-month"></p>
+                        <p class="calendar__header__text" id="calendar-year"></p>
+
+                        <button class="calendar__header__btn" id="btn-next-month">
+                            <svg class="calendar__icon calendar__icon_right">
+                                <use xlink:href="./images/icons/svg/icons.svg#arrow-icon"></use>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="calendar__grid"></div>
+                </div>
             </section>
         </main>
 
@@ -147,7 +156,55 @@
             </div>
         </aside>
 
+        <dialog class="calendar__modal">
+            <form class="modal__form" action="#" method="dialog">
+                <h3 class="modal__header">
+                    Новое событие: <span id="new-event-day"></span> <span id="new-event-month"></span>
+                </h3>
+                <div class="modal__input-container">
+                    <label class="modal__label" for="input-title">Название события</label>
+                    <input class="modal__input" type="text" name="title" id="input-title" placeholder="Название..." required maxlength="28">
+                    <span class="modal__required"></span>
+                </div>
+                <section class="modal__group">
+                    <div class="modal__input-container">
+                        <label class="modal__label" for="input-start-time">Начало</label>
+                        <input class="modal__input" type="time" name="start" id="input-start-time" required>
+                        <span class="modal__required"></span>
+                    </div>
+                    <div class="modal__input-container">
+                        <label class="modal__label" for="input-end-time">Окончание</label>
+                        <input class="modal__input" type="time" name="end" id="input-end-time" required>
+                        <span class="modal__required"></span>
+                    </div>
+                    <div class="modal__input-container">
+                        <label class="modal__label" for="input-color">Цвет</label>
+                        <div class="modal__color-container modal__input">
+                            <input class="modal__input_color" type="color" name="color" id="input-color" value="#6427F1" required>
+                        </div>
+                    </div>
+                </section>
+                <div class="modal__input-container">
+                    <label class="modal__label" for="input-description">Описание</label>
+                    <textarea class="modal__input modal__input_textarea" name="description" id="input-description" cols="30" rows="5" placeholder="Описание события..." required></textarea>
+                    <span class="modal__required"></span>
+                </div>
+                <div class="modal__btns-container">
+                    <button class="modal__btn modal__btn_add" type="submit">Добавить</button>
+                    <button class="modal__btn modal__btn_close" type="button">Закрыть</button>
+                </div>
+            </form>
+        </dialog>
+
     </div>
+
+    <template id="btn-event-template">
+        <button class="calendar__cell__btn" type="button">
+            <svg class="calendar__cell__icon">
+                <use xlink:href="./images/icons/svg/icons.svg#plus-icon"></use>
+            </svg>
+        </button>
+    </template>
 
     <template id="day-template">
         <li class="day">

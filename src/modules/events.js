@@ -7,21 +7,8 @@ export default class Events {
 	}
 
 	async createEvents() {
-		const eventsData = await this.database.select('event');
-		const nextEvents = eventsData
-			.map((event) => {
-				let [year, month, date] = event.date.split('-');
-				let [hour, minutes, seconds] = event.start.split(':');
-				event.fullDate = new Date(year, month - 1, date, hour, minutes, seconds);
-				return event;
-			})
-			.filter((event) => {
-				const currentDate = new Date();
-				return currentDate < event.fullDate;
-			})
-			.sort((fEvent, sEvent) => {
-				return fEvent.fullDate < sEvent.fullDate ? -1 : 1;
-			});
+		const workers = await this.database.select('worker');
+		const nextEvents = await this.getNextEvents();
 		const days = nextEvents.reduce((res, event) => {
 			const dateString = `${event.fullDate.getFullYear()} ${
 				event.fullDate.getMonth() + 1
@@ -32,21 +19,22 @@ export default class Events {
 		}, {});
 
 		const daysContainer = document.querySelector('.events__list');
-		const createDay = async ([date, events]) => {
-			const createEvent = async (event) => {
+		const clearDaysContainer = () => {
+			while (daysContainer.firstChild) daysContainer.removeChild(daysContainer.firstChild);
+		};
+		const createDay = ([date, events]) => {
+			const createEvent = ({start, color, worker_id: eventWorkerID, title}) => {
 				const eventTemplate = document.querySelector('#event-template');
-				const eventElem = eventTemplate.content
-					.cloneNode(true)
-					.querySelector('.event');
+				const eventElem = eventTemplate.content.cloneNode(true).querySelector('.event');
 				const eventTime = eventElem.querySelector('.event__time');
-				eventTime.textContent = event.start.replace(/:00$/g, '');
+				eventTime.textContent = start.replace(/:00$/g, '');
 				const eventColor = eventElem.querySelector('.event__color');
-				eventColor.style.backgroundColor = event.color;
+				eventColor.style.backgroundColor = color;
 				const eventAuthor = eventElem.querySelector('.event__author');
-				const [worker] = await this.database.select('worker', {worker_id: event.worker_id});
+				const worker = workers.find(({worker_id}) => worker_id === eventWorkerID);
 				eventAuthor.textContent = worker.position;
-				const eventDesc = eventElem.querySelector('.event__name');
-				eventDesc.textContent = event.description;
+				const eventTitle = eventElem.querySelector('.event__name');
+				eventTitle.textContent = title;
 				eventsContainer.appendChild(eventElem);
 			};
 
@@ -76,6 +64,26 @@ export default class Events {
 			daysContainer.appendChild(dayElem);
 		};
 
+		clearDaysContainer();
 		for (const day of Object.entries(days)) createDay(day);
+	}
+
+	async getNextEvents() {
+		const eventsData = await this.database.select('event');
+		const nextEvents = eventsData
+			.map((event) => {
+				let [year, month, date] = event.date.split('-');
+				let [hour, minutes, seconds] = event.start.split(':');
+				event.fullDate = new Date(year, month - 1, date, hour, minutes, seconds);
+				return event;
+			})
+			.filter((event) => {
+				const currentDate = new Date(2023, 4, 16);
+				return currentDate < event.fullDate;
+			})
+			.sort((fEvent, sEvent) => {
+				return fEvent.fullDate < sEvent.fullDate ? -1 : 1;
+			});
+		return nextEvents;
 	}
 }
