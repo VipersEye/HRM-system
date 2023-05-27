@@ -122,15 +122,19 @@
 }
 
 .modal__input-container {
-	display: flex;
-	flex-direction: column;
-	gap: 0.4rem;
+	display: grid;
+	align-items: center;
+	row-gap: 0.4rem;
+	grid-template-columns: max-content 1fr;
+	grid-template-areas:
+	'label required'
+	'input input';
 }
 
 .modal__color-container {
-	flex: 1;
-
 	position: relative;
+
+	aspect-ratio: 1 / 1;
 
 	border-radius: 0.5rem;
 	overflow: hidden;
@@ -142,13 +146,17 @@
 }
 
 .modal__label {
+	grid-area: label;
+
 	font-size: 1rem;
-	font-weight: (--fw-regular);
+	font-weight: var(--fw-regular);
 	line-height: 1;
 	color: var(--clr-neutral-400);
 }
 
 .modal__input {
+	grid-area: input;
+
 	padding: 0.3rem 0.5rem;
 
 	font-size: 1rem;
@@ -178,6 +186,30 @@
 	height: 3rem;
 
 	border: 0;
+}
+
+.modal__required {
+	grid-area: required;
+	align-self: stretch;
+
+	position: relative;
+}
+
+.modal__required::before {
+	content: '*';
+	position: absolute;
+	top: -0.4rem;
+	left: 0.2rem;
+
+	color: var(--clr-success);
+}
+
+.modal__input:invalid + .modal__required::before {
+	color: var(--clr-error);
+}
+
+.modal__input:valid {
+	border-color: var(--clr-primary-400);
 }
 
 .modal__input:focus {
