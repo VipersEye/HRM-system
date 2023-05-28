@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HRMS, менеджмент, человеческие ресурсы, автоматизация, предприятие">
+    <meta name="description" content="Добро пожаловать! HRMS - это совершенно новая HRM-система, которая позволит вам эффективно распоряжаться человеческими ресурсами на предприятии. Предприятие любого вида и направленности обязательно найдет для себя все необходимые функции для успешного развития кадров.">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/icons/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicons/favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <title>HRMS: Обращения</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="nav-container">
+
+            <header class="header">
+                <a class="header__content" href="./home.html">
+                    <img class="header__logo" src="./images/logo.png" alt="Логотип HRM системы">
+                    <h1 class="header__text">
+                        <span class="header__letter">H</span><span class="header__letter">R</span><span class="header__letter">M</span><span class="header__letter">S</span>
+                    </h1>
+                </a>
+            </header>
+
+            <nav class="nav">
+                <ul class="nav__list" aria-label="Инструменты" role="list">
+                    <li class="nav__item">
+                        <a class="nav__btn" href="./recruiting.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#recruiting-icon"></use>
+                            </svg>
+                            <p class="nav__text">Рекрутинг</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="./workers.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#group-icon"></use>
+                            </svg>
+                            <p class="nav__text">Сотрудники</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#statistics-icon"></use>
+                            </svg>
+                            <p class="nav__text">Статистика</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#data-icon"></use>
+                            </svg>
+                            <p class="nav__text">Данные</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="./calendar.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                            </svg>
+                            <p class="nav__text">События</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#test-icon"></use>
+                            </svg>
+                            <p class="nav__text">Тестирование</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item nav__item_current">
+                        <a class="nav__btn" href="./feedback.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#chat-icon"></use>
+                            </svg>
+                            <p class="nav__text">Обращения</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav class="nav">
+                <ul class="nav__list" aria-label="Другое" role="list">
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#settings-icon"></use>
+                            </svg>
+                            <p class="nav__text">Настройки</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="./login.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#logout-icon"></use>
+                            </svg>
+                            <p class="nav__text">Выйти</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav__toggler-btn nav__toggler-btn_close" type="button">
+                <svg class="nav__toggler-icon">
+                    <use xlink:href="./images/icons/svg/icons.svg#arrow-icon"></use>
+                </svg>
+            </button>
+        </div>
+
+        <main class="main">
+
+            <section class="section section_grow">
+                <div class="section__header">
+                    <h2 class="section__title section__title_large">Обращения</h2>
+                    <button class="section__btn section__btn_clear">Очистить</button>
+                </div>
+
+                <div class="section__inputs">
+
+                    <div class="section__container section__container_x2">
+                        <input
+                            class="section__input section__input_search"
+                            type="search"
+                            name="search"
+                            id="input-search"
+                            placeholder="Поиск"
+                            aria-label="Поиск">
+                        <svg class="section__input__icon">
+                            <use xlink:href="./images/icons/svg/icons.svg#search-icon"></use>
+                        </svg>
+                    </div>
+
+                </div>
+
+                <div class="content-wrapper content-wrapper_table" id="workers-list">
+                    <ul class="content content_table" role="list" aria-label="Список сотрудников">
+                    </ul>
+                </div>
+
+                <div class="content-wrapper content-wrapper_table hidden" id="graph">
+                    <div class="section__graph"></div>
+                </div>
+
+            </section>
+
+        </main>
+
+        <aside class="aside">
+            <div class="events">
+                <h3 class="events__title">События</h3>
+                <ul class="events__list" role="list"></ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <template id="day-template">
+        <li class="day">
+
+            <div class="day__header">
+                <p class="day__title"></p>
+                <button class="day__btn" type="button">
+                    <svg class="day__btn__icon">
+                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                    </svg>
+                </button>
+            </div>
+
+            <ul class="day__events" role="list"></ul>
+        </li>
+    </template>
+
+    <template id="event-template">
+        <li class="event">
+            <p class="event__time"></p>
+            <div class="event__color"></div>
+            <div class="event__content">
+                <p class="event__author"></p>
+                <p class="event__name"></p>
+            </div>
+        </li>
+    </template>
+
+</body>
+</html>
