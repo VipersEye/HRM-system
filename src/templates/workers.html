@@ -49,15 +49,6 @@
                     <li class="nav__item">
                         <a class="nav__btn" href="">
                             <svg class="nav__icon">
-                                <use xlink:href="./images/icons/svg/icons.svg#payroll-icon"></use>
-                            </svg>
-                            <p class="nav__text">Зарплата</p>
-                        </a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a class="nav__btn" href="">
-                            <svg class="nav__icon">
                                 <use xlink:href="./images/icons/svg/icons.svg#statistics-icon"></use>
                             </svg>
                             <p class="nav__text">Статистика</p>
@@ -188,8 +179,8 @@
                                 <use xlink:href="./images/icons/svg/icons.svg#cards-icon"></use>
                             </svg>
                         </label>
-                        <input class="section__radio" type="radio" name="view" id="radio-rows" value="rows">
-                        <label class="section__label" for="radio-rows">
+                        <input class="section__radio" type="radio" name="view" id="radio-table" value="rows">
+                        <label class="section__label" for="radio-table">
                             <svg class="section__input__icon">
                                 <use xlink:href="./images/icons/svg/icons.svg#rows-icon"></use>
                             </svg>
@@ -199,23 +190,10 @@
                 </div>
 
                 <div class="content-wrapper" id="workers-list">
-                    <ul class="content content_cards" role="list" aria-label="Список сотрудников">
-
-                        <li class="content__item content__item_header">
-                            <div class="row row_header">
-                                <p class="content__name">Имя</p>
-                                <p class="content__surname">Фамилия</p>
-                                <p class="content__middlename">Отчество</p>
-                                <p class="content__division">Подразделение</p>
-                                <p class="content__position">Должность</p>
-                                <p class="content__salary">Заработная плата</p>
-                            </div>
-                        </li>
-
-                    </ul>
+                    <ul class="content content_cards" role="list" aria-label="Список сотрудников"></ul>
                 </div>
 
-                <div class="content-wrapper content-wrapper_table hidden" id="graph">
+                <div class="content-wrapper content-wrapper_block hidden" id="graph">
                     <div class="section__graph"></div>
                 </div>
 
@@ -232,48 +210,38 @@
 
     </div>
 
-    <template id="worker-template">
-        <li class="content__item">
-            <div class="card">
-                <button class="card__btn card__btn_more" type="button">
+    <template id="card-template">
+        <li class="card">
+            <button class="card__btn card__btn_more" type="button">
+                <svg class="card__icon">
+                    <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                </svg>
+            </button>
+            <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
+            <div class="card__data">
+                <p class="card__fullname"></p>
+                <p class="card__position"></p>
+            </div>
+            <div class="card__control">
+
+                <button class="card__btn card__btn_like" type="button">
                     <svg class="card__icon">
-                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                        <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
                     </svg>
                 </button>
-                <img class="card__avatar" src="./images/default-avatar.png" alt="Аватар соискателя">
-                <div class="card__data">
-                    <p class="card__fullname"></p>
-                    <p class="card__position"></p>
-                </div>
-                <div class="card__control">
 
-                    <button class="card__btn card__btn_like" type="button">
-                        <svg class="card__icon">
-                            <use xlink:href="./images/icons/svg/icons.svg#heart-icon"></use>
-                        </svg>
-                    </button>
+                <button class="card__btn card__btn_calendar" type="button">
+                    <svg class="card__icon">
+                        <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                    </svg>
+                </button>
 
-                    <button class="card__btn card__btn_calendar" type="button">
-                        <svg class="card__icon">
-                            <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
-                        </svg>
-                    </button>
+                <button class="card__btn card__btn_message" type="button">
+                    <svg class="card__icon">
+                        <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
+                    </svg>
+                </button>
 
-                    <button class="card__btn card__btn_message" type="button">
-                        <svg class="card__icon">
-                            <use xlink:href="./images/icons/svg/icons.svg#message-icon"></use>
-                        </svg>
-                    </button>
-
-                </div>
-            </div>
-            <div class="row">
-                <p class="row__name"></p>
-                <p class="row__surname"></p>
-                <p class="row__middlename"></p>
-                <p class="row__division"></p>
-                <p class="row__position"></p>
-                <p class="row__salary"></p>
             </div>
         </li>
     </template>

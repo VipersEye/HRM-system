@@ -24,15 +24,6 @@ class Workers {
 			e.currentTarget.classList.toggle('nav__toggler-btn_open');
 		};
 
-		const toggleView = () => {
-			let wrapper = document.querySelector('.content-wrapper');
-			let content = document.querySelector('.content');
-
-			wrapper.classList.toggle('content-wrapper_table');
-			content.classList.toggle('content_cards');
-			content.classList.toggle('content_table');
-		};
-
 		const toggleTab = (e) => {
 			let title = document.querySelector('.section__title');
 			let clearBtn = document.querySelector('.section__btn');
@@ -56,17 +47,10 @@ class Workers {
 		let navTogglerBtn = document.querySelector('.nav__toggler-btn');
 		navTogglerBtn.addEventListener('click', toggleNav);
 
-		let changeViewRadios = document.querySelectorAll(
-			'.section__container_radio .section__radio'
-		);
-		changeViewRadios.forEach((radio) => {
-			radio.addEventListener('change', toggleView);
-		});
-
-		let changeTabRadios = document.querySelectorAll('.section__tabs .section__radio');
-		changeTabRadios.forEach((radio) => {
-			radio.addEventListener('change', toggleTab);
-		});
+		const radioCardsView = document.querySelector('#radio-cards');
+		const radioTableView = document.querySelector('#radio-table');
+		radioCardsView.addEventListener('change', this.createCards.bind(this));
+		radioTableView.addEventListener('change', this.createTable.bind(this));
 
 		this.createCards();
 	}
@@ -166,19 +150,28 @@ class Workers {
 
 	async createCards() {
 		let workers = await this.getWorkersData();
-		let template = document.querySelector('#worker-template');
-		workers.forEach((worker) => {
-			let workersContainer = document.querySelector('.content');
-			let workerCard = template.content.cloneNode(true).querySelector('.content__item');
+		let template = document.querySelector('#card-template');
+		let wrapper = document.querySelector('.content-wrapper');
+		let cardsContainer = document.querySelector('.content');
 
-			workerCard.setAttribute('worker_id', `${worker.worker_id}`);
+		wrapper.classList.remove('content-wrapper_table');
+		cardsContainer.classList.remove('content_table');
+		cardsContainer.classList.add('content_cards');
+
+		const clearContainer = () => {
+			while (cardsContainer.firstChild) cardsContainer.removeChild(cardsContainer.firstChild);
+		};
+
+		clearContainer();
+
+		workers.forEach((worker) => {
+			let workerCard = template.content.cloneNode(true).querySelector('.card');
+
 			workerCard.querySelector('.card__avatar').src =
 				worker.avatar || './images/avatars/default-avatar.png';
 			for (let prop in worker) {
-				let cardData = workerCard.querySelector(`.row__${prop}`);
-				let rowData = workerCard.querySelector(`.card__${prop}`);
+				let cardData = workerCard.querySelector(`.card__${prop}`);
 				if (cardData) cardData.textContent = worker[prop];
-				if (rowData) rowData.textContent = worker[prop];
 			}
 
 			let moreBtn = workerCard.querySelector('.card__btn_more');
@@ -186,7 +179,42 @@ class Workers {
 				this.createPersona(worker.worker_id);
 			});
 
-			workersContainer.append(workerCard);
+			cardsContainer.append(workerCard);
+		});
+	}
+
+	async createTable() {
+		console.log('table');
+		let workers = await this.getWorkersData();
+		let wrapper = document.querySelector('.content-wrapper');
+		let cellsContainer = document.querySelector('.content');
+
+		wrapper.classList.add('content-wrapper_table');
+		cellsContainer.classList.remove('content_cards');
+		cellsContainer.classList.add('content_table_worker');
+
+		const clearContainer = () => {
+			while (cellsContainer.firstChild) cellsContainer.removeChild(cellsContainer.firstChild);
+		};
+
+		clearContainer();
+
+		// for (let i = 0; i < 30; i++) {
+			for (let key in workers[0]) {
+				const headerCell = document.createElement('div');
+				headerCell.classList.add('cell_header', 'cell');
+				headerCell.textContent = key;
+				cellsContainer.appendChild(headerCell);
+			}
+		// }
+
+		workers.forEach((worker) => {
+			for (let key in worker) {
+				const gridCell = document.createElement('div');
+				gridCell.classList.add('cell');
+				gridCell.textContent = worker[key];
+				cellsContainer.appendChild(gridCell);
+			}
 		});
 	}
 
