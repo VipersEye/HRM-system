@@ -221,11 +221,10 @@ class Login {
 
 		let user = {
 			id: worker ? worker[0]['worker_id'] : candidate[0]['candidate_id'],
-			role: worker ? 'worker' : 'candidate',
 		};
 
 		sessionStorage.setItem('id', user.id);
-		sessionStorage.setItem('role', user.role);
+		sessionStorage.setItem('feeling', false);
 
 		let saveLogPasInput = loginForm.querySelector('#input-remember');
 		if (
