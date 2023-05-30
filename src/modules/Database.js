@@ -36,6 +36,27 @@ export default class Database {
 		return JSON.parse(response);
 	}
 
+	async update(table, values, conditions) {
+		let data = {
+			table,
+			values,
+			conditions
+		};
+
+		let jsonData = JSON.stringify(data, (key, val) => {
+			if (val === '') return;
+			return val;
+		});
+
+		let responseHeaders = await fetch('./requests/requestUpdate.php', {
+			method: 'POST',
+			body: jsonData,
+		});
+
+		let response = await responseHeaders.text();
+		return JSON.parse(response);
+	}
+
 	async move(from, to) {
 		let data = {
 			from,

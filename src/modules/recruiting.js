@@ -5,6 +5,7 @@ import '@styles/tasks.css';
 import '@styles/sorting-fields.css';
 import '@styles/data.css';
 import '@styles/events.css';
+import '@styles/feeling.css';
 
 import CircleProgress from '@modules/CircleProgress';
 import Database from '@modules/Database';
@@ -88,6 +89,8 @@ class Recruiting {
 			circleDiagram.indeterminateText = '0';
 			circleDiagram.animation = 'easeInCubic';
 		});
+
+		this.checkFeeling();
 	}
 
 	async getCandidatesData() {
@@ -172,6 +175,50 @@ class Recruiting {
 		}
 
 		createCards(0, maxCardsOnPage);
+	}
+
+	checkFeeling() {
+		const modalFeedback = document.querySelector('.modal__feedback');
+		const modalFeeling = document.querySelector('.modal__feeling');
+		const closeFeedbackBtn = document.querySelector('.feedback__btn_close');
+		const addFeedbackBtn = document.querySelector('.feedback__btn_submit');
+		const modalForm = modalFeedback.querySelector('.feedback__form');
+
+		const chooseFeeling = (e) => {
+			if (!e.target.classList.contains('feeling__radio')) {
+				return;
+			}
+
+			const feelingValue = e.target.value;
+			sessionStorage.setItem('feeling', feelingValue);
+			modalFeeling.close();
+			if (feelingValue < 4) {
+				modalFeedback.showModal();
+			}
+		};
+
+		const closeFeedbackModal = () => {
+			modalForm.reset();
+			modalFeedback.close();
+		};
+
+		const addFeedback = async () => {
+			const formData = new FormData(modalForm);
+			const values = {
+				worker_id: sessionStorage.getItem('id'),
+			};
+			for (let [key, value] of formData) values[key] = value;
+			await this.database.insert('question', values);
+			modalForm.reset();
+		};
+
+		modalFeeling.addEventListener('click', chooseFeeling);
+		closeFeedbackBtn.addEventListener('click', closeFeedbackModal);
+		addFeedbackBtn.addEventListener('click', addFeedback);
+
+		if (sessionStorage.getItem('feeling') === 'false') {
+			modalFeeling.showModal();
+		}
 	}
 }
 
