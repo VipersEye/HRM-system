@@ -147,14 +147,7 @@
 
                 </div>
 
-                <div class="content-wrapper content-wrapper_table" id="workers-list">
-                    <ul class="content content_table" role="list" aria-label="Список сотрудников">
-                    </ul>
-                </div>
-
-                <div class="content-wrapper content-wrapper_table hidden" id="graph">
-                    <div class="section__graph"></div>
-                </div>
+                <div class="content-wrapper content-wrapper_table" id="workers-list"></div>
 
             </section>
 
@@ -168,6 +161,22 @@
         </aside>
 
     </div>
+
+    <template id="table-header-template">
+        <div class="cell cell_header cell_colored cell_first">Номер</div>
+        <div class="cell cell_header cell_colored">Сотрудник</div>
+        <div class="cell cell_header cell_colored">Дата</div>
+        <div class="cell cell_header cell_colored">Обращение</div>
+        <div class="cell cell_header cell_colored cell_last">Статус</div>
+    </template>
+
+    <template id="table-row-template">
+        <div class="cell cell_first" content="question_id"></div>
+        <div class="cell" content="author"></div>
+        <div class="cell" content="date"></div>
+        <div class="cell" content="content"></div>
+        <div class="cell cell_last" content="status"></div>
+    </template>
 
     <template id="day-template">
         <li class="day">

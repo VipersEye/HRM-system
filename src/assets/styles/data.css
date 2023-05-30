@@ -149,7 +149,7 @@
 	height: 100%;
 }
 
-.table_worker {
+.table {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -157,7 +157,6 @@
 	left: 0;
 
 	display: grid;
-	grid-template-columns: repeat(13, max-content);
 	grid-auto-rows: min-content;
 	grid-auto-flow: row;
 	align-items: start;
@@ -165,10 +164,21 @@
 	overflow: auto;
 }
 
+.table_worker {
+	grid-template-columns: repeat(13, max-content);
+}
+
+.table_feedback {
+	grid-template-columns: auto auto auto 1fr auto;
+	align-items: stretch;
+}
+
 .cell {
 	padding: 0.5rem 1rem;
 
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .cell_header {

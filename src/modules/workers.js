@@ -205,7 +205,7 @@ class Workers {
 		}
 
 		const table = document.createElement('div');
-		table.classList.add('table_worker');
+		table.classList.add('table', 'table_worker');
 
 		const tableHeader = document
 			.querySelector('#table-header-template')
