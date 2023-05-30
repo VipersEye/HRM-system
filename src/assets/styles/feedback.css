@@ -1,0 +1,44 @@
+.feedback__btns {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.feedback__btn {
+	padding: 0.7rem 1rem;
+
+	font-size: 1rem;
+	font-weight: var(--fw-regular);
+	line-height: 1;
+	color: var(--clr-neutral-100);
+
+	border: 0;
+	border-radius: 0.5rem;
+	cursor: pointer;
+
+	transition: background-color 0.3s linear;
+}
+
+.feedback__btn_accept {
+	background-color: var(--clr-primary-400);
+}
+
+.feedback__btn_accept:hover {
+	background-color: var(--clr-primary-600);
+}
+
+.feedback__btn_accept:active {
+	background-color: var(--clr-primary-700);
+}
+
+.feedback__btn_deny {
+	background-color: var(--clr-neutral-300);
+}
+
+.feedback__btn_deny:hover {
+	background-color: var(--clr-primary-200);
+}
+
+.feedback__btn_deny:active {
+	background-color: var(--clr-primary-300);
+}

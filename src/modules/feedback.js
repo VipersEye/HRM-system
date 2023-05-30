@@ -13,10 +13,7 @@ class Feedback {
 	constructor(Database) {
 		this.database = new Database();
 
-		(async () => {
-			const feedback = await this.getFeedback();
-			this.createTable(feedback);
-		})();
+		this.createTable();
 	}
 
 	async getFeedback() {
@@ -26,7 +23,7 @@ class Feedback {
 			.map((message) => {
 				message.date = new Date(message.date).toLocaleDateString();
 				message.status =
-					message.status === 't' ? true : message.status === 'f' ? false : 'pending';
+					message.status === 't' ? 'Принято' : message.status === 'f' ? 'Отклонено' : '';
 				const author = workers.find((worker) => worker.worker_id === message.worker_id);
 				message.author = `${author.surname} ${author.name}`;
 				return message;
@@ -35,9 +32,10 @@ class Feedback {
 		return feedback;
 	}
 
-	async createTable(feedback) {
-		const wrapper = document.querySelector('.content-wrapper');
+	async createTable(fb) {
+		const feedback = fb || (await this.getFeedback());
 
+		const wrapper = document.querySelector('.content-wrapper');
 		while (wrapper.firstChild) {
 			wrapper.removeChild(wrapper.firstChild);
 		}
@@ -51,6 +49,35 @@ class Feedback {
 		table.append(tableHeader);
 
 		const tableRowTemplate = document.querySelector('#table-row-template');
+
+		const addStatusControl = (cell) => {
+			const controlTemplate = document.querySelector('#feedback-status-template');
+			const control = controlTemplate.content
+				.cloneNode(true)
+				.querySelector('.feedback__btns');
+
+			const btnAccept = control.querySelector('.feedback__btn_accept');
+			const btnDeny = control.querySelector('.feedback__btn_deny');
+
+			const updateStatus = async (e) => {
+				const values = {
+					status: e.target.classList.contains('feedback__btn_accept'),
+				};
+
+				const conditions = {
+					worker_id: cell.getAttribute('id'),
+				};
+
+				await this.database.update('question', values, conditions);
+				await this.createTable();
+			};
+
+			btnAccept.addEventListener('click', updateStatus);
+			btnDeny.addEventListener('click', updateStatus);
+
+			cell.appendChild(control);
+		};
+
 		feedback.forEach((message, i) => {
 			const tableRow = tableRowTemplate.content.cloneNode(true);
 			if (i % 2 !== 0) {
@@ -63,6 +90,13 @@ class Feedback {
 				const data = tableRow.querySelector(`.cell[content="${key}"]`);
 				if (data) data.textContent = message[key];
 			}
+
+			if (message.status === '') {
+				const cellStatus = tableRow.querySelector('.cell[content="status"]');
+				cellStatus.setAttribute('id', message.worker_id);
+				addStatusControl(cellStatus);
+			}
+
 			table.appendChild(tableRow);
 		});
 
