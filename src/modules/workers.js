@@ -47,6 +47,11 @@ class Workers {
 		let navTogglerBtn = document.querySelector('.nav__toggler-btn');
 		navTogglerBtn.addEventListener('click', toggleNav);
 
+		let changeTabRadios = document.querySelectorAll('.section__tabs .section__radio');
+		changeTabRadios.forEach((radio) => {
+			radio.addEventListener('change', toggleTab);
+		});
+
 		const radioCardsView = document.querySelector('#radio-cards');
 		const radioTableView = document.querySelector('#radio-table');
 		radioCardsView.addEventListener('change', this.createCards.bind(this));
@@ -143,27 +148,31 @@ class Workers {
 			worker.division = divisionsNameMap.get(worker.division_id);
 			worker.salary = `${worker.salary}₽`;
 			worker.firo = JSON.parse(worker.firo);
+			worker.birthdate = new Date(worker.birthdate).toLocaleDateString();
+			worker.employment = new Date(worker.employment).toLocaleDateString();
+			worker.dismissal = worker.dismissal
+				? new Date(worker.dismissal).toLocaleDateString()
+				: '-';
 		});
 
 		return workers;
 	}
 
 	async createCards() {
-		let workers = await this.getWorkersData();
-		let template = document.querySelector('#card-template');
-		let wrapper = document.querySelector('.content-wrapper');
-		let cardsContainer = document.querySelector('.content');
+		const workers = await this.getWorkersData();
 
+		const wrapper = document.querySelector('.content-wrapper');
 		wrapper.classList.remove('content-wrapper_table');
-		cardsContainer.classList.remove('content_table');
+		while (wrapper.firstChild) {
+			wrapper.removeChild(wrapper.firstChild);
+		}
+
+		const cardsContainer = document.createElement('ul');
 		cardsContainer.classList.add('content_cards');
+		cardsContainer.role = 'list';
+		cardsContainer.ariaLabel = 'Список сотрудников';
 
-		const clearContainer = () => {
-			while (cardsContainer.firstChild) cardsContainer.removeChild(cardsContainer.firstChild);
-		};
-
-		clearContainer();
-
+		const template = document.querySelector('#card-template');
 		workers.forEach((worker) => {
 			let workerCard = template.content.cloneNode(true).querySelector('.card');
 
@@ -181,41 +190,48 @@ class Workers {
 
 			cardsContainer.append(workerCard);
 		});
+
+		wrapper.appendChild(cardsContainer);
 	}
 
 	async createTable() {
-		console.log('table');
-		let workers = await this.getWorkersData();
-		let wrapper = document.querySelector('.content-wrapper');
-		let cellsContainer = document.querySelector('.content');
+		const workers = await this.getWorkersData();
 
+		const wrapper = document.querySelector('.content-wrapper');
 		wrapper.classList.add('content-wrapper_table');
-		cellsContainer.classList.remove('content_cards');
-		cellsContainer.classList.add('content_table_worker');
 
-		const clearContainer = () => {
-			while (cellsContainer.firstChild) cellsContainer.removeChild(cellsContainer.firstChild);
-		};
+		while (wrapper.firstChild) {
+			wrapper.removeChild(wrapper.firstChild);
+		}
 
-		clearContainer();
+		const table = document.createElement('div');
+		table.classList.add('table_worker');
 
-		// for (let i = 0; i < 30; i++) {
-			for (let key in workers[0]) {
-				const headerCell = document.createElement('div');
-				headerCell.classList.add('cell_header', 'cell');
-				headerCell.textContent = key;
-				cellsContainer.appendChild(headerCell);
+		const tableHeader = document
+			.querySelector('#table-header-template')
+			.content.cloneNode(true);
+		table.append(tableHeader);
+
+		const tableRowTemplate = document.querySelector('#table-row-template');
+		workers.forEach((worker, i) => {
+			const tableRow = tableRowTemplate.content.cloneNode(true);
+			if (i % 2 !== 0) {
+				for (let cell of tableRow.children) {
+					cell.classList.add('cell_colored');
+				}
 			}
-		// }
 
-		workers.forEach((worker) => {
 			for (let key in worker) {
-				const gridCell = document.createElement('div');
-				gridCell.classList.add('cell');
-				gridCell.textContent = worker[key];
-				cellsContainer.appendChild(gridCell);
+				const data = tableRow.querySelector(`.cell[content="${key}"]`);
+				if (data) data.textContent = worker[key];
 			}
+			table.appendChild(tableRow);
 		});
+
+		const tableContainer = document.createElement('div');
+		tableContainer.classList.add('content_table');
+		wrapper.appendChild(tableContainer);
+		tableContainer.appendChild(table);
 	}
 
 	async createPersona(id) {

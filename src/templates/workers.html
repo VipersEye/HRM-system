@@ -189,9 +189,7 @@
 
                 </div>
 
-                <div class="content-wrapper" id="workers-list">
-                    <ul class="content content_cards" role="list" aria-label="Список сотрудников"></ul>
-                </div>
+                <div class="content-wrapper" id="workers-list"></div>
 
                 <div class="content-wrapper content-wrapper_block hidden" id="graph">
                     <div class="section__graph"></div>
@@ -244,6 +242,38 @@
 
             </div>
         </li>
+    </template>
+
+    <template id="table-header-template">
+        <div class="cell cell_header cell_colored cell_first">Номер</div>
+        <div class="cell cell_header cell_colored">Фамилия</div>
+        <div class="cell cell_header cell_colored">Имя</div>
+        <div class="cell cell_header cell_colored">Отчество</div>
+        <div class="cell cell_header cell_colored">Дата рождения</div>
+        <div class="cell cell_header cell_colored">Телефон</div>
+        <div class="cell cell_header cell_colored">Почта</div>
+        <div class="cell cell_header cell_colored">Подразделение</div>
+        <div class="cell cell_header cell_colored">Должность</div>
+        <div class="cell cell_header cell_colored">Оклад</div>
+        <div class="cell cell_header cell_colored">Отработано</div>
+        <div class="cell cell_header cell_colored">Дата найма</div>
+        <div class="cell cell_header cell_colored cell_last">Дата увольнения</div>
+    </template>
+
+    <template id="table-row-template">
+        <div class="cell cell_first" content="worker_id"></div>
+        <div class="cell" content="surname"></div>
+        <div class="cell" content="name"></div>
+        <div class="cell" content="middlename"></div>
+        <div class="cell" content="birthdate"></div>
+        <div class="cell" content="phone"></div>
+        <div class="cell" content="login"></div>
+        <div class="cell" content="division"></div>
+        <div class="cell" content="position"></div>
+        <div class="cell" content="salary"></div>
+        <div class="cell" content="hoursworked"></div>
+        <div class="cell" content="employment"></div>
+        <div class="cell cell_last" content="dismissal"></div>
     </template>
 
     <template id="persona-template">
