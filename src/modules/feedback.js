@@ -12,8 +12,29 @@ import Events from '@modules/events';
 class Feedback {
 	constructor(Database) {
 		this.database = new Database();
-
 		this.createTable();
+
+		const changeNavVisibility = (e) => {
+			let navToggleBtn = e.currentTarget;
+			let navContainer = document.querySelector('.nav-container');
+			navContainer.classList.toggle('nav-container_closed');
+			navToggleBtn.classList.toggle('nav__toggler-btn_open');
+		};
+
+		let navToggleBtn = document.querySelector('.nav__toggler-btn');
+		navToggleBtn.addEventListener('click', changeNavVisibility);
+
+		const clearSearchField = () => {
+			const inputSearch = document.querySelector('#input-search');
+			inputSearch.value = '';
+			inputSearch.dispatchEvent(new Event('input'));
+		};
+
+		const clearInputBtn = document.querySelector('.section__btn_clear');
+		clearInputBtn.addEventListener('click', clearSearchField);
+
+		const inputSearch = document.querySelector('#input-search');
+		inputSearch.addEventListener('input', this.searchMessage.bind(this));
 	}
 
 	async getFeedback() {
@@ -104,6 +125,18 @@ class Feedback {
 		tableContainer.classList.add('content_table');
 		wrapper.appendChild(tableContainer);
 		tableContainer.appendChild(table);
+	}
+
+	async searchMessage() {
+		const feedback = await this.getFeedback();
+		const searchedValue = document.querySelector('#input-search').value;
+
+		const suitableMeesages = feedback.filter((message) => {
+			const summary = Object.values(message).join(' ');
+			return summary.includes(searchedValue);
+		});
+
+		this.createTable(suitableMeesages);
 	}
 }
 
