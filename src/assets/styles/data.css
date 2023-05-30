@@ -25,29 +25,21 @@
 	box-shadow: 4px 4px 8px 4px hsla(0, 0%, 60%, 0.3);
 }
 
-.content {
+/* cards  ======================================== */
+
+.content_cards {
 	flex: 1;
 
+	padding: 0.5rem 0;
 	max-height: 100%;
 
 	display: grid;
-
-	overflow-y: auto;
-}
-
-.content_cards {
-	padding: 0.5rem 0;
-
 	grid-template-columns: repeat(auto-fill, 15rem);
 	justify-content: center;
 	gap: 2.2rem;
-}
 
-.content_table {
-	padding-right: 1rem;
+	overflow: auto;
 }
-
-/* cards  ======================================== */
 
 .card {
 	padding: 1.5rem;
@@ -148,57 +140,62 @@
 	gap: 1.5rem;
 }
 
-.content_cards .content__item_header {
-	display: none;
+/* table ======================================== */
+
+.content_table {
+	position: relative;
+
+	width: 100%;
+	height: 100%;
 }
 
-.content_cards .row {
-	display: none;
-}
-
-/* rows  ======================================== */
-
-.content_table .card {
-	display: none;
-}
-
-.content__item:nth-of-type(2n + 1) {
-	background-color: var(--clr-primary-100);
-	border-radius: 0.3rem;
-}
-
-.row {
-	padding: 0.5rem 0;
+.table_worker {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
 
 	display: grid;
-	grid-auto-columns: 1fr;
-	grid-auto-flow: column;
-	align-items: center;
+	grid-template-columns: repeat(13, max-content);
+	grid-auto-rows: min-content;
+	grid-auto-flow: row;
+	align-items: start;
+
+	overflow: auto;
 }
 
-.content__item_header {
-	position: sticky;
-	top: 0;
-}
+.cell {
+	padding: 0.5rem 1rem;
 
-.row_header {
-	font-family: var(--ff-headers);
-	font-size: 1.1rem;
-	font-weight: var(--fw-medium);
-
-	background-color: var(--clr-primary-100);
-	border-radius: 0.3rem;
-}
-
-.row > * {
 	text-align: center;
 }
 
-.row:not(.row_header) > * {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+.cell_header {
+	position: sticky;
+	top: 0;
+
+	font-family: var(--ff-headers);
+	font-size: 1.1rem;
+	font-weight: var(--fw-medium);
 }
+
+.cell_first {
+	border-top-left-radius: 0.3rem;
+	border-bottom-left-radius: 0.3rem;
+}
+
+.cell_last {
+	margin-right: 1rem;
+	border-top-right-radius: 0.3rem;
+	border-bottom-right-radius: 0.3rem;
+}
+
+.cell_colored {
+	background-color: var(--clr-primary-100);
+}
+
+/* pages ======================================== */
 
 .content__page-btns {
 	padding: 1rem 2rem;

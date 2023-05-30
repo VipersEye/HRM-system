@@ -24,15 +24,6 @@ class Workers {
 			e.currentTarget.classList.toggle('nav__toggler-btn_open');
 		};
 
-		const toggleView = () => {
-			let wrapper = document.querySelector('.content-wrapper');
-			let content = document.querySelector('.content');
-
-			wrapper.classList.toggle('content-wrapper_table');
-			content.classList.toggle('content_cards');
-			content.classList.toggle('content_table');
-		};
-
 		const toggleTab = (e) => {
 			let title = document.querySelector('.section__title');
 			let clearBtn = document.querySelector('.section__btn');
@@ -56,17 +47,15 @@ class Workers {
 		let navTogglerBtn = document.querySelector('.nav__toggler-btn');
 		navTogglerBtn.addEventListener('click', toggleNav);
 
-		let changeViewRadios = document.querySelectorAll(
-			'.section__container_radio .section__radio'
-		);
-		changeViewRadios.forEach((radio) => {
-			radio.addEventListener('change', toggleView);
-		});
-
 		let changeTabRadios = document.querySelectorAll('.section__tabs .section__radio');
 		changeTabRadios.forEach((radio) => {
 			radio.addEventListener('change', toggleTab);
 		});
+
+		const radioCardsView = document.querySelector('#radio-cards');
+		const radioTableView = document.querySelector('#radio-table');
+		radioCardsView.addEventListener('change', this.createCards.bind(this));
+		radioTableView.addEventListener('change', this.createTable.bind(this));
 
 		this.createCards();
 	}
@@ -159,26 +148,39 @@ class Workers {
 			worker.division = divisionsNameMap.get(worker.division_id);
 			worker.salary = `${worker.salary}₽`;
 			worker.firo = JSON.parse(worker.firo);
+			worker.birthdate = new Date(worker.birthdate).toLocaleDateString();
+			worker.employment = new Date(worker.employment).toLocaleDateString();
+			worker.dismissal = worker.dismissal
+				? new Date(worker.dismissal).toLocaleDateString()
+				: '-';
 		});
 
 		return workers;
 	}
 
 	async createCards() {
-		let workers = await this.getWorkersData();
-		let template = document.querySelector('#worker-template');
-		workers.forEach((worker) => {
-			let workersContainer = document.querySelector('.content');
-			let workerCard = template.content.cloneNode(true).querySelector('.content__item');
+		const workers = await this.getWorkersData();
 
-			workerCard.setAttribute('worker_id', `${worker.worker_id}`);
+		const wrapper = document.querySelector('.content-wrapper');
+		wrapper.classList.remove('content-wrapper_table');
+		while (wrapper.firstChild) {
+			wrapper.removeChild(wrapper.firstChild);
+		}
+
+		const cardsContainer = document.createElement('ul');
+		cardsContainer.classList.add('content_cards');
+		cardsContainer.role = 'list';
+		cardsContainer.ariaLabel = 'Список сотрудников';
+
+		const template = document.querySelector('#card-template');
+		workers.forEach((worker) => {
+			let workerCard = template.content.cloneNode(true).querySelector('.card');
+
 			workerCard.querySelector('.card__avatar').src =
 				worker.avatar || './images/avatars/default-avatar.png';
 			for (let prop in worker) {
-				let cardData = workerCard.querySelector(`.row__${prop}`);
-				let rowData = workerCard.querySelector(`.card__${prop}`);
+				let cardData = workerCard.querySelector(`.card__${prop}`);
 				if (cardData) cardData.textContent = worker[prop];
-				if (rowData) rowData.textContent = worker[prop];
 			}
 
 			let moreBtn = workerCard.querySelector('.card__btn_more');
@@ -186,8 +188,50 @@ class Workers {
 				this.createPersona(worker.worker_id);
 			});
 
-			workersContainer.append(workerCard);
+			cardsContainer.append(workerCard);
 		});
+
+		wrapper.appendChild(cardsContainer);
+	}
+
+	async createTable() {
+		const workers = await this.getWorkersData();
+
+		const wrapper = document.querySelector('.content-wrapper');
+		wrapper.classList.add('content-wrapper_table');
+
+		while (wrapper.firstChild) {
+			wrapper.removeChild(wrapper.firstChild);
+		}
+
+		const table = document.createElement('div');
+		table.classList.add('table_worker');
+
+		const tableHeader = document
+			.querySelector('#table-header-template')
+			.content.cloneNode(true);
+		table.append(tableHeader);
+
+		const tableRowTemplate = document.querySelector('#table-row-template');
+		workers.forEach((worker, i) => {
+			const tableRow = tableRowTemplate.content.cloneNode(true);
+			if (i % 2 !== 0) {
+				for (let cell of tableRow.children) {
+					cell.classList.add('cell_colored');
+				}
+			}
+
+			for (let key in worker) {
+				const data = tableRow.querySelector(`.cell[content="${key}"]`);
+				if (data) data.textContent = worker[key];
+			}
+			table.appendChild(tableRow);
+		});
+
+		const tableContainer = document.createElement('div');
+		tableContainer.classList.add('content_table');
+		wrapper.appendChild(tableContainer);
+		tableContainer.appendChild(table);
 	}
 
 	async createPersona(id) {
