@@ -168,6 +168,10 @@
 	grid-template-columns: repeat(13, max-content);
 }
 
+.table_data {
+	grid-template-columns: repeat(var(--num-of-cols), minmax(max-content, 1fr));
+}
+
 .table_feedback {
 	grid-template-columns: auto auto auto 1fr auto;
 	align-items: stretch;
@@ -190,6 +194,7 @@
 	font-family: var(--ff-headers);
 	font-size: 1.1rem;
 	font-weight: var(--fw-medium);
+	white-space: nowrap;
 }
 
 .cell_first {

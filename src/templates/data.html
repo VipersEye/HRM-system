@@ -182,13 +182,16 @@
         <div class="cell cell_header cell_colored">Отчество</div>
         <div class="cell cell_header cell_colored">Дата рождения</div>
         <div class="cell cell_header cell_colored">Телефон</div>
-        <div class="cell cell_header cell_colored">Почта</div>
-        <div class="cell cell_header cell_colored">Подразделение</div>
+        <div class="cell cell_header cell_colored">Код подразделения</div>
         <div class="cell cell_header cell_colored">Должность</div>
         <div class="cell cell_header cell_colored">Оклад</div>
         <div class="cell cell_header cell_colored">Отработано</div>
         <div class="cell cell_header cell_colored">Дата найма</div>
-        <div class="cell cell_header cell_colored cell_last">Дата увольнения</div>
+        <div class="cell cell_header cell_colored">Дата увольнения</div>
+        <div class="cell cell_header cell_colored">FIRO-B</div>
+        <div class="cell cell_header cell_colored">Аватар</div>
+        <div class="cell cell_header cell_colored">Логин</div>
+        <div class="cell cell_header cell_colored cell_last">Пароль</div>
     </template>
 
     <template id="worker-row-template">
@@ -198,13 +201,84 @@
         <div class="cell" content="middlename"></div>
         <div class="cell" content="birthdate"></div>
         <div class="cell" content="phone"></div>
-        <div class="cell" content="login"></div>
-        <div class="cell" content="division"></div>
+        <div class="cell" content="division_id"></div>
         <div class="cell" content="position"></div>
         <div class="cell" content="salary"></div>
         <div class="cell" content="hoursworked"></div>
         <div class="cell" content="employment"></div>
-        <div class="cell cell_last" content="dismissal"></div>
+        <div class="cell" content="dismissal"></div>
+        <div class="cell" content="firo"></div>
+        <div class="cell" content="avatar"></div>
+        <div class="cell" content="login"></div>
+        <div class="cell cell_last" content="password"></div>
+    </template>
+
+    <template id="candidate-header-template">
+        <div class="cell cell_header cell_colored cell_first">Номер</div>
+        <div class="cell cell_header cell_colored">Фамилия</div>
+        <div class="cell cell_header cell_colored">Имя</div>
+        <div class="cell cell_header cell_colored">Отчество</div>
+        <div class="cell cell_header cell_colored">Дата рождения</div>
+        <div class="cell cell_header cell_colored">Телефон</div>
+        <div class="cell cell_header cell_colored">Почта</div>
+        <div class="cell cell_header cell_colored">Код вакансии</div>
+        <div class="cell cell_header cell_colored">Дата отклика</div>
+        <div class="cell cell_header cell_colored">Резюме</div>
+        <div class="cell cell_header cell_colored cell_last">Аватар</div>
+    </template>
+
+    <template id="candidate-row-template">
+        <div class="cell cell_first" content="candidate_id"></div>
+        <div class="cell" content="surname"></div>
+        <div class="cell" content="name"></div>
+        <div class="cell" content="middlename"></div>
+        <div class="cell" content="birthdate"></div>
+        <div class="cell" content="phone"></div>
+        <div class="cell" content="email"></div>
+        <div class="cell" content="vacancy_id"></div>
+        <div class="cell" content="response"></div>
+        <div class="cell" content="resume"></div>
+        <div class="cell cell_last" content="avatar"></div>
+    </template>
+
+    <template id="division-header-template">
+        <div class="cell cell_header cell_colored cell_first">Код подразделения</div>
+        <div class="cell cell_header cell_colored">Название</div>
+        <div class="cell cell_header cell_colored cell_last">Код вышестоящего подразделения</div>
+    </template>
+
+    <template id="division-row-template">
+        <div class="cell cell_first" content="division_id"></div>
+        <div class="cell" content="name"></div>
+        <div class="cell cell_last" content="parent_id"></div>
+    </template>
+
+    <template id="task-header-template">
+        <div class="cell cell_header cell_colored cell_first">Номер</div>
+        <div class="cell cell_header cell_colored">Код сотрудника</div>
+        <div class="cell cell_header cell_colored">Код вакансии</div>
+        <div class="cell cell_header cell_colored">Нанято</div>
+        <div class="cell cell_header cell_colored cell_last">Нужно нанять</div>
+    </template>
+
+    <template id="task-row-template">
+        <div class="cell cell_first" content="task_id"></div>
+        <div class="cell" content="worker_id"></div>
+        <div class="cell" content="vacancy_id"></div>
+        <div class="cell" content="current_num"></div>
+        <div class="cell cell_last" content="require_num"></div>
+    </template>
+
+    <template id="vacancy-header-template">
+        <div class="cell cell_header cell_colored cell_first">Код вакансии</div>
+        <div class="cell cell_header cell_colored">Должность</div>
+        <div class="cell cell_header cell_colored cell_last">Описание</div>
+    </template>
+
+    <template id="vacancy-row-template">
+        <div class="cell cell_first" content="vacancy_id"></div>
+        <div class="cell" content="position"></div>
+        <div class="cell cell_last" content="description"></div>
     </template>
 
     <template id="persona-template">
