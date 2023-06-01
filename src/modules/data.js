@@ -19,18 +19,30 @@ class Data {
 			e.currentTarget.classList.toggle('nav__toggler-btn_open');
 		};
 
+		const clearInput = () => {
+			const input = document.querySelector('#input-search');
+			input.value = '';
+			input.dispatchEvent(new Event('input'));
+		};
+
 		const navTogglerBtn = document.querySelector('.nav__toggler-btn');
 		navTogglerBtn.addEventListener('click', toggleNav);
 
 		const tabRadios = document.querySelectorAll('.section__radio');
 		tabRadios.forEach((radio) => {
-			radio.addEventListener('change', this.createTable.bind(this, radio.value));
+			radio.addEventListener('change', this.createTable.bind(this, radio.value, null));
 		});
+
+		const clearInputBtn = document.querySelector('.section__btn_clear');
+		clearInputBtn.addEventListener('click', clearInput);
+
+		const inputSearch = document.querySelector('#input-search');
+		inputSearch.addEventListener('input', this.searchData.bind(this));
 
 		this.createTable('worker');
 	}
 
-	async createTable(tableName) {
+	async getData(tableName) {
 		const dataRaw = await this.database.select(tableName);
 		const data = dataRaw
 			.sort((item1, item2) => item1[`${tableName}_id`] - item2[`${tableName}_id`])
@@ -40,6 +52,23 @@ class Data {
 				}
 				return item;
 			});
+		return data;
+	}
+
+	async searchData() {
+		const tableName = document.querySelector('.section__radio:checked').value;
+		const data = await this.getData(tableName);
+
+		const searchValue = document.querySelector('#input-search').value;
+		const filteredData = data.filter((item) => {
+			const summary = Object.values(item).join(' ');
+			return summary.includes(searchValue);
+		});
+		this.createTable(tableName, filteredData);
+	}
+
+	async createTable(tableName, filteredData) {
+		const data = filteredData || (await this.getData(tableName));
 
 		const wrapper = document.querySelector('.content-wrapper');
 		wrapper.classList.add('content-wrapper_table');
