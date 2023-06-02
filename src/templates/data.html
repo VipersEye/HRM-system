@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HRMS, менеджмент, человеческие ресурсы, автоматизация, предприятие">
+    <meta name="description" content="Добро пожаловать! HRMS - это совершенно новая HRM-система, которая позволит вам эффективно распоряжаться человеческими ресурсами на предприятии. Предприятие любого вида и направленности обязательно найдет для себя все необходимые функции для успешного развития кадров.">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/icons/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicons/favicon-16x16.png">
+    <link rel="manifest" href="./site.webmanifest">
+    <title>HRMS: Данные</title>
+</head>
+<body>
+    <div class="container">
+
+        <div class="nav-container">
+
+            <header class="header">
+                <a class="header__content" href="./home.html">
+                    <img class="header__logo" src="./images/logo.png" alt="Логотип HRM системы">
+                    <h1 class="header__text">
+                        <span class="header__letter">H</span><span class="header__letter">R</span><span class="header__letter">M</span><span class="header__letter">S</span>
+                    </h1>
+                </a>
+            </header>
+
+            <nav class="nav">
+                <ul class="nav__list" aria-label="Инструменты" role="list">
+                    <li class="nav__item">
+                        <a class="nav__btn" href="./recruiting.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#recruiting-icon"></use>
+                            </svg>
+                            <p class="nav__text">Рекрутинг</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="./workers.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#group-icon"></use>
+                            </svg>
+                            <p class="nav__text">Сотрудники</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#statistics-icon"></use>
+                            </svg>
+                            <p class="nav__text">Статистика</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item nav__item_current">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#data-icon"></use>
+                            </svg>
+                            <p class="nav__text">Данные</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="./calendar.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#calendar-icon"></use>
+                            </svg>
+                            <p class="nav__text">События</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#test-icon"></use>
+                            </svg>
+                            <p class="nav__text">Тестирование</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="./feedback.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#chat-icon"></use>
+                            </svg>
+                            <p class="nav__text">Обращения</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav class="nav">
+                <ul class="nav__list" aria-label="Другое" role="list">
+                    <li class="nav__item">
+                        <a class="nav__btn" href="">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#settings-icon"></use>
+                            </svg>
+                            <p class="nav__text">Настройки</p>
+                        </a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a class="nav__btn" href="./login.html">
+                            <svg class="nav__icon">
+                                <use xlink:href="./images/icons/svg/icons.svg#logout-icon"></use>
+                            </svg>
+                            <p class="nav__text">Выйти</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <button class="nav__toggler-btn nav__toggler-btn_close" type="button">
+                <svg class="nav__toggler-icon">
+                    <use xlink:href="./images/icons/svg/icons.svg#arrow-icon"></use>
+                </svg>
+            </button>
+        </div>
+
+        <main class="main">
+
+            <section class="section section_grow">
+                <div class="section__header">
+                    <h2 class="section__title section__title_large">Данные</h2>
+                    <button class="section__btn section__btn_clear">Очистить</button>
+                </div>
+
+                <div class="section__tabs">
+                    <input class="section__radio" type="radio" name="tab" id="radio-worker" value="worker" checked>
+                    <label class="section__tabname" for="radio-worker">Сотрудники</label>
+                    <input class="section__radio" type="radio" name="tab" id="radio-candidate" value="candidate">
+                    <label class="section__tabname" for="radio-candidate">Кандидаты</label>
+                    <input class="section__radio" type="radio" name="tab" id="radio-division" value="division">
+                    <label class="section__tabname" for="radio-division">Подразделения</label>
+                    <input class="section__radio" type="radio" name="tab" id="radio-task" value="task">
+                    <label class="section__tabname" for="radio-task">Задачи</label>
+                    <input class="section__radio" type="radio" name="tab" id="radio-vacancy" value="vacancy">
+                    <label class="section__tabname" for="radio-vacancy">Вакансии</label>
+                </div>
+
+                <div class="section__inputs">
+
+                    <div class="section__container section__container_x2">
+                        <input
+                            class="section__input section__input_search"
+                            type="search"
+                            name="search"
+                            id="input-search"
+                            placeholder="Поиск"
+                            aria-label="Поиск">
+                        <svg class="section__input__icon">
+                            <use xlink:href="./images/icons/svg/icons.svg#search-icon"></use>
+                        </svg>
+                    </div>
+
+                    <button class="section__btn section__btn_edit" type="button">
+                        <svg class="section__btn__icon">
+                            <use xlink:href="./images/icons/svg/icons.svg#edit-icon"></use>
+                        </svg>
+                    </button>
+
+                </div>
+
+                <div class="content-wrapper"></div>
+
+            </section>
+
+        </main>
+
+        <aside class="aside">
+            <div class="events">
+                <h3 class="events__title">События</h3>
+                <ul class="events__list" role="list"></ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <template id="worker-header-template">
+        <div class="cell cell_header cell_colored cell_first">Номер</div>
+        <div class="cell cell_header cell_colored">Фамилия</div>
+        <div class="cell cell_header cell_colored">Имя</div>
+        <div class="cell cell_header cell_colored">Отчество</div>
+        <div class="cell cell_header cell_colored">Дата рождения</div>
+        <div class="cell cell_header cell_colored">Телефон</div>
+        <div class="cell cell_header cell_colored">Код подразделения</div>
+        <div class="cell cell_header cell_colored">Должность</div>
+        <div class="cell cell_header cell_colored">Оклад</div>
+        <div class="cell cell_header cell_colored">Отработано</div>
+        <div class="cell cell_header cell_colored">Дата найма</div>
+        <div class="cell cell_header cell_colored">Дата увольнения</div>
+        <div class="cell cell_header cell_colored">FIRO-B</div>
+        <div class="cell cell_header cell_colored">Аватар</div>
+        <div class="cell cell_header cell_colored">Логин</div>
+        <div class="cell cell_header cell_colored cell_last">Пароль</div>
+    </template>
+
+    <template id="worker-row-template">
+        <div class="cell cell_first" content="worker_id"></div>
+        <div class="cell" content="surname"></div>
+        <div class="cell" content="name"></div>
+        <div class="cell" content="middlename"></div>
+        <div class="cell" content="birthdate"></div>
+        <div class="cell" content="phone"></div>
+        <div class="cell" content="division_id"></div>
+        <div class="cell" content="position"></div>
+        <div class="cell" content="salary"></div>
+        <div class="cell" content="hoursworked"></div>
+        <div class="cell" content="employment"></div>
+        <div class="cell" content="dismissal"></div>
+        <div class="cell" content="firo"></div>
+        <div class="cell" content="avatar"></div>
+        <div class="cell" content="login"></div>
+        <div class="cell cell_last" content="password"></div>
+    </template>
+
+    <template id="candidate-header-template">
+        <div class="cell cell_header cell_colored cell_first">Номер</div>
+        <div class="cell cell_header cell_colored">Фамилия</div>
+        <div class="cell cell_header cell_colored">Имя</div>
+        <div class="cell cell_header cell_colored">Отчество</div>
+        <div class="cell cell_header cell_colored">Дата рождения</div>
+        <div class="cell cell_header cell_colored">Телефон</div>
+        <div class="cell cell_header cell_colored">Почта</div>
+        <div class="cell cell_header cell_colored">Код вакансии</div>
+        <div class="cell cell_header cell_colored">Дата отклика</div>
+        <div class="cell cell_header cell_colored">Резюме</div>
+        <div class="cell cell_header cell_colored cell_last">Аватар</div>
+    </template>
+
+    <template id="candidate-row-template">
+        <div class="cell cell_first" content="candidate_id"></div>
+        <div class="cell" content="surname"></div>
+        <div class="cell" content="name"></div>
+        <div class="cell" content="middlename"></div>
+        <div class="cell" content="birthdate"></div>
+        <div class="cell" content="phone"></div>
+        <div class="cell" content="email"></div>
+        <div class="cell" content="vacancy_id"></div>
+        <div class="cell" content="response"></div>
+        <div class="cell" content="resume"></div>
+        <div class="cell cell_last" content="avatar"></div>
+    </template>
+
+    <template id="division-header-template">
+        <div class="cell cell_header cell_colored cell_first">Код подразделения</div>
+        <div class="cell cell_header cell_colored">Название</div>
+        <div class="cell cell_header cell_colored cell_last">Код вышестоящего подразделения</div>
+    </template>
+
+    <template id="division-row-template">
+        <div class="cell cell_first" content="division_id"></div>
+        <div class="cell" content="name"></div>
+        <div class="cell cell_last" content="parent_id"></div>
+    </template>
+
+    <template id="task-header-template">
+        <div class="cell cell_header cell_colored cell_first">Номер</div>
+        <div class="cell cell_header cell_colored">Код сотрудника</div>
+        <div class="cell cell_header cell_colored">Код вакансии</div>
+        <div class="cell cell_header cell_colored">Нанято</div>
+        <div class="cell cell_header cell_colored cell_last">Нужно нанять</div>
+    </template>
+
+    <template id="task-row-template">
+        <div class="cell cell_first" content="task_id"></div>
+        <div class="cell" content="worker_id"></div>
+        <div class="cell" content="vacancy_id"></div>
+        <div class="cell" content="current_num"></div>
+        <div class="cell cell_last" content="require_num"></div>
+    </template>
+
+    <template id="vacancy-header-template">
+        <div class="cell cell_header cell_colored cell_first">Код вакансии</div>
+        <div class="cell cell_header cell_colored">Должность</div>
+        <div class="cell cell_header cell_colored cell_last">Описание</div>
+    </template>
+
+    <template id="vacancy-row-template">
+        <div class="cell cell_first" content="vacancy_id"></div>
+        <div class="cell" content="position"></div>
+        <div class="cell cell_last" content="description"></div>
+    </template>
+
+    <template id="delete-btn-template">
+        <button class="cell__btn" type="button">
+            <svg class="cell__icon">
+                <use xlink:href="./images/icons/svg/icons.svg#delete-icon"></use>
+            </svg>
+        </button>
+    </template>
+
+    <template id="persona-template">
+        <div class="persona">
+
+            <button class="persona__btn" type="button">
+                <svg class="persona__btn__icon">
+                    <use xlink:href="./images/icons/svg/icons.svg#close-icon"></use>
+                </svg>
+            </button>
+
+            <div class="persona__img">
+                <img class="persona__avatar" src="" alt="Фото сотрудника">
+            </div>
+
+            <section class="persona__info">
+                <h3 class="persona__prop persona__prop_bold" persona-fullname></h3>
+                <div class="persona__prop">
+                    <span class="persona__prop__key">Возраст: </span>
+                    <span class="persona__prop__value" persona-age></span>
+                </div>
+                <div class="persona__prop">
+                    <span class="persona__prop__key">Почта: </span>
+                    <span class="persona__prop__value" persona-login></span>
+                </div>
+                <div class="persona__prop">
+                    <span class="persona__prop__key">Телефон: </span>
+                    <span class="persona__prop__value" persona-phone></span>
+                </div>
+                <div class="persona__prop">
+                    <span class="persona__prop__key">Отдел: </span>
+                    <span class="persona__prop__value" persona-division></span>
+                </div>
+                <div class="persona__prop">
+                    <span class="persona__prop__key">Должность: </span>
+                    <span class="persona__prop__value" persona-position></span>
+                </div>
+                <div class="persona__prop">
+                    <span class="persona__prop__key">Оклад: </span>
+                    <span class="persona__prop__value" persona-salary></span>
+                </div>
+            </section>
+
+            <section class="persona__chart">
+                <div class="persona__compatibility">
+                    <svg class="persona__compatibility__icon">
+                        <use xlink:href=''></use>
+                    </svg>
+                    <p class="persona__status"></p>
+                </div>
+                <canvas class="persona__radar" id="radar" aria-label="Диаграмма распределения баллов по шкалам FIRO-B" role="img"></canvas>
+            </section>
+
+            <section class="persona__stats">
+
+                <h3 class="persona__stats__title">Характеристики</h3>
+
+                <div class="persona__stat">
+                    <div class="persona__stat__header">
+                        <span class="persona__label">Интроверт</span>
+                        <span class="persona__label">Экстроверт</span>
+                    </div>
+                    <div class="persona__meter" scale="I"></div>
+                </div>
+
+                <div class="persona__stat">
+                    <div class="persona__stat__header">
+                        <span class="persona__label">Подчиненный</span>
+                        <span class="persona__label">Руководитель</span>
+                    </div>
+                    <div class="persona__meter" scale="C"></div>
+                </div>
+
+                <div class="persona__stat">
+                    <div class="persona__stat__header">
+                        <span class="persona__label">Отстраненность</span>
+                        <span class="persona__label">Близость</span>
+                    </div>
+                    <div class="persona__meter" scale="A"></div>
+                </div>
+            </section>
+
+            <section class="persona__description">
+                <h3 class="persona__description__title">Описание</h3>
+                <div class="persona__container">
+                    <ul class="persona__list" role="list">
+                        <li class="persona__list__item" scale="Ie"></li>
+                        <li class="persona__list__item" scale="Iw"></li>
+                        <li class="persona__list__item" scale="Ce"></li>
+                        <li class="persona__list__item" scale="Cw"></li>
+                        <li class="persona__list__item" scale="Ae"></li>
+                        <li class="persona__list__item" scale="Aw"></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </template>
+
+    <template id="day-template">
+        <li class="day">
+
+            <div class="day__header">
+                <p class="day__title"></p>
+                <button class="day__btn" type="button">
+                    <svg class="day__btn__icon">
+                        <use xlink:href="./images/icons/svg/icons.svg#more-icon"></use>
+                    </svg>
+                </button>
+            </div>
+
+            <ul class="day__events" role="list"></ul>
+        </li>
+    </template>
+
+    <template id="event-template">
+        <li class="event">
+            <p class="event__time"></p>
+            <div class="event__color"></div>
+            <div class="event__content">
+                <p class="event__author"></p>
+                <p class="event__name"></p>
+            </div>
+        </li>
+    </template>
+
+</body>
+</html>

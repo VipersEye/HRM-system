@@ -15,7 +15,8 @@ const config = {
         recruiting: './modules/recruiting.js',
         workers: './modules/workers.js',
         calendar: './modules/calendar.js',
-        feedback: './modules/feedback.js'
+        feedback: './modules/feedback.js',
+        data: './modules/data.js'
     },
     output: {
         filename: '[name].[contenthash].js',
@@ -67,6 +68,11 @@ const config = {
             filename: 'feedback.html',
             template: path.resolve(__dirname, 'src/templates/feedback.html'),
             chunks: ['feedback']
+        }),
+        new HTMLWebpackPlugin({
+            filename: 'data.html',
+            template: path.resolve(__dirname, 'src/templates/data.html'),
+            chunks: ['data']
         }),
         new CopyWebpackPlugin({
             patterns: [

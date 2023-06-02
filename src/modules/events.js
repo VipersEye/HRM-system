@@ -1,3 +1,5 @@
+import '@styles/events.css';
+
 import Database from '@modules/Database';
 
 export default class Events {
