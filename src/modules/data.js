@@ -43,6 +43,13 @@ class Data {
 			btnMode.classList.toggle('section__btn_active');
 			const table = document.querySelector('.table_data');
 			table.classList.toggle('table_editable');
+
+			const tableCells = document.querySelectorAll(
+				'.cell:not(.cell_header):not(.cell_first)'
+			);
+			tableCells.forEach((cell) => {
+				cell.contentEditable = table.classList.contains('table_editable');
+			});
 		};
 		btnToggleMode.addEventListener('click', toggleMode);
 
@@ -159,6 +166,21 @@ class Data {
 		};
 		table.addEventListener('mouseover', changeBtnDeleteVisibility);
 		table.addEventListener('mouseout', changeBtnDeleteVisibility);
+
+		const updateData = (e) => {
+			if (!e.target.classList.contains('cell')) {
+				return;
+			}
+			const cell = e.target;
+			const values = {
+				[cell.getAttribute('content')]: cell.textContent,
+			};
+			const conditions = {
+				[primaryKey]: cell.getAttribute(primaryKey),
+			};
+			this.database.update(tableName, values, conditions);
+		};
+		table.addEventListener('input', updateData);
 
 		const tableContainer = document.createElement('div');
 		tableContainer.classList.add('content_table');
