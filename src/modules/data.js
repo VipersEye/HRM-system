@@ -101,6 +101,7 @@ class Data {
 
 		const tableRowTemplate = document.querySelector(`#${tableName}-row-template`);
 		const deleteBtnTemplate = document.querySelector('#delete-btn-template');
+		const primaryKey = `${tableName}_id`;
 		data.forEach((item, i) => {
 			const tableRow = tableRowTemplate.content.cloneNode(true);
 			if (i % 2 !== 0) {
@@ -111,7 +112,7 @@ class Data {
 
 			for (let key in item) {
 				const cell = tableRow.querySelector(`.cell[content="${key}"]`);
-				cell.setAttribute(`${tableName}_id`, item[`${tableName}_id`]);
+				cell.setAttribute(primaryKey, item[primaryKey]);
 				if (cell) cell.textContent = item[key];
 			}
 
@@ -120,10 +121,18 @@ class Data {
 				const btnDelete = deleteBtnTemplate.content
 					.cloneNode(true)
 					.querySelector('.cell__btn');
-				btnDelete.setAttribute(`${tableName}_id`, item[`${tableName}_id`]);
-				btnDelete.addEventListener('click', (e) => {
-					console.log('click');
-				});
+				btnDelete.setAttribute(primaryKey, item[primaryKey]);
+
+				const deleteRow = async () => {
+					const conditions = {
+						[primaryKey]: item[primaryKey],
+					};
+					await this.database.delete(tableName, conditions);
+					this.createTable(tableName);
+					this.events.createEvents();
+				};
+				btnDelete.addEventListener('click', deleteRow);
+
 				firstCell.appendChild(btnDelete);
 			};
 			addDeleteBtn();
@@ -141,8 +150,10 @@ class Data {
 				return;
 			}
 			const cell = e.target;
-			const attrValue = cell.getAttribute(`${tableName}_id`);
-			const btnDelete = document.querySelector(`.cell__btn[${tableName}_id="${attrValue}"]`);
+			const primaryKeyValue = cell.getAttribute(primaryKey);
+			const btnDelete = document.querySelector(
+				`.cell__btn[${primaryKey}="${primaryKeyValue}"]`
+			);
 			const eventType = e.type;
 			btnDelete.style.opacity = eventType === 'mouseover' ? 1 : 0;
 		};

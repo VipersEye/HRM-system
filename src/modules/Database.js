@@ -40,7 +40,7 @@ export default class Database {
 		let data = {
 			table,
 			values,
-			conditions
+			conditions,
 		};
 
 		let jsonData = JSON.stringify(data, (key, val) => {
@@ -49,6 +49,26 @@ export default class Database {
 		});
 
 		let responseHeaders = await fetch('./requests/requestUpdate.php', {
+			method: 'POST',
+			body: jsonData,
+		});
+
+		let response = await responseHeaders.text();
+		return JSON.parse(response);
+	}
+
+	async delete(table, conditions) {
+		let data = {
+			table,
+			conditions,
+		};
+
+		let jsonData = JSON.stringify(data, (key, val) => {
+			if (val === '') return;
+			return val;
+		});
+
+		let responseHeaders = await fetch(`./requests/delete/${table}Delete.php`, {
 			method: 'POST',
 			body: jsonData,
 		});
@@ -71,6 +91,7 @@ export default class Database {
 		});
 
 		let response = await responseHeaders.text();
-		if (response !== '1') throw new Error('При отправке файла произошла ошибка. Попробуйте снова.');
+		if (response !== '1')
+			throw new Error('При отправке файла произошла ошибка. Попробуйте снова.');
 	}
 }
