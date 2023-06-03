@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicons/favicon-16x16.png">
     <link rel="manifest" href="./site.webmanifest">
-    <title>HRMS: Обращения</title>
+    <title>HRMS: Данные</title>
 </head>
 <body>
     <div class="container">
@@ -73,7 +73,7 @@
                         </a>
                     </li>
 
-                    <li class="nav__item">
+                    <li class="nav__item nav__item_current">
                         <a class="nav__btn" href="./testing.html">
                             <svg class="nav__icon">
                                 <use xlink:href="./images/icons/svg/icons.svg#test-icon"></use>
@@ -82,7 +82,7 @@
                         </a>
                     </li>
 
-                    <li class="nav__item nav__item_current">
+                    <li class="nav__item">
                         <a class="nav__btn" href="./feedback.html">
                             <svg class="nav__icon">
                                 <use xlink:href="./images/icons/svg/icons.svg#chat-icon"></use>
@@ -126,28 +126,10 @@
 
             <section class="section section_grow">
                 <div class="section__header">
-                    <h2 class="section__title section__title_large">Обращения</h2>
-                    <button class="section__btn section__btn_clear">Очистить</button>
+                    <h2 class="section__title section__title_large">Тестирование</h2>
                 </div>
 
-                <div class="section__inputs">
-
-                    <div class="section__container section__container_x2">
-                        <input
-                            class="section__input section__input_search"
-                            type="search"
-                            name="search"
-                            id="input-search"
-                            placeholder="Поиск"
-                            aria-label="Поиск">
-                        <svg class="section__input__icon">
-                            <use xlink:href="./images/icons/svg/icons.svg#search-icon"></use>
-                        </svg>
-                    </div>
-
-                </div>
-
-                <div class="content-wrapper content-wrapper_table"></div>
+                <div class="content-wrapper"></div>
 
             </section>
 
@@ -161,29 +143,6 @@
         </aside>
 
     </div>
-
-    <template id="table-header-template">
-        <div class="cell cell_header cell_colored cell_first">Номер</div>
-        <div class="cell cell_header cell_colored">Сотрудник</div>
-        <div class="cell cell_header cell_colored">Дата</div>
-        <div class="cell cell_header cell_colored">Обращение</div>
-        <div class="cell cell_header cell_colored cell_last">Статус</div>
-    </template>
-
-    <template id="table-row-template">
-        <div class="cell cell_first" content="question_id"></div>
-        <div class="cell" content="author"></div>
-        <div class="cell" content="date"></div>
-        <div class="cell" content="content"></div>
-        <div class="cell cell_last" content="status"></div>
-    </template>
-
-    <template id="feedback-status-template">
-        <div class="feedback__btns">
-            <button class="feedback__btn feedback__btn_accept" type="button">Принять</button>
-            <button class="feedback__btn feedback__btn_deny" type="button">Отклонить</button>
-        </div>
-    </template>
 
     <template id="day-template">
         <li class="day">
