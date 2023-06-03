@@ -4,16 +4,16 @@ import '@styles/section.css';
 import '@styles/tasks.css';
 import '@styles/sorting-fields.css';
 import '@styles/data.css';
-import '@styles/events.css';
 import '@styles/feeling.css';
 
-import CircleProgress from '@modules/CircleProgress';
 import Database from '@modules/Database';
 import Events from '@modules/events';
+import CircleProgress from '@modules/CircleProgress';
 
 class Recruiting {
-	constructor(Database) {
+	constructor(Database, Events) {
 		this.database = new Database();
+		this.events = new Events(this.database);
 
 		const changeNavVisibility = (e) => {
 			let navToggleBtn = e.currentTarget;
@@ -222,5 +222,4 @@ class Recruiting {
 	}
 }
 
-const recruiting = new Recruiting(Database);
-const events = new Events();
+const recruiting = new Recruiting(Database, Events);

@@ -1,10 +1,7 @@
 import '@styles/default.css';
 import '@styles/main.css';
 import '@styles/section.css';
-import '@styles/tasks.css';
-import '@styles/sorting-fields.css';
 import '@styles/data.css';
-import '@styles/events.css';
 import '@styles/calendar.css';
 
 import Database from '@modules/Database';
@@ -12,8 +9,8 @@ import Events from '@modules/events';
 
 class Calendar {
 	constructor() {
-		this.events = new Events();
 		this.database = new Database();
+		this.events = new Events(this.database);
 		this.currentDate = new Date();
 
 		const setMonth = (e) => {
@@ -25,7 +22,6 @@ class Calendar {
 				setMonthBtn.id === 'btn-prev-month' ? currentMonth - 1 : currentMonth + 1;
 			const newDate = new Date(currentYear, newMonth);
 			this.currentDate = newDate;
-			console.log(newDate);
 			this.setCalendar(this.currentDate);
 		};
 
@@ -237,4 +233,4 @@ class Calendar {
 	}
 }
 
-const calendar = new Calendar();
+const calendar = new Calendar(Database, Events);
