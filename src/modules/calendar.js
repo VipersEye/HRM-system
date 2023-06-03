@@ -1,10 +1,7 @@
 import '@styles/default.css';
 import '@styles/main.css';
 import '@styles/section.css';
-import '@styles/tasks.css';
-import '@styles/sorting-fields.css';
 import '@styles/data.css';
-import '@styles/events.css';
 import '@styles/calendar.css';
 
 import Database from '@modules/Database';
@@ -12,10 +9,20 @@ import Events from '@modules/events';
 
 class Calendar {
 	constructor() {
-		this.events = new Events();
 		this.database = new Database();
+		this.events = new Events(this.database);
 		this.currentDate = new Date();
 
+		const navTogglerBtn = document.querySelector('.nav__toggler-btn');
+		const toggleNav = (e) => {
+			const navContainer = document.querySelector('.nav-container');
+			navContainer.classList.toggle('nav-container_closed');
+			e.currentTarget.classList.toggle('nav__toggler-btn_open');
+		};
+		navTogglerBtn.addEventListener('click', toggleNav);
+
+		const prevMonthBtn = document.querySelector('#btn-prev-month');
+		const nextMonthBtn = document.querySelector('#btn-next-month');
 		const setMonth = (e) => {
 			const currentMonth = this.currentDate.getMonth();
 			const currentYear = this.currentDate.getFullYear();
@@ -25,22 +32,17 @@ class Calendar {
 				setMonthBtn.id === 'btn-prev-month' ? currentMonth - 1 : currentMonth + 1;
 			const newDate = new Date(currentYear, newMonth);
 			this.currentDate = newDate;
-			console.log(newDate);
 			this.setCalendar(this.currentDate);
 		};
-
-		const prevMonthBtn = document.querySelector('#btn-prev-month');
-		const nextMonthBtn = document.querySelector('#btn-next-month');
 		prevMonthBtn.addEventListener('click', setMonth);
 		nextMonthBtn.addEventListener('click', setMonth);
 
+		const closeModalBtn = document.querySelector('.modal__btn_close');
+		const addEventBtn = document.querySelector('.modal__btn_add');
 		const closeModal = () => {
 			const modal = document.querySelector('.calendar__modal');
 			modal.close();
 		};
-
-		const closeModalBtn = document.querySelector('.modal__btn_close');
-		const addEventBtn = document.querySelector('.modal__btn_add');
 		closeModalBtn.addEventListener('click', closeModal);
 		addEventBtn.addEventListener('click', this.addEvent.bind(this));
 
@@ -215,7 +217,9 @@ class Calendar {
 			eventEl.textContent = evt.title;
 
 			const dayCell = calendarGrid.querySelector(`.calendar__cell[date="${evt.date}"]`);
-			dayCell.appendChild(eventEl);
+			if (dayCell) {
+				dayCell.appendChild(eventEl);
+			}
 		}
 	}
 
@@ -237,4 +241,4 @@ class Calendar {
 	}
 }
 
-const calendar = new Calendar();
+const calendar = new Calendar(Database, Events);

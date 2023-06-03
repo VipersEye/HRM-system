@@ -11,7 +11,7 @@ import Events from '@modules/events';
 class Data {
 	constructor(Database, Events) {
 		this.database = new Database();
-		this.events = new Events();
+		this.events = new Events(this.database);
 
 		const navTogglerBtn = document.querySelector('.nav__toggler-btn');
 		const toggleNav = (e) => {

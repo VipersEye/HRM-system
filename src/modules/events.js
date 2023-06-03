@@ -1,10 +1,8 @@
 import '@styles/events.css';
 
-import Database from '@modules/Database';
-
 export default class Events {
-	constructor() {
-		this.database = new Database();
+	constructor(database) {
+		this.database = database;
 		this.createEvents();
 	}
 
@@ -80,7 +78,7 @@ export default class Events {
 				return event;
 			})
 			.filter((event) => {
-				const currentDate = new Date(2023, 4, 16);
+				const currentDate = new Date();
 				return currentDate < event.fullDate;
 			})
 			.sort((fEvent, sEvent) => {

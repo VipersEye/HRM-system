@@ -3,19 +3,19 @@ import '@styles/main.css';
 import '@styles/section.css';
 import '@styles/sorting-fields.css';
 import '@styles/data.css';
-import '@styles/events.css';
 import '@styles/graph.css';
 import '@styles/persona.css';
 
 import Database from '@modules/Database';
+import Events from '@modules/events';
 import cytoscape from 'cytoscape';
 import Chart from 'chart.js/auto';
 import FIRO from '@modules/FIRO-B';
-import Events from '@modules/events';
 
 class Workers {
-	constructor(database) {
-		this.database = database;
+	constructor(Database, Events) {
+		this.database = new Database();
+		this.events = new Events(this.database);
 
 		const toggleNav = (e) => {
 			let navContainer = document.querySelector('.nav-container');
@@ -179,7 +179,7 @@ class Workers {
 			workerCard.querySelector('.card__avatar').src =
 				worker.avatar || './images/avatars/default-avatar.png';
 			for (let prop in worker) {
-				let cardData = workerCard.querySelector(`.card__${prop}`);
+				let cardData = workerCard.querySelector(`[content=${prop}]`);
 				if (cardData) cardData.textContent = worker[prop];
 			}
 
@@ -240,8 +240,6 @@ class Workers {
 		let personaTemplate = document.querySelector('#persona-template');
 		let persona = personaTemplate.content.cloneNode(true).querySelector('.persona');
 		let container = document.querySelector('.container');
-
-		console.log(worker);
 
 		const setPersonaInfo = () => {
 			let avatar = persona.querySelector('.persona__avatar');
@@ -395,5 +393,4 @@ class Workers {
 	}
 }
 
-const workers = new Workers(new Database());
-const events = new Events();
+const workers = new Workers(Database, Events);

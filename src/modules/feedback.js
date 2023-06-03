@@ -3,7 +3,6 @@ import '@styles/main.css';
 import '@styles/section.css';
 import '@styles/sorting-fields.css';
 import '@styles/data.css';
-import '@styles/events.css';
 import '@styles/feedback.css';
 
 import Database from '@modules/Database';
@@ -12,6 +11,7 @@ import Events from '@modules/events';
 class Feedback {
 	constructor(Database) {
 		this.database = new Database();
+		this.events = new Events(this.database);
 		this.createTable();
 
 		const changeNavVisibility = (e) => {
@@ -140,5 +140,4 @@ class Feedback {
 	}
 }
 
-const feedback = new Feedback(Database);
-const events = new Events();
+const feedback = new Feedback(Database, Events);
