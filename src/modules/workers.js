@@ -179,7 +179,7 @@ class Workers {
 			workerCard.querySelector('.card__avatar').src =
 				worker.avatar || './images/avatars/default-avatar.png';
 			for (let prop in worker) {
-				let cardData = workerCard.querySelector(`.card__${prop}`);
+				let cardData = workerCard.querySelector(`[content=${prop}]`);
 				if (cardData) cardData.textContent = worker[prop];
 			}
 
@@ -240,8 +240,6 @@ class Workers {
 		let personaTemplate = document.querySelector('#persona-template');
 		let persona = personaTemplate.content.cloneNode(true).querySelector('.persona');
 		let container = document.querySelector('.container');
-
-		console.log(worker);
 
 		const setPersonaInfo = () => {
 			let avatar = persona.querySelector('.persona__avatar');

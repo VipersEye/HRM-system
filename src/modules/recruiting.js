@@ -35,10 +35,10 @@ class Recruiting {
 		};
 
 		const searchCandidates = async () => {
-			let nameFieldValue = document.querySelector('#input-search').value.toLowerCase();
-			let positionFiledValue = document.querySelector('#input-position').value.toLowerCase();
+			const nameFieldValue = document.querySelector('#input-search').value.toLowerCase();
+			const positionFiledValue = document.querySelector('#input-position').value.toLowerCase();
 
-			let suitableCandidates = (await this.database.select('candidate'))
+			const suitableCandidates = (await this.getCandidatesData())
 				.sort((a, b) => a.candidate_id - b.candidate_id)
 				.filter(({name, surname, middlename, position}) => {
 					let fullName = `${name} ${surname} ${middlename}`.toLowerCase();
@@ -66,7 +66,7 @@ class Recruiting {
 			let positionDataList = document.querySelector('#datalist-positions');
 			let candidatesPositions = [
 				...new Set((await this.getCandidatesData()).map((candidate) => candidate.position)),
-			].sort((a, b) => a - b);
+			].sort();
 			for (let position of candidatesPositions) {
 				let dataListOption = document.createElement('option');
 				dataListOption.value = position;
@@ -94,9 +94,15 @@ class Recruiting {
 	}
 
 	async getCandidatesData() {
-		return (await this.database.select('candidate')).sort(
-			(a, b) => a.candidate_id - b.candidate_id
-		);
+		const dataRaw = await this.database.select('candidate');
+		const vacancies = await this.database.select('vacancy');
+		const vacanciesMap = Object.fromEntries(vacancies.map(({vacancy_id, position}) => [vacancy_id, position]));
+		const data = dataRaw.map((candidate) => {
+			candidate.fullname = `${candidate.name} ${candidate.surname}`;
+			candidate.position = vacanciesMap[candidate.vacancy_id];
+			return candidate;
+		}).sort((a, b) => a.candidate_id - b.candidate_id);
+		return data;
 	}
 
 	async createPages(candidatesData) {
@@ -110,12 +116,14 @@ class Recruiting {
 				let candidateCard = candidateCardTemplate.content
 					.cloneNode(true)
 					.querySelector('.content__item');
-				let candidateAvatar = candidateCard.querySelector('.card__avatar');
+				const candidateAvatar = candidateCard.querySelector('.card__avatar');
 				candidateAvatar.src = candidateData.avatar;
-				let candidateFullName = candidateCard.querySelector('.card__fullname');
-				candidateFullName.textContent = `${candidateData.name} ${candidateData.surname}`;
-				let candidatePosition = candidateCard.querySelector('.card__position');
-				candidatePosition.textContent = candidateData.position;
+				for (let prop in candidateData) {
+					const cardElem = candidateCard.querySelector(`[content=${prop}]`);
+					if (cardElem) {
+						cardElem.textContent = candidateData[prop];
+					}
+				}
 				cardsContainer.appendChild(candidateCard);
 			}
 		};
