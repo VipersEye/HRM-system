@@ -10,7 +10,7 @@
 
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-    grid-template-rows: auto;
+    grid-auto-rows: min-content;
     justify-items: center;
 	gap: 2.2rem;
 
@@ -77,7 +77,7 @@
     background-color: var(--clr-primary-400);
 }
 
-.test__questions__num {
+.test__questions__count {
     font-size: 1.6rem;
 }
 
