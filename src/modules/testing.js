@@ -2,6 +2,7 @@ import '@styles/default.css';
 import '@styles/main.css';
 import '@styles/section.css';
 import '@styles/sorting-fields.css';
+import '@styles/data.css';
 import '@styles/testing.css';
 
 import Database from '@modules/Database';
