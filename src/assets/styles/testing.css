@@ -139,3 +139,74 @@
 
     fill: var(--clr-neutral-100);
 }
+
+.examination {
+    margin: 1rem;
+    padding: 1.5rem 3rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    font-size: 1.1rem;
+
+    border-radius: 2rem;
+	background-color: var(--clr-neutral-100);
+	box-shadow: 4px 4px 8px 3px hsla(0, 0%, 60%, 0.3);
+}
+
+.examination__title {
+    font-family: var(--ff-headers);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.examination__answers {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.examination__answer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.examination__btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.examination__btn {
+    margin-top: 1rem;
+    padding: 0.7rem 1rem;
+
+	font-size: 1.2rem;
+	font-weight: var(--fw-regular);
+	line-height: 1;
+	color: var(--clr-neutral-100);
+
+	border: 0;
+	border-radius: 0.5rem;
+	cursor: pointer;
+
+	transition: background-color 0.3s linear;
+}
+
+.examination__btn_prev {
+    background-color: var(--clr-primary-200);
+}
+
+.examination__btn_prev:hover {
+    background-color: var(--clr-primary-300);
+}
+
+.examination__btn_next {
+    background-color: var(--clr-primary-400);
+}
+
+.examination__btn_next:hover {
+    background-color: var(--clr-primary-600);
+}
