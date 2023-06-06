@@ -74,7 +74,7 @@
                     </li>
 
                     <li class="nav__item">
-                        <a class="nav__btn" href="">
+                        <a class="nav__btn" href="./testing.html">
                             <svg class="nav__icon">
                                 <use xlink:href="./images/icons/svg/icons.svg#test-icon"></use>
                             </svg>
@@ -293,103 +293,6 @@
                 <use xlink:href="./images/icons/svg/icons.svg#delete-icon"></use>
             </svg>
         </button>
-    </template>
-
-    <template id="persona-template">
-        <div class="persona">
-
-            <button class="persona__btn" type="button">
-                <svg class="persona__btn__icon">
-                    <use xlink:href="./images/icons/svg/icons.svg#close-icon"></use>
-                </svg>
-            </button>
-
-            <div class="persona__img">
-                <img class="persona__avatar" src="" alt="Фото сотрудника">
-            </div>
-
-            <section class="persona__info">
-                <h3 class="persona__prop persona__prop_bold" persona-fullname></h3>
-                <div class="persona__prop">
-                    <span class="persona__prop__key">Возраст: </span>
-                    <span class="persona__prop__value" persona-age></span>
-                </div>
-                <div class="persona__prop">
-                    <span class="persona__prop__key">Почта: </span>
-                    <span class="persona__prop__value" persona-login></span>
-                </div>
-                <div class="persona__prop">
-                    <span class="persona__prop__key">Телефон: </span>
-                    <span class="persona__prop__value" persona-phone></span>
-                </div>
-                <div class="persona__prop">
-                    <span class="persona__prop__key">Отдел: </span>
-                    <span class="persona__prop__value" persona-division></span>
-                </div>
-                <div class="persona__prop">
-                    <span class="persona__prop__key">Должность: </span>
-                    <span class="persona__prop__value" persona-position></span>
-                </div>
-                <div class="persona__prop">
-                    <span class="persona__prop__key">Оклад: </span>
-                    <span class="persona__prop__value" persona-salary></span>
-                </div>
-            </section>
-
-            <section class="persona__chart">
-                <div class="persona__compatibility">
-                    <svg class="persona__compatibility__icon">
-                        <use xlink:href=''></use>
-                    </svg>
-                    <p class="persona__status"></p>
-                </div>
-                <canvas class="persona__radar" id="radar" aria-label="Диаграмма распределения баллов по шкалам FIRO-B" role="img"></canvas>
-            </section>
-
-            <section class="persona__stats">
-
-                <h3 class="persona__stats__title">Характеристики</h3>
-
-                <div class="persona__stat">
-                    <div class="persona__stat__header">
-                        <span class="persona__label">Интроверт</span>
-                        <span class="persona__label">Экстроверт</span>
-                    </div>
-                    <div class="persona__meter" scale="I"></div>
-                </div>
-
-                <div class="persona__stat">
-                    <div class="persona__stat__header">
-                        <span class="persona__label">Подчиненный</span>
-                        <span class="persona__label">Руководитель</span>
-                    </div>
-                    <div class="persona__meter" scale="C"></div>
-                </div>
-
-                <div class="persona__stat">
-                    <div class="persona__stat__header">
-                        <span class="persona__label">Отстраненность</span>
-                        <span class="persona__label">Близость</span>
-                    </div>
-                    <div class="persona__meter" scale="A"></div>
-                </div>
-            </section>
-
-            <section class="persona__description">
-                <h3 class="persona__description__title">Описание</h3>
-                <div class="persona__container">
-                    <ul class="persona__list" role="list">
-                        <li class="persona__list__item" scale="Ie"></li>
-                        <li class="persona__list__item" scale="Iw"></li>
-                        <li class="persona__list__item" scale="Ce"></li>
-                        <li class="persona__list__item" scale="Cw"></li>
-                        <li class="persona__list__item" scale="Ae"></li>
-                        <li class="persona__list__item" scale="Aw"></li>
-                    </ul>
-                </div>
-            </section>
-
-        </div>
     </template>
 
     <template id="day-template">
